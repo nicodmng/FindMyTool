@@ -102,6 +102,7 @@
                             <constraint firstItem="UG0-Nn-N4W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="wgE-8O-6oW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="A46-gs-vzs"/>
                     <connections>
                         <outlet property="createAccountButton" destination="lnt-CV-bx5" id="bdT-OH-IYO"/>
                         <outlet property="logInButton" destination="Bd7-Ze-Wpy" id="wJM-PI-AWo"/>

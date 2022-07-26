@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SubscribeViewController: UIViewController {
     
@@ -18,7 +19,6 @@ class SubscribeViewController: UIViewController {
     
     @IBOutlet weak var registerButton: UIButton!
     
-    
     //IBActions
     @IBAction func subscribeButtonPressed(_ sender: Any) {
         if usernameSubTextField.text != "" && emailSubTextField.text != "" &&
@@ -27,6 +27,12 @@ class SubscribeViewController: UIViewController {
                 if error != nil {
                     print(error.debugDescription)
                 } else {
+                    
+                    let ref = Database.database().reference()
+                    let userID = Auth.auth().currentUser?.uid
+                    
+                    ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
+                    
                     print("Inscription de \(self.usernameSubTextField.text ?? "no name") réussie ✅ ")
                     // self.performSegue(withIdentifier: "goToHome", sender: self)
                 }

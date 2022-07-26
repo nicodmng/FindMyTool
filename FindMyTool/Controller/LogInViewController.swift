@@ -29,7 +29,7 @@ class LogInViewController: UIViewController {
                 if error != nil {
                     print(error.debugDescription)
                 } else {
-                    print("Utilisateur authentifié")
+                    self.performSegue(withIdentifier: "goToSearchViewController", sender: self)
                 }
             }
         } else {
