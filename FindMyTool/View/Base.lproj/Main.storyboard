@@ -205,7 +205,7 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="backToConnectionButton:" destination="7Ae-7f-9yc" eventType="touchUpInside" id="5Qd-6V-Qqv"/>
+                                            <action selector="backToLogInButtonPressed:" destination="7Ae-7f-9yc" eventType="touchUpInside" id="tVE-oo-liU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -214,6 +214,9 @@
                                 <rect key="frame" x="327.33333333333331" y="63.999999999999993" width="42.666666666666686" height="30.666666666666664"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="backToLoginButtonCross:" destination="7Ae-7f-9yc" eventType="touchUpInside" id="gDg-MX-SE6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0hf-p4-3JB"/>

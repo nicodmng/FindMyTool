@@ -36,8 +36,13 @@ class SubscribeViewController: UIViewController {
     }
     
     @IBAction func backToLogInButtonPressed(_ sender: Any) {
-        print("Retour à la page de connexion")
+        backToLogInPage()
     }
+    
+    @IBAction func backToLoginButtonCross(_ sender: Any) {
+        backToLogInPage()
+    }
+    
     
     
     // MARK: - ViewDidLoad
@@ -50,6 +55,10 @@ class SubscribeViewController: UIViewController {
     // MARK: - Private functions
     private func setupButton() {
         registerButton.layer.cornerRadius = 10
+    }
+    
+    private func backToLogInPage() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupTextFieldManager() {
