@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class SignInViewController: UIViewController {
+class LogInViewController: UIViewController {
 
     // MARK: - IBOutlets & IBActions
     // IBOutlets
@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
 }
 
     // MARK: - Extensions
-    extension SignInViewController: UITextFieldDelegate {
+    extension LogInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return true
