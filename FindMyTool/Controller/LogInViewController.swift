@@ -23,6 +23,23 @@ class LogInViewController: UIViewController {
         self.performSegue(withIdentifier: "goToSubscribeViewController", sender: self)
     }
     
+    @IBAction func logInButtonPressed(_ sender: Any) {
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (authResult, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                } else {
+                    print("Utilisateur authentifié")
+                }
+            }
+        } else {
+            // afficher un alertController ici "Merci de remplir tous les champs" ou "MDP ou nom invalide"
+            print("Pas OK")
+        }
+        
+    }
+    
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
      

@@ -23,7 +23,6 @@ class SubscribeViewController: UIViewController {
     @IBAction func subscribeButtonPressed(_ sender: Any) {
         if usernameSubTextField.text != "" && emailSubTextField.text != "" &&
             passwordSubTextField.text != "" {
-            
             Auth.auth().createUser(withEmail: emailSubTextField.text!, password: passwordSubTextField.text!) { authResult, error in
                 if error != nil {
                     print(error.debugDescription)
@@ -32,6 +31,9 @@ class SubscribeViewController: UIViewController {
                     // self.performSegue(withIdentifier: "goToHome", sender: self)
                 }
             }
+        } else {
+            // Placer un alertController ici :
+            print("Tous les champs ne sont pas remplis !")
         }
     }
     
@@ -42,7 +44,6 @@ class SubscribeViewController: UIViewController {
     @IBAction func backToLoginButtonCross(_ sender: Any) {
         backToLogInPage()
     }
-    
     
     
     // MARK: - ViewDidLoad
