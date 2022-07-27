@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -164,21 +163,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discussion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwz-Dy-KWK">
-                                <rect key="frame" x="16" y="44" width="174" height="42"/>
+                                <rect key="frame" x="16" y="88" width="174" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NCD-GK-ZMv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="gwz-Dy-KWK" firstAttribute="top" secondItem="NCD-GK-ZMv" secondAttribute="top" id="1gt-Gu-V6E"/>
                             <constraint firstItem="gwz-Dy-KWK" firstAttribute="leading" secondItem="NCD-GK-ZMv" secondAttribute="leading" constant="16" id="X87-hn-Oji"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discussion" image="bubble.left.and.bubble.right" catalog="system" id="bXt-ck-hs0"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUw-Vp-WBM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rechercher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-7o-FEg">
-                                <rect key="frame" x="16" y="44" width="183" height="42"/>
+                                <rect key="frame" x="16" y="88" width="183" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,7 +206,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Rechercher" image="magnifyingglass" catalog="system" id="MP0-Pf-fCj"/>
                     <navigationItem key="navigationItem" id="los-ZT-32q"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2a-Tz-hIC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,21 +220,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes outils" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-1S-ceg">
-                                <rect key="frame" x="16" y="44" width="161" height="42"/>
+                                <rect key="frame" x="16" y="88" width="161" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8K9-qp-guj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kZf-1S-ceg" firstAttribute="top" secondItem="8K9-qp-guj" secondAttribute="top" id="Pi3-We-5RO"/>
                             <constraint firstItem="kZf-1S-ceg" firstAttribute="leading" secondItem="8K9-qp-guj" secondAttribute="leading" constant="16" id="uGW-7z-cIP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mes outils" image="screwdriver" catalog="system" id="bEg-5j-b9W" userLabel="Mes outils"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWL-PD-Qpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -252,25 +248,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Réglages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D2-f1-NoO">
-                                <rect key="frame" x="16" y="44" width="147" height="42"/>
+                                <rect key="frame" x="16" y="88" width="147" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Por-mg-pQL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="2D2-f1-NoO" firstAttribute="top" secondItem="Por-mg-pQL" secondAttribute="top" id="Btk-Jc-Nw6"/>
                             <constraint firstItem="2D2-f1-NoO" firstAttribute="leading" secondItem="Por-mg-pQL" secondAttribute="leading" constant="16" id="G7X-s8-u6o"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Réglages" image="gearshape" catalog="system" id="rsw-vT-mCQ"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvQ-bo-4TU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1611" y="1277"/>
+            <point key="canvasLocation" x="1645" y="1277"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="xkd-m5-eRh">
@@ -399,8 +394,5 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="screwdriver" catalog="system" width="128" height="120"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
