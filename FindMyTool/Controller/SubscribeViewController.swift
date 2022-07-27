@@ -35,11 +35,11 @@ class SubscribeViewController: UIViewController {
                     
                     print("Inscription de \(self.usernameSubTextField.text ?? "no name") réussie ✅ ")
                     // self.performSegue(withIdentifier: "goToHome", sender: self)
+                    self.showInformation(message: "Votre compte a bien été enregistré")
                 }
             }
         } else {
-            // Placer un alertController ici :
-            print("Tous les champs ne sont pas remplis !")
+            showAlert(message: "Merci de remplir tous les champs")
         }
     }
     

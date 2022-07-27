@@ -42,7 +42,6 @@ class LogInViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-     
         setupButton()
         setupTextFieldManager()
     }
