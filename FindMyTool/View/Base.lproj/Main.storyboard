@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m60-Fn-uyY">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="AVh-kV-qYE">
+            <objects>
+                <navigationController id="m60-Fn-uyY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyn-8L-Aqr">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="N4X-mN-n7i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCZ-65-1ZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-911" y="80"/>
+        </scene>
         <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -16,13 +32,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FindMyTool Title" translatesAutoresizingMaskIntoConstraints="NO" id="UG0-Nn-N4W">
-                                <rect key="frame" x="15" y="194" width="360" height="63"/>
+                                <rect key="frame" x="15" y="238" width="360" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="3gg-gn-YFK"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ciA-xn-gAZ">
-                                <rect key="frame" x="45" y="323" width="300" height="120"/>
+                                <rect key="frame" x="45" y="367" width="300" height="120"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom d'utilisateur" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9hq-bI-EWc">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -43,7 +59,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-Ze-Wpy">
-                                <rect key="frame" x="45" y="488" width="300" height="50"/>
+                                <rect key="frame" x="45" y="532" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.46274509800000002" green="0.62352941179999999" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="uqY-ol-O3b"/>
@@ -108,7 +124,7 @@
                         <outlet property="logInButton" destination="Bd7-Ze-Wpy" id="wJM-PI-AWo"/>
                         <outlet property="passwordTextField" destination="xxJ-Ng-qGA" id="vir-WN-9Bl"/>
                         <outlet property="usernameTextField" destination="9hq-bI-EWc" id="wMS-Qn-FSU"/>
-                        <segue destination="7Ae-7f-9yc" kind="show" identifier="goToSubscribeViewController" id="CSZ-kR-lqy"/>
+                        <segue destination="7Ae-7f-9yc" kind="showDetail" identifier="goToSubscribeViewController" id="CSZ-kR-lqy"/>
                         <segue destination="5iH-h3-y9F" kind="show" identifier="goToSearchViewController" id="2qx-z3-R1w"/>
                     </connections>
                 </viewController>
@@ -121,7 +137,7 @@
             <objects>
                 <viewController id="5iH-h3-y9F" customClass="SearchViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D3J-oj-9n4">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="SoJ-d6-mQg"/>
                         <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
