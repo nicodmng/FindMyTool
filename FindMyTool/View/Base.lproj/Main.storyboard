@@ -157,7 +157,7 @@
         <!--Discussion-->
         <scene sceneID="7yb-7z-xej">
             <objects>
-                <viewController id="Ea2-Tu-fnH" sceneMemberID="viewController">
+                <viewController id="Ea2-Tu-fnH" customClass="ChatViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sp0-ga-mP9">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
         <!--Mes outils-->
         <scene sceneID="757-nU-maw">
             <objects>
-                <viewController id="BXd-Mw-ME2" sceneMemberID="viewController">
+                <viewController id="BXd-Mw-ME2" customClass="MyToolsViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9m-4r-ZeP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,7 +242,7 @@
         <!--Réglages-->
         <scene sceneID="Nym-xt-4Un">
             <objects>
-                <viewController interfaceStyle="light" id="UcS-CK-c8D" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="UcS-CK-c8D" customClass="SettingsViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cg0-12-tZf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,7 +289,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="t5a-Qr-vu9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNt-QK-cZL">
@@ -297,7 +297,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="o2p-6b-Mfn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bTM-dQ-nEz">
@@ -305,7 +305,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="DWn-5f-eqn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
@@ -321,7 +321,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Enregistrer">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
                                     <color key="baseForegroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>

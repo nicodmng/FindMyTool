@@ -33,8 +33,7 @@ class LogInViewController: UIViewController {
                 }
             }
         } else {
-            // afficher un alertController ici "Merci de remplir tous les champs" ou "MDP ou nom invalide"
-            print("Pas OK")
+            showAlert(message: "Merci de saisir un nom d'utilisateur et un mot de passe.")
         }
         
     }

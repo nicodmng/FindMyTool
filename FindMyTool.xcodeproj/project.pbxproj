@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		44A7DA21288FF54F00A81E44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */; };
 		44A7DA25288FFB3300A81E44 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA23288FFB3300A81E44 /* SearchViewController.swift */; };
-		44A7DA26288FFB3300A81E44 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA24288FFB3300A81E44 /* SearchViewController.xib */; };
+		44A7DA26288FFB3300A81E44 /* MyToolsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA24288FFB3300A81E44 /* MyToolsCell.xib */; };
 		44A7DA282891136800A81E44 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA272891136800A81E44 /* Alert.swift */; };
 		44A7DA2C2891611B00A81E44 /* MyToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */; };
 		44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA2D2891612E00A81E44 /* ChatViewController.swift */; };
@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44A7DA23288FFB3300A81E44 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		44A7DA24288FFB3300A81E44 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		44A7DA24288FFB3300A81E44 /* MyToolsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyToolsCell.xib; sourceTree = "<group>"; };
 		44A7DA272891136800A81E44 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyToolsViewController.swift; sourceTree = "<group>"; };
 		44A7DA2D2891612E00A81E44 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -108,16 +108,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		44A7DA29289160EE00A81E44 /* New Group */ = {
+		44A7DA29289160EE00A81E44 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				44B989B5288EBF140038B4F7 /* LogInViewController.swift */,
 				44E26238288FC7A4003425AC /* SubscribeViewController.swift */,
 			);
-			path = "New Group";
+			path = HomeView;
 			sourceTree = "<group>";
 		};
-		44A7DA2A289160F400A81E44 /* New Group1 */ = {
+		44A7DA2A289160F400A81E44 /* AppView */ = {
 			isa = PBXGroup;
 			children = (
 				44A7DA23288FFB3300A81E44 /* SearchViewController.swift */,
@@ -125,7 +125,7 @@
 				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
 				44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */,
 			);
-			path = "New Group1";
+			path = AppView;
 			sourceTree = "<group>";
 		};
 		44B989A5288EBF140038B4F7 = {
@@ -192,7 +192,7 @@
 		44B989E5288EBF3D0038B4F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44A7DA24288FFB3300A81E44 /* SearchViewController.xib */,
+				44A7DA24288FFB3300A81E44 /* MyToolsCell.xib */,
 				44B989B7288EBF140038B4F7 /* Main.storyboard */,
 				44B989BF288EBF160038B4F7 /* LaunchScreen.storyboard */,
 			);
@@ -202,8 +202,8 @@
 		44B989E6288EBF420038B4F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				44A7DA29289160EE00A81E44 /* New Group */,
-				44A7DA2A289160F400A81E44 /* New Group1 */,
+				44A7DA29289160EE00A81E44 /* HomeView */,
+				44A7DA2A289160F400A81E44 /* AppView */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 				44B989C1288EBF160038B4F7 /* LaunchScreen.storyboard in Resources */,
 				44A7DA21288FF54F00A81E44 /* GoogleService-Info.plist in Resources */,
 				44B989BE288EBF160038B4F7 /* Assets.xcassets in Resources */,
-				44A7DA26288FFB3300A81E44 /* SearchViewController.xib in Resources */,
+				44A7DA26288FFB3300A81E44 /* MyToolsCell.xib in Resources */,
 				44B989B9288EBF140038B4F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
