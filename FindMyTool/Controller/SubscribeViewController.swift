@@ -27,15 +27,13 @@ class SubscribeViewController: UIViewController {
                 if error != nil {
                     print(error.debugDescription)
                 } else {
-                    
+                    // Inscription dans la BDD :
                     let ref = Database.database().reference()
                     let userID = Auth.auth().currentUser?.uid
-                    
                     ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
                     
-                    print("Inscription de \(self.usernameSubTextField.text ?? "no name") réussie ✅ ")
                     // self.performSegue(withIdentifier: "goToHome", sender: self)
-                    self.showInformation(message: "Votre compte a bien été enregistré")
+                    self.showInformation(message: "Merci \(self.usernameSubTextField.text ?? ""). Votre compte a bien été enregistré")
                 }
             }
         } else {
