@@ -16,16 +16,11 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UILabel!
     
-    
     // IBActions
     @IBAction func logOutPressed(_ sender: UIButton) {
     logOut()
-    print("Se déconnecter")
     }
     
-    
-    
-
     // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         catchUsername()
@@ -58,7 +53,7 @@ class SettingsViewController: UIViewController {
             try firebaseAuth.signOut()
             self.navigationController?.popToRootViewController(animated: true)
         } catch {
-          print("Impossible de déconnecter")
+          showAlert(message: "Impossible de se déconnecter.")
         }
     }
 
