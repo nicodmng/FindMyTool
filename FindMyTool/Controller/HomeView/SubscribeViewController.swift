@@ -21,24 +21,7 @@ class SubscribeViewController: UIViewController {
     
     //IBActions
     @IBAction func subscribeButtonPressed(_ sender: Any) {
-        if usernameSubTextField.text != "" && emailSubTextField.text != "" &&
-            passwordSubTextField.text != "" {
-            Auth.auth().createUser(withEmail: emailSubTextField.text!, password: passwordSubTextField.text!) { authResult, error in
-                if error != nil {
-                    print(error.debugDescription)
-                } else {
-                    // Inscription dans la BDD :
-                    let ref = Database.database().reference()
-                    let userID = Auth.auth().currentUser?.uid
-                    ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
-                    
-                    // self.performSegue(withIdentifier: "goToHome", sender: self)
-                    self.showInformation(message: "Merci \(self.usernameSubTextField.text ?? ""). Votre compte a bien été enregistré.")
-                }
-            }
-        } else {
-            showAlert(message: "Merci de remplir tous les champs.")
-        }
+        createUser()
     }
     
     @IBAction func backToLogInButtonPressed(_ sender: Any) {
@@ -75,6 +58,26 @@ class SubscribeViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    func createUser() {
+        if usernameSubTextField.text != "" && emailSubTextField.text != "" &&
+            passwordSubTextField.text != "" {
+            Auth.auth().createUser(withEmail: emailSubTextField.text!, password: passwordSubTextField.text!) { authResult, error in
+                if error != nil {
+                    print(error.debugDescription)
+                } else {
+                    // Inscription du Username dans la BDD :
+                    let ref = Database.database().reference()
+                    let userID = Auth.auth().currentUser?.uid
+                    ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
+                    
+                    self.showInformation(message: "Merci \(self.usernameSubTextField.text ?? ""). Votre compte a bien été enregistré.")
+                }
+            }
+        } else {
+            showAlert(message: "Merci de remplir tous les champs.")
+        }
+    }
+    
     // MARK: - Actions
     @objc private func hideKeyboard() {
         usernameSubTextField.resignFirstResponder()
@@ -83,6 +86,7 @@ class SubscribeViewController: UIViewController {
     }
     
 }
+// End of class
 
 // MARK: - Extensions
 extension SubscribeViewController: UITextFieldDelegate {
@@ -92,3 +96,4 @@ extension SubscribeViewController: UITextFieldDelegate {
     }
     
 }
+// End of extension

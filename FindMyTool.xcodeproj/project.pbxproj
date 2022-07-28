@@ -192,9 +192,9 @@
 		44B989E5288EBF3D0038B4F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44A7DA24288FFB3300A81E44 /* MyToolsCell.xib */,
 				44B989B7288EBF140038B4F7 /* Main.storyboard */,
 				44B989BF288EBF160038B4F7 /* LaunchScreen.storyboard */,
+				44A7DA24288FFB3300A81E44 /* MyToolsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -242,7 +242,7 @@
         <!--Réglages-->
         <scene sceneID="Nym-xt-4Un">
             <objects>
-                <viewController interfaceStyle="light" id="UcS-CK-c8D" customClass="SettingsViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UcS-CK-c8D" customClass="SettingsViewController" customModule="FindMyTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cg0-12-tZf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,19 +253,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-q5-tuZ">
+                                <rect key="frame" x="82.000000000000014" y="662.33333333333337" width="226.33333333333337" height="66.666666666666629"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dPb-XD-HwY">
+                                        <rect key="frame" x="0.0" y="0.0" width="226.33333333333334" height="21.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecté en tant que" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkq-zy-iwC">
+                                                <rect key="frame" x="0.0" y="0.0" width="173.33333333333334" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-io-tH4" userLabel="UsernameLabel">
+                                                <rect key="frame" x="179.33333333333331" y="0.0" width="47" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmG-uR-0JA">
+                                        <rect key="frame" x="31.666666666666671" y="28.666666666666629" width="162.66666666666663" height="38"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Se déconnecter">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logOutPressed:" destination="UcS-CK-c8D" eventType="touchUpInside" id="Se2-lm-5Nu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Por-mg-pQL"/>
                         <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="2D2-f1-NoO" firstAttribute="top" secondItem="Por-mg-pQL" secondAttribute="top" id="Btk-Jc-Nw6"/>
                             <constraint firstItem="2D2-f1-NoO" firstAttribute="leading" secondItem="Por-mg-pQL" secondAttribute="leading" constant="16" id="G7X-s8-u6o"/>
+                            <constraint firstItem="rWy-q5-tuZ" firstAttribute="centerX" secondItem="cg0-12-tZf" secondAttribute="centerX" id="rHV-Hy-anM"/>
+                            <constraint firstItem="Por-mg-pQL" firstAttribute="bottom" secondItem="rWy-q5-tuZ" secondAttribute="bottom" constant="32" id="x0O-yb-GsN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Réglages" image="gearshape" catalog="system" id="rsw-vT-mCQ"/>
+                    <connections>
+                        <outlet property="usernameTextField" destination="Qqh-io-tH4" id="5Yy-Nk-KHQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvQ-bo-4TU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645" y="1277"/>
+            <point key="canvasLocation" x="1644.6153846153845" y="1276.7772511848341"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="xkd-m5-eRh">

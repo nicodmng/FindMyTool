@@ -6,24 +6,61 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // MARK: - IBOutlets & IBActions
+    // IBOutlets
+    
+    @IBOutlet weak var usernameTextField: UILabel!
+    
+    
+    // IBActions
+    @IBAction func logOutPressed(_ sender: UIButton) {
+    logOut()
+    print("Se déconnecter")
     }
     
+    
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - ViewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        catchUsername()
     }
-    */
+    
+    // MARK: - ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    // MARK: - Functions
+    func catchUsername() {
+        if Auth.auth().currentUser != nil {
+            let ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            
+            ref.child("users").child(userID!).observeSingleEvent(of: .value) { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let username = value?["username"] as? String ?? "inconnu"
+                
+                self.usernameTextField.text = username
+            }
+        }
+    }
+    
+    func logOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+          print("Impossible de déconnecter")
+        }
+    }
 
 }
+// End of class

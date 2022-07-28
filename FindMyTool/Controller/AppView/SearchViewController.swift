@@ -11,7 +11,7 @@ class SearchViewController: UIViewController {
 
     
     
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,3 +24,4 @@ class SearchViewController: UIViewController {
     }
 
 }
+// End of class

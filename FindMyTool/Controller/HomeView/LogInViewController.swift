@@ -65,6 +65,7 @@ class LogInViewController: UIViewController {
     }
     
 }
+// End of class
 
     // MARK: - Extensions
     extension LogInViewController: UITextFieldDelegate {
@@ -74,4 +75,4 @@ class LogInViewController: UIViewController {
     }
         
 }
-
+// End of extension
