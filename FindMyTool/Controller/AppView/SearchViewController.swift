@@ -15,10 +15,10 @@ class SearchViewController: UIViewController {
     
     // MARK: - IBOutlets & IBActions
     // IBOutlets
-    @IBOutlet weak var searchToolsTextField: UITextField!
-    
-    @IBOutlet weak var toolsResultTableView: UITableView!
-    let tools = [Tools]()
+//    @IBOutlet weak var searchToolsTextField: UITextField!
+//    
+//    @IBOutlet weak var toolsResultTableView: UITableView!
+//    let tools = [Tools]()
     
     
     // MARK: - ViewWillAppear

@@ -19,6 +19,7 @@
 		44A7DA3D2893E2DF00A81E44 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA3C2893E2DF00A81E44 /* FirebaseFirestore */; };
 		44A7DA3F2893E2DF00A81E44 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA3E2893E2DF00A81E44 /* FirebaseFirestoreCombine-Community */; };
 		44A7DA412893E2DF00A81E44 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA402893E2DF00A81E44 /* FirebaseFirestoreSwift */; };
+		44A7DA43289404CD00A81E44 /* AddToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA42289404CD00A81E44 /* AddToolViewController.swift */; };
 		44B989B2288EBF140038B4F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989B1288EBF140038B4F7 /* AppDelegate.swift */; };
 		44B989B4288EBF140038B4F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989B3288EBF140038B4F7 /* SceneDelegate.swift */; };
 		44B989B6288EBF140038B4F7 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989B5288EBF140038B4F7 /* LogInViewController.swift */; };
@@ -62,6 +63,7 @@
 		44A7DA352893CBB600A81E44 /* ToolsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsTableViewCell.swift; sourceTree = "<group>"; };
 		44A7DA362893CBB600A81E44 /* ToolsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolsTableViewCell.xib; sourceTree = "<group>"; };
 		44A7DA392893D1BC00A81E44 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		44A7DA42289404CD00A81E44 /* AddToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToolViewController.swift; sourceTree = "<group>"; };
 		44B989AE288EBF140038B4F7 /* FindMyTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B989B1288EBF140038B4F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B989B3288EBF140038B4F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */,
 				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
 				44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */,
+				44A7DA42289404CD00A81E44 /* AddToolViewController.swift */,
 			);
 			path = AppView;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				44A7DA302891613D00A81E44 /* SettingsViewController.swift in Sources */,
 				44B989B2288EBF140038B4F7 /* AppDelegate.swift in Sources */,
 				44A7DA2C2891611B00A81E44 /* MyToolsViewController.swift in Sources */,
+				44A7DA43289404CD00A81E44 /* AddToolViewController.swift in Sources */,
 				44B989B4288EBF140038B4F7 /* SceneDelegate.swift in Sources */,
 				44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */,
 				44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */,

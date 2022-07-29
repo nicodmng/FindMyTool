@@ -16,19 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
-        db.collection("tools").document("Pelle").setData([
-            "name": "pelle",
-            "price": "15",
-            "localisation" : "74160",
-            "statut": true
-        ]) { (error: Error?) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                print("Document correctement sauvegardé")
-            }
-        }
+
         return true
     }
 

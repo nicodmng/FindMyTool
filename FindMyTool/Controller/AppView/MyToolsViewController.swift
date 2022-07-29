@@ -6,14 +6,37 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class MyToolsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    
+    // MARK: - IBOutlets & IBActions
+    // IBActions
+    @IBAction func plusPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToAddToolViewController", sender: self)
     }
     
-
+    // MARK: - ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Functions
+    func createTool(name: String, price: String, localisation: String, statut: Bool) {
+        let db = Firestore.firestore()
+        db.collection("tools").document(name).setData([
+            "name": name,
+            "price": price,
+            "localisation" : localisation,
+            "statut": statut
+        ]) { (error: Error?) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            } else {
+                print("Document correctement sauvegardé")
+            }
+        }
+    }
+    
 }
 // End of class
