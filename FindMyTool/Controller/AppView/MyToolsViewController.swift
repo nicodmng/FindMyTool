@@ -10,6 +10,9 @@ import FirebaseFirestore
 
 class MyToolsViewController: UIViewController {
     
+    // MARK: - Properties
+    var tool = Tools()
+    
     // MARK: - IBOutlets & IBActions
     // IBActions
     @IBAction func plusPressed(_ sender: UIButton) {

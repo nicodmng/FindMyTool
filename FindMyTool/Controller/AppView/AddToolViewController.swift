@@ -16,15 +16,15 @@ class AddToolViewController: UIViewController {
                 "Taille-haie",
                 "Motoculteur"]
     
-    
+    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-   
+    
 }
+// End of class
 
-// MARK: - Extensions
+    // MARK: - Extensions
 extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

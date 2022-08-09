@@ -7,10 +7,9 @@
 
 import Foundation
 
-class Tools {
-    var id: Int?
+struct Tools {
     var name: String?
     var localisation: String?
-    var statut: String?
-    required init?() {}
+    var isAvailable: Bool?
+    var image: URL?
 }
