@@ -38,11 +38,22 @@ class LogInViewController: UIViewController {
         
     }
     
-    // MARK: - ViewDidLoad
+    // MARK: - ViewDidLoad & ViewDidAppear
+    // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
         setupTextFieldManager()
+    }
+    
+    // viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+            performSegue(withIdentifier: "goToSearchViewController", sender: self)
+        } else {
+            return
+        }
     }
     
     // MARK: - Private functions

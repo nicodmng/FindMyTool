@@ -30,10 +30,7 @@ class SearchViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        
-    
     }
     
     // MARK: - Functions
