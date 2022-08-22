@@ -20,4 +20,6 @@ class AuthService {
             return false
         }
     }
+    
 }
+// End of class
