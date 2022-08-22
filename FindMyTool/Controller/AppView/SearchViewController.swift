@@ -27,13 +27,8 @@ class SearchViewController: UIViewController {
         self.tabBarController?.navigationItem.hidesBackButton = true
     }
 
-    // MARK: - ViewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
-    // MARK: - Functions
 
 }
 // End of class
+
+

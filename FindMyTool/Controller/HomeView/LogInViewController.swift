@@ -10,11 +10,13 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController {
 
+    // MARK: - Properties
+    let authService: AuthService = AuthService()
+    
     // MARK: - IBOutlets & IBActions
     // IBOutlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     
@@ -29,31 +31,24 @@ class LogInViewController: UIViewController {
                 if error != nil {
                     print(error.debugDescription)
                 } else {
-                    self.performSegue(withIdentifier: "goToSearchViewController", sender: self)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let searchVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
+                    searchVC.modalPresentationStyle = .fullScreen
+                    self.present(searchVC, animated: true)
                 }
             }
         } else {
             showAlert(message: "Merci de saisir un nom d'utilisateur et un mot de passe.")
         }
-        
     }
     
     // MARK: - ViewDidLoad & ViewDidAppear
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //authService.isUserConnected()
         setupButton()
         setupTextFieldManager()
-    }
-    
-    // viewDidAppear
-    override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser != nil {
-            // User is signed in.
-            performSegue(withIdentifier: "goToSearchViewController", sender: self)
-        } else {
-            return
-        }
     }
     
     // MARK: - Private functions

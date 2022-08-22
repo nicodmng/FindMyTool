@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4466894328AE2995002A55E4 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4466894228AE2995002A55E4 /* LogIn.storyboard */; };
+		4466894528AE3006002A55E4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894428AE3006002A55E4 /* AuthService.swift */; };
+		4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894628AE327B002A55E4 /* AuthFirebase.swift */; };
+		4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894828AE6FDB002A55E4 /* MainTabBarController.swift */; };
 		44A7DA21288FF54F00A81E44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */; };
 		44A7DA25288FFB3300A81E44 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA23288FFB3300A81E44 /* SearchViewController.swift */; };
 		44A7DA282891136800A81E44 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA272891136800A81E44 /* Alert.swift */; };
@@ -54,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4466894228AE2995002A55E4 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
+		4466894428AE3006002A55E4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4466894628AE327B002A55E4 /* AuthFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebase.swift; sourceTree = "<group>"; };
+		4466894828AE6FDB002A55E4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44A7DA23288FFB3300A81E44 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		44A7DA272891136800A81E44 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 		44A7DA2A289160F400A81E44 /* AppView */ = {
 			isa = PBXGroup;
 			children = (
+				4466894828AE6FDB002A55E4 /* MainTabBarController.swift */,
 				44A7DA23288FFB3300A81E44 /* SearchViewController.swift */,
 				44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */,
 				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
@@ -207,6 +216,8 @@
 		44B989E4288EBF330038B4F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4466894428AE3006002A55E4 /* AuthService.swift */,
+				4466894628AE327B002A55E4 /* AuthFirebase.swift */,
 				44A7DA392893D1BC00A81E44 /* Tools.swift */,
 			);
 			path = Model;
@@ -216,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				44B989B7288EBF140038B4F7 /* Main.storyboard */,
+				4466894228AE2995002A55E4 /* LogIn.storyboard */,
 				44B989BF288EBF160038B4F7 /* LaunchScreen.storyboard */,
 				44A7DA342893CB5100A81E44 /* Cell */,
 			);
@@ -352,6 +364,7 @@
 				44B989BE288EBF160038B4F7 /* Assets.xcassets in Resources */,
 				44A7DA382893CBB600A81E44 /* ToolsTableViewCell.xib in Resources */,
 				44B989B9288EBF140038B4F7 /* Main.storyboard in Resources */,
+				4466894328AE2995002A55E4 /* LogIn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,9 +399,12 @@
 				44A7DA43289404CD00A81E44 /* AddToolViewController.swift in Sources */,
 				44B989B4288EBF140038B4F7 /* SceneDelegate.swift in Sources */,
 				44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */,
+				4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */,
+				4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */,
 				44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */,
 				44A7DA372893CBB600A81E44 /* ToolsTableViewCell.swift in Sources */,
 				44A7DA282891136800A81E44 /* Alert.swift in Sources */,
+				4466894528AE3006002A55E4 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
