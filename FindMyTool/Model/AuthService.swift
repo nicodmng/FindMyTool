@@ -7,19 +7,13 @@
 
 import Foundation
 import Firebase
-import UIKit
+
 
 class AuthService {
     
     // MARK: - Methodes
     func isUserConnected() -> Bool {
-        if Auth.auth().currentUser != nil {
-            return true
-        } else {
-            print("Disconnect")
-            return false
-        }
+       Auth.auth().currentUser != nil
     }
-    
 }
 // End of class

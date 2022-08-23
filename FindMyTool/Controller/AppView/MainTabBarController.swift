@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
                 signInViewController.modalPresentationStyle = .fullScreen
                 self.present(signInViewController, animated: true)
             }
-        } else { return }
+        }
     }
 }
 
