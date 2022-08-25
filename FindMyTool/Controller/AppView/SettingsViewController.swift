@@ -11,51 +11,46 @@ import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    private let authService: AuthService = AuthService()
+    private let authFirebase: AuthFirebase = AuthFirebase()
+    
     // MARK: - IBOutlets & IBActions
     // IBOutlets
     
-    @IBOutlet weak var usernameTextField: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     // IBActions
     @IBAction func logOutPressed(_ sender: UIButton) {
-    logOut()
+        authService.logOut()
     }
     
     // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
-        catchUsername()
+        //catchUsername()
+        authFirebase.displayUsername()
     }
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: - Functions
-    func catchUsername() {
-        if Auth.auth().currentUser != nil {
-            let ref = Database.database().reference()
-            let userID = Auth.auth().currentUser?.uid
-            
-            ref.child("users").child(userID!).observeSingleEvent(of: .value) { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let username = value?["username"] as? String ?? "inconnu"
-                
-                self.usernameTextField.text = username
-            }
-        }
-    }
-    
-    func logOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            self.navigationController?.popToRootViewController(animated: true)
-        } catch {
-          showAlert(message: "Impossible de se déconnecter.")
-        }
-    }
+//    func catchUsername() {
+//        if Auth.auth().currentUser != nil {
+//            let ref = Database.database().reference()
+//            let userID = Auth.auth().currentUser?.uid
+//
+//            ref.child("users").child(userID!).observeSingleEvent(of: .value) { (snapshot) in
+//                let value = snapshot.value as? NSDictionary
+//                let username = value?["username"] as? String ?? "inconnu"
+//
+//                self.usernameLabel.text = username
+//            }
+//        }
+//    }
 
 }
 // End of class

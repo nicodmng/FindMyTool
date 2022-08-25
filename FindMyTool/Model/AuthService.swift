@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseAuth
 
 
 class AuthService {
@@ -14,6 +14,16 @@ class AuthService {
     // MARK: - Methodes
     func isUserConnected() -> Bool {
        Auth.auth().currentUser != nil
+    }
+    
+    func logOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            //self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+            //showAlert(message: "Impossible de se déconnecter.")
+        }
     }
 }
 // End of class

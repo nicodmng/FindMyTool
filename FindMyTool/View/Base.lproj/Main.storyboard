@@ -408,7 +408,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Réglages" image="gearshape" catalog="system" id="rsw-vT-mCQ"/>
                     <connections>
-                        <outlet property="usernameTextField" destination="Qqh-io-tH4" id="5Yy-Nk-KHQ"/>
+                        <outlet property="usernameLabel" destination="Qqh-io-tH4" id="5Yy-Nk-KHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvQ-bo-4TU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
