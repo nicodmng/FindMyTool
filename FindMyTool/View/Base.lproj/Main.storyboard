@@ -329,6 +329,18 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="60" scale="large"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Y-WB-Qa2">
+                                <rect key="frame" x="147" y="675" width="94.666666666666657" height="85.333333333333371"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.031925469579999997" green="0.76219102100000002" blue="0.61172598190000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="60" scale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addToolButton:" destination="cAx-KW-nzE" eventType="touchUpInside" id="eYf-Ya-llZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yRm-xQ-gli"/>
                         <color key="backgroundColor" red="0.97254908080000002" green="0.98431372640000003" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -345,6 +357,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JZM-Zd-llz"/>
+                    <connections>
+                        <outlet property="conditionTextField" destination="MjQ-WU-BIW" id="5fN-GO-PPI"/>
+                        <outlet property="imageUrlTextField" destination="zJb-j2-Bjv" id="kUe-tD-m2e"/>
+                        <outlet property="localisationTextField" destination="O2E-P7-57T" id="RfQ-3V-D6P"/>
+                        <outlet property="priceTextField" destination="O2E-P7-57T" id="Ops-Em-u2W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbM-Gi-SOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
