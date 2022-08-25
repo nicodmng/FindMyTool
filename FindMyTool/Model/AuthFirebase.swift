@@ -8,11 +8,12 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseFirestore
+
 
 class AuthFirebase {
-    
     // MARK: - Properties
-
+    let db = Firestore.firestore()
     
     // MARK: - Initializer
     
@@ -29,7 +30,7 @@ class AuthFirebase {
 //            }
 //        }
 //    }
-    
+
     func displayUsername() {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
@@ -38,5 +39,14 @@ class AuthFirebase {
             let username = value?["username"] as? String ?? ""
             print(username)
         }
+    }
+    
+    func addToolInDatabase(name: String, price: String, localisation: String, statut: String) {
+        db.collection("tools").document(name).setData([
+            "name" : name,
+            "price" : price,
+            "localisation" : localisation,
+            "statut" : statut
+        ])
     }
 }

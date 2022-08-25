@@ -16,16 +16,20 @@ class AddToolViewController: UIViewController {
                 "Taille-haie",
                 "Motoculteur"]
     
+    private let authFirebase: AuthFirebase = AuthFirebase()
+    
     // MARK: - IBOutlet & IBAction
     
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var localisationTextField: UITextField!
-    
     @IBOutlet weak var conditionTextField: UITextField!
-    
     @IBOutlet weak var imageUrlTextField: UITextField!
     
     @IBAction func addToolButton(_ sender: UIButton) {
+        authFirebase.addToolInDatabase(name: "Tournevis",
+                                       price: priceTextField.text ?? "",
+                                       localisation: localisationTextField.text ?? "",
+                                       statut: conditionTextField.text ?? "")        
     }
     
     
