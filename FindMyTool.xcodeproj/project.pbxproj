@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4428D8D428BD06A000C26AE2 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428D8D328BD06A000C26AE2 /* StorageService.swift */; };
 		4466894328AE2995002A55E4 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4466894228AE2995002A55E4 /* LogIn.storyboard */; };
 		4466894528AE3006002A55E4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894428AE3006002A55E4 /* AuthService.swift */; };
 		4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894628AE327B002A55E4 /* AuthFirebase.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4428D8D328BD06A000C26AE2 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		4466894228AE2995002A55E4 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		4466894428AE3006002A55E4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4466894628AE327B002A55E4 /* AuthFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebase.swift; sourceTree = "<group>"; };
@@ -140,12 +142,12 @@
 		44A7DA2A289160F400A81E44 /* AppView */ = {
 			isa = PBXGroup;
 			children = (
+				44A7DA42289404CD00A81E44 /* AddToolViewController.swift */,
 				4466894828AE6FDB002A55E4 /* MainTabBarController.swift */,
 				44A7DA23288FFB3300A81E44 /* SearchViewController.swift */,
 				44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */,
 				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
 				44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */,
-				44A7DA42289404CD00A81E44 /* AddToolViewController.swift */,
 			);
 			path = AppView;
 			sourceTree = "<group>";
@@ -219,6 +221,7 @@
 				4466894428AE3006002A55E4 /* AuthService.swift */,
 				4466894628AE327B002A55E4 /* AuthFirebase.swift */,
 				44A7DA392893D1BC00A81E44 /* Tools.swift */,
+				4428D8D328BD06A000C26AE2 /* StorageService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */,
 				4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */,
 				4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */,
+				4428D8D428BD06A000C26AE2 /* StorageService.swift in Sources */,
 				44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */,
 				44A7DA372893CBB600A81E44 /* ToolsTableViewCell.swift in Sources */,
 				44A7DA282891136800A81E44 /* Alert.swift in Sources */,

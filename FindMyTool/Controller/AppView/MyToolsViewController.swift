@@ -6,40 +6,43 @@
 //
 
 import UIKit
-import FirebaseFirestore
+import Foundation
 
-class MyToolsViewController: UIViewController {
-    
+class MyToolsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     // MARK: - Properties
-    var tool = Tools()
-    
+    private let authFirebase: AuthFirebase = AuthFirebase()
+
     // MARK: - IBOutlets & IBActions
     // IBActions
     @IBAction func plusPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToAddToolViewController", sender: self)
+
     }
+    
+    @IBOutlet weak var myToolsTableView: UITableView!
+    
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myToolsTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "CellTool")
+        myToolsTableView.delegate = self
+        myToolsTableView.reloadData()
     }
     
     // MARK: - Functions
-    func createTool(name: String, price: String, localisation: String, statut: Bool) {
-        let db = Firestore.firestore()
-        db.collection("tools").document(name).setData([
-            "name": name,
-            "price": price,
-            "localisation" : localisation,
-            "statut": statut
-        ]) { (error: Error?) in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                print("Document correctement sauvegardé")
-            }
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = myToolsTableView.dequeueReusableCell(withIdentifier: "ToolsTableViewCell", for: indexPath)
+        
+        return cell
     }
     
 }
 // End of class
+

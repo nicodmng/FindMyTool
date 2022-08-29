@@ -8,8 +8,8 @@
 import Foundation
 
 struct Tools {
-    var name: String?
-    var localisation: String?
-    var isAvailable: Bool?
-    var image: URL?
+    var name: String
+    var price: String
+    var localisation: String
+    var statut: String
 }

@@ -18,19 +18,6 @@ class AuthFirebase {
     // MARK: - Initializer
     
     // MARK: - Methodes
-//    func catchUsername(username: String) {
-//        if Auth.auth().currentUser != nil {
-//            var user = username
-//            let ref = Database.database().reference()
-//            let userID = Auth.auth().currentUser?.uid
-//
-//            ref.child("users").child(userID!).observeSingleEvent(of: .value) { (snapshot) in
-//                let value = snapshot.value as? NSDictionary
-//                user = value?["username"] as? String ?? "inconnu"
-//            }
-//        }
-//    }
-
     func displayUsername() {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
@@ -41,12 +28,23 @@ class AuthFirebase {
         }
     }
     
-    func addToolInDatabase(name: String, price: String, localisation: String, statut: String) {
+    func addToolInDatabase(name: String, price: String, localisation: String) {
         db.collection("tools").document(name).setData([
             "name" : name,
             "price" : price,
             "localisation" : localisation,
-            "statut" : statut
         ])
+    }
+    
+    func getResultFromDatabase(name: String) {
+        let toolRef = db.collection("tools").document(name)
+        toolRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
 }
