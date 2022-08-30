@@ -49,13 +49,6 @@
                             <constraint firstAttribute="width" constant="300" id="MEx-op-D8d"/>
                         </constraints>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24w-IG-fnK" userLabel="StatutTool Label">
-                        <rect key="frame" x="392" y="138" width="146" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Dfs-XO-pcy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="62d-xk-teF"/>
@@ -68,7 +61,6 @@
             <connections>
                 <outlet property="localisationToolLabel" destination="aIO-tz-gEv" id="kmb-kG-lCN"/>
                 <outlet property="priceToolLabel" destination="EEV-Fx-mOd" id="JdS-Kj-klr"/>
-                <outlet property="statutToolLabel" destination="24w-IG-fnK" id="cVd-86-MGj"/>
                 <outlet property="titleToolLabel" destination="9Cq-h4-Mje" id="GmH-xE-IFJ"/>
                 <outlet property="toolImageView" destination="koP-e9-ZoN" id="gSl-kd-Db9"/>
             </connections>

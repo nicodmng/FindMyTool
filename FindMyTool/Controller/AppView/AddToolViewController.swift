@@ -40,7 +40,6 @@ class AddToolViewController: UIViewController {
                                        )
         
         authFirebase.getResultFromDatabase(name: nameTool)
-        print(nameTool)
     }
     
     

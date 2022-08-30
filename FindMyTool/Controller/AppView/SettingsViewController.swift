@@ -28,8 +28,9 @@ class SettingsViewController: UIViewController {
     
     // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
-        //catchUsername()
-        authFirebase.displayUsername()
+        authFirebase.displayUsername { username in
+            self.usernameLabel.text = username 
+        }
     }
     
     // MARK: - ViewDidLoad
@@ -38,19 +39,6 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Functions
-//    func catchUsername() {
-//        if Auth.auth().currentUser != nil {
-//            let ref = Database.database().reference()
-//            let userID = Auth.auth().currentUser?.uid
-//
-//            ref.child("users").child(userID!).observeSingleEvent(of: .value) { (snapshot) in
-//                let value = snapshot.value as? NSDictionary
-//                let username = value?["username"] as? String ?? "inconnu"
-//
-//                self.usernameLabel.text = username
-//            }
-//        }
-//    }
 
 }
 // End of class

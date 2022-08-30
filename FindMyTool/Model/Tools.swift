@@ -8,8 +8,8 @@
 import Foundation
 
 struct Tools {
-    var name: String
-    var price: String
-    var localisation: String
-    var statut: String
+    var name = "Test"
+    var price = "Test"
+    var localisation = "Test"
+    var statut = "Test"
 }

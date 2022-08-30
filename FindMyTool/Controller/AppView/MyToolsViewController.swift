@@ -12,6 +12,7 @@ class MyToolsViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // MARK: - Properties
     private let authFirebase: AuthFirebase = AuthFirebase()
+    var tool: [Tools?] = []
 
     // MARK: - IBOutlets & IBActions
     // IBActions
@@ -34,12 +35,13 @@ class MyToolsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return tool.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myToolsTableView.dequeueReusableCell(withIdentifier: "ToolsTableViewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellTool", for: indexPath) as! ToolsTableViewCell
+
+      
         return cell
     }
     
