@@ -69,7 +69,6 @@ class SubscribeViewController: UIViewController {
                     let ref = Database.database().reference()
                     let userID = Auth.auth().currentUser?.uid
                     ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
-                    
                     self.showInformation(message: "Merci \(self.usernameSubTextField.text ?? ""). Votre compte a bien été enregistré.")
                 }
             }

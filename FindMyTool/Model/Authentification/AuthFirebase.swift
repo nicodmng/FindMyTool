@@ -14,6 +14,7 @@ import FirebaseFirestore
 class AuthFirebase {
     // MARK: - Properties
     let db = Firestore.firestore()
+    var tools = [Tools]()
     
     // MARK: - Initializer
     
@@ -28,23 +29,25 @@ class AuthFirebase {
         }
     }
     
-    func addToolInDatabase(name: String, price: String, localisation: String) {
-        db.collection("tools").document(name).setData([
+    func addToolInDatabase(idUser: String, name: String, price: String, localisation: String, town: String) {
+        db.collection(idUser).document(name).setData([
             "name" : name,
             "price" : price,
             "localisation" : localisation,
+            "town": town
         ])
     }
     
-    func getResultFromDatabase(name: String) {
-        let toolRef = db.collection("tools").document(name)
-        toolRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
+    func fetchTools(idUser: String) {
+        db.collection(idUser).addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            self.tools = documents.compactMap { (queryDocumentSnapshot) -> Tools? in
+                return try? queryDocumentSnapshot.data(as: Tools.self)
             }
         }
     }
+    
 }

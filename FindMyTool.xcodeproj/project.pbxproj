@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		445D288E28C218D10028D5FF /* PostalCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D288D28C218D10028D5FF /* PostalCodeData.swift */; };
+		445D289128C219650028D5FF /* PostalCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D289028C219650028D5FF /* PostalCodeService.swift */; };
+		445D289328C21AB80028D5FF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D289228C21AB80028D5FF /* NetworkError.swift */; };
+		445D289528C21B4B0028D5FF /* Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D289428C21B4B0028D5FF /* Generic.swift */; };
 		4466894328AE2995002A55E4 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4466894228AE2995002A55E4 /* LogIn.storyboard */; };
 		4466894528AE3006002A55E4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894428AE3006002A55E4 /* AuthService.swift */; };
 		4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894628AE327B002A55E4 /* AuthFirebase.swift */; };
@@ -19,7 +23,7 @@
 		44A7DA302891613D00A81E44 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */; };
 		44A7DA372893CBB600A81E44 /* ToolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA352893CBB600A81E44 /* ToolsTableViewCell.swift */; };
 		44A7DA382893CBB600A81E44 /* ToolsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA362893CBB600A81E44 /* ToolsTableViewCell.xib */; };
-		44A7DA3A2893D1BC00A81E44 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA392893D1BC00A81E44 /* Tools.swift */; };
+		44A7DA3A2893D1BC00A81E44 /* ToolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA392893D1BC00A81E44 /* ToolsData.swift */; };
 		44A7DA3D2893E2DF00A81E44 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA3C2893E2DF00A81E44 /* FirebaseFirestore */; };
 		44A7DA3F2893E2DF00A81E44 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA3E2893E2DF00A81E44 /* FirebaseFirestoreCombine-Community */; };
 		44A7DA412893E2DF00A81E44 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 44A7DA402893E2DF00A81E44 /* FirebaseFirestoreSwift */; };
@@ -58,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		445D288D28C218D10028D5FF /* PostalCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeData.swift; sourceTree = "<group>"; };
+		445D289028C219650028D5FF /* PostalCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeService.swift; sourceTree = "<group>"; };
+		445D289228C21AB80028D5FF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		445D289428C21B4B0028D5FF /* Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic.swift; sourceTree = "<group>"; };
 		4466894228AE2995002A55E4 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		4466894428AE3006002A55E4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4466894628AE327B002A55E4 /* AuthFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebase.swift; sourceTree = "<group>"; };
@@ -70,7 +78,7 @@
 		44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		44A7DA352893CBB600A81E44 /* ToolsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsTableViewCell.swift; sourceTree = "<group>"; };
 		44A7DA362893CBB600A81E44 /* ToolsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolsTableViewCell.xib; sourceTree = "<group>"; };
-		44A7DA392893D1BC00A81E44 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		44A7DA392893D1BC00A81E44 /* ToolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsData.swift; sourceTree = "<group>"; };
 		44A7DA42289404CD00A81E44 /* AddToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToolViewController.swift; sourceTree = "<group>"; };
 		44B989AE288EBF140038B4F7 /* FindMyTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindMyTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B989B1288EBF140038B4F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,9 +128,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		445D289628C236870028D5FF /* Postal Code */ = {
+			isa = PBXGroup;
+			children = (
+				445D288D28C218D10028D5FF /* PostalCodeData.swift */,
+				445D289028C219650028D5FF /* PostalCodeService.swift */,
+			);
+			path = "Postal Code";
+			sourceTree = "<group>";
+		};
+		445D289728C2369D0028D5FF /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				4466894628AE327B002A55E4 /* AuthFirebase.swift */,
+				4466894428AE3006002A55E4 /* AuthService.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 		44A7DA22288FF9AE00A81E44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				445D289428C21B4B0028D5FF /* Generic.swift */,
 				44A7DA272891136800A81E44 /* Alert.swift */,
 			);
 			path = Extensions;
@@ -216,9 +243,10 @@
 		44B989E4288EBF330038B4F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4466894428AE3006002A55E4 /* AuthService.swift */,
-				4466894628AE327B002A55E4 /* AuthFirebase.swift */,
-				44A7DA392893D1BC00A81E44 /* Tools.swift */,
+				445D289228C21AB80028D5FF /* NetworkError.swift */,
+				44A7DA392893D1BC00A81E44 /* ToolsData.swift */,
+				445D289628C236870028D5FF /* Postal Code */,
+				445D289728C2369D0028D5FF /* Authentification */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,19 +420,23 @@
 				44A7DA25288FFB3300A81E44 /* SearchViewController.swift in Sources */,
 				44B989BC288EBF140038B4F7 /* FindMyTool.xcdatamodeld in Sources */,
 				44B989B6288EBF140038B4F7 /* LogInViewController.swift in Sources */,
-				44A7DA3A2893D1BC00A81E44 /* Tools.swift in Sources */,
+				44A7DA3A2893D1BC00A81E44 /* ToolsData.swift in Sources */,
 				44A7DA302891613D00A81E44 /* SettingsViewController.swift in Sources */,
+				445D289528C21B4B0028D5FF /* Generic.swift in Sources */,
 				44B989B2288EBF140038B4F7 /* AppDelegate.swift in Sources */,
 				44A7DA2C2891611B00A81E44 /* MyToolsViewController.swift in Sources */,
 				44A7DA43289404CD00A81E44 /* AddToolViewController.swift in Sources */,
+				445D289128C219650028D5FF /* PostalCodeService.swift in Sources */,
 				44B989B4288EBF140038B4F7 /* SceneDelegate.swift in Sources */,
 				44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */,
 				4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */,
 				4466894728AE327B002A55E4 /* AuthFirebase.swift in Sources */,
+				445D288E28C218D10028D5FF /* PostalCodeData.swift in Sources */,
 				44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */,
 				44A7DA372893CBB600A81E44 /* ToolsTableViewCell.swift in Sources */,
 				44A7DA282891136800A81E44 /* Alert.swift in Sources */,
 				4466894528AE3006002A55E4 /* AuthService.swift in Sources */,
+				445D289328C21AB80028D5FF /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

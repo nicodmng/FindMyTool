@@ -15,26 +15,14 @@ class ToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleToolLabel: UILabel!
     @IBOutlet weak var priceToolLabel: UILabel!
     @IBOutlet weak var localisationToolLabel: UILabel!
-
     
     // MARK: - Properties
-    var tool: Tools? {
+    var toolFromCell: Tools? {
         didSet {
-            titleToolLabel.text = "\(String(describing: tool?.name))"
-            priceToolLabel.text = "\(String(describing: tool?.price))"
-            localisationToolLabel.text = "\(String(describing: tool?.localisation))"
+            titleToolLabel.text = toolFromCell?.name
+            priceToolLabel.text = toolFromCell?.price
+            localisationToolLabel.text = toolFromCell?.localisation
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

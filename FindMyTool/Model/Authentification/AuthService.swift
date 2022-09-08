@@ -8,12 +8,19 @@
 import Foundation
 import FirebaseAuth
 
-
 class AuthService {
     
     // MARK: - Methodes
     func isUserConnected() -> Bool {
-       Auth.auth().currentUser != nil
+        Auth.auth().currentUser != nil
+    }
+    
+    func getUserId(callback: @escaping (String) -> Void) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let uid = user.uid
+            callback(uid)
+        }
     }
     
     func logOut() {
@@ -25,5 +32,6 @@ class AuthService {
             //showAlert(message: "Impossible de se déconnecter.")
         }
     }
+    
 }
 // End of class
