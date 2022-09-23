@@ -8,13 +8,15 @@
 import UIKit
 import Foundation
 
-class MyToolsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class MyToolsViewController: UIViewController {
+    
     // MARK: - Properties
-    private let authFirebase: AuthFirebase = AuthFirebase()
+    private let databaseService: DatabaseService = DatabaseService()
     private let authService: AuthService = AuthService()
     
-
+    var addToolVC: AddToolViewController?
+    var tools = [Tool]()
+    var tool: Tool?
     
     // MARK: - IBOutlets & IBActions
     // IBActions
@@ -25,6 +27,7 @@ class MyToolsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var myToolsTableView: UITableView!
     
     // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,29 +37,56 @@ class MyToolsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        myToolsTableView.reloadData()
-
-        authFirebase.fetchTools(idUser: "va3tb28kZ1SzcQ0s3Cof9YfB32J3")
+        databaseService.fetchTools(render: authService.fetchUserID()) { tools in
+            self.tools = tools
+            self.myToolsTableView.reloadData()
         }
+    }
 
-    // MARK: - Functions
+}
 
-    
-    // MARK: - TableView
+// MARK: - UITableViewDataSource
+
+extension MyToolsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return authFirebase.tools.count
+        return tools.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToolCell", for: indexPath) as! ToolsTableViewCell
- 
-        cell.toolFromCell = authFirebase.tools[indexPath.row]
-        
+        cell.toolFromCell = tools[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            databaseService.deleteToolFromDB()
+            
+            tools.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension MyToolsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let messageForUser = UILabel()
+        messageForUser.text = "Aucun outil dans la liste"
+        messageForUser.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        messageForUser.textAlignment = .center
+        messageForUser.textColor = .darkGray
+        return messageForUser
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return tools.isEmpty ? 400 : 0
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 120
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

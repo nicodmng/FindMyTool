@@ -17,11 +17,17 @@ class ToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var localisationToolLabel: UILabel!
     
     // MARK: - Properties
-    var toolFromCell: Tools? {
+    var toolFromCell: Tool? {
         didSet {
             titleToolLabel.text = toolFromCell?.name
             priceToolLabel.text = toolFromCell?.price
             localisationToolLabel.text = toolFromCell?.localisation
+        }
+    }
+    
+    var resultFromCell: ToolsResult? {
+        didSet {
+            titleToolLabel.text = resultFromCell?.name
         }
     }
     

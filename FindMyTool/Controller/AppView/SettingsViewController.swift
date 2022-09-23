@@ -6,15 +6,13 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
     // MARK: - Properties
     
     private let authService: AuthService = AuthService()
-    private let authFirebase: AuthFirebase = AuthFirebase()
+    private let authFirebase: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
     // IBOutlets

@@ -10,16 +10,22 @@ import UIKit
 class AddToolViewController: UIViewController {
 
     // MARK: - Properties
-    private let authFirebase: AuthFirebase = AuthFirebase()
+    private let databaseService: DatabaseService = DatabaseService()
     private let authService: AuthService = AuthService()
     var serviceCP = CPService()
     
-    var uidUser: String?
+    var uidRender: String?
+    var uidLender: String?
+ 
     var townUser: String?
+    var imageTool: URL?
+    var isAvailable: Bool?
     
     var nameTool = ""
     let name = ["Boîte à outils",
                 "Marteau-piqueur",
+                "Motoculteur",
+                "Outils de jardinage",
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
@@ -34,14 +40,16 @@ class AddToolViewController: UIViewController {
     @IBOutlet weak var imageUrlTextField: UITextField!
     
     @IBAction func addToolButton(_ sender: UIButton) {
-        authFirebase.addToolInDatabase(idUser: uidUser ?? "Inconnu",
-                                       name: nameTool,
-                                       price: priceTextField.text ?? "",
+        databaseService.addToolInDatabase(name: nameTool,
                                        localisation: localisationTextField.text ?? "",
-                                       town: townUser ?? "Inconnu")
-        fetchPostalCode()
-    }
-    
+                                       price: priceTextField.text ?? "",
+                                       town: townUser ?? "",
+                                       render: fetchUserID(),
+                                       lender: uidLender ?? "",
+                                       isAvailable: true)
+        authService.getDocumentID()
+        }
+
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,37 +58,23 @@ class AddToolViewController: UIViewController {
     // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        fetchUserID()
     }
     
     // MARK: - Methodes
-    func fetchUserID() {
-        authService.getUserId { [weak self] uid in
-            self?.uidUser = uid
-        }
-    }
     
-    func fetchPostalCode() {
-        serviceCP.getLocation(postalCode: localisationTextField.text ?? "") { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let towns):
-                    for town in towns {
-                        var result = town.nomCommune
-                        result = self?.townUser ?? "Pas de commune"
-                        print(town.nomCommune)
-                    }
-                case .failure(let error):
-                    self?.showAlert(message: error.description)
-                }
-            }
+    func fetchUserID() -> String {
+        var userID = ""
+        authService.getUserId { uid in
+            userID = uid
         }
+        return userID
     }
   
 }
-// End of class
+
 
     // MARK: - Extensions
+
 extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     // Pickerview

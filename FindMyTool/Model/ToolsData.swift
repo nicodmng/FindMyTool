@@ -8,16 +8,24 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Tools: Codable {
+struct Tool: Codable {
+    
+    @DocumentID var docId: String? = UUID().uuidString
     var name: String
-    var price: String
     var localisation: String
+    var price: String
     var town: String
+    var render: String?
+    var lender: String
+    var isAvailable: Bool?
     
     enum CodingKeys: String, CodingKey {
-            case name
-            case price
-            case localisation
-            case town
-        }
+        case name
+        case localisation
+        case price
+        case town
+        case render
+        case lender
+        case isAvailable
+    }
 }
