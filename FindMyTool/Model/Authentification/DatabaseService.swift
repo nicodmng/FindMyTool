@@ -6,15 +6,21 @@
 //
 
 import Foundation
+
+import FirebaseCore
+import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseFirestore
+//import FirebaseStorage
 
 class DatabaseService {
+    
     // MARK: - Properties
     
     let db = Firestore.firestore()
-    var toolId: Tool?
+    var toolId: ToolData?
+    var town: String = ""
     
     // MARK: - Methodes
     
@@ -28,15 +34,15 @@ class DatabaseService {
         }
     }
     
-    func fetchTools(render: String, callback: @escaping ([Tool]) -> Void) {
-        var tools = [Tool]()
+    func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
+        var tools = [ToolData]()
         db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     let dict = document.data()
-                    let tool = Tool(name: dict["name"] as! String, localisation: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                    let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
                     tools.append(tool)
                 }
                 callback(tools)
@@ -44,26 +50,72 @@ class DatabaseService {
         })
     }
     
-    func addToolInDatabase(name: String, localisation: String, price: String, town: String, render: String, lender: String?, isAvailable: Bool) {
+    func addToolInDatabase(name: String, localisation: String, price: String, town: String, imageTool: String, render: String, lender: String?, isAvailable: Bool) {
         db.collection("tools").addDocument(data: [
             "name": name,
             "localisation": localisation,
             "price": price,
             "town": town,
+            "imageTool": imageTool,
             "render": render,
             "lender": lender as Any,
             "isAvailable": isAvailable
         ])
     }
     
-    func deleteToolFromDB() {
-        db.collection("tools").document().delete() { err in
+//    func addPhotoInDatabase(fileURL: URL) {
+//        let storage = Storage.storage()
+//        let data = Data()
+//        let storageRef = storage.reference()
+//        let localFile = fileURL
+//        let photoRef = storageRef.child("images/file.png")
+//        let uploadTask = photoRef.putFile(from: localFile, metadata: nil) { (medaData, error) in
+//            guard medaData != nil else {
+//                print(error?.localizedDescription)
+//                
+//                storageRef.child("images/file.png").downloadURL { url, error in
+//                    guard let url = url, error == nil else {
+//                        return
+//                    }
+//                    let urlString = url.absoluteString
+//                    print("Download URL: \(urlString)")
+//                }
+//                return
+//            }
+//            print("Photo Uploaded !")
+//        }
+//    }
+    
+    func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
+        var tools = [ToolData]()
+        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let dict = document.data()
+                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                        tools.append(tool)
+                    }
+                    callback(tools)
+                }
+            }
+    }
+    
+    func deleteToolFromDB(id: String) {
+        // TODO: trouver comment insérer ID Document dans document
+        db.collection("tools").document(id).delete() { err in
             if let err = err {
                 print("Error removing document: \(err) ")
             } else {
                 print("Document successfully removed!")
             }
         }
+    }
+    
+    func getImageTool() {
+        
     }
     
 }

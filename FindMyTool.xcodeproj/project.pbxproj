@@ -16,7 +16,7 @@
 		4466894728AE327B002A55E4 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894628AE327B002A55E4 /* DatabaseService.swift */; };
 		4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466894828AE6FDB002A55E4 /* MainTabBarController.swift */; };
 		449A9A8028CF2D6C0000C008 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A9A7F28CF2D6C0000C008 /* ResultViewController.swift */; };
-		449D68D128D4C29B00A2DD32 /* ToolsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D68D028D4C29B00A2DD32 /* ToolsResult.swift */; };
+		449D68D128D4C29B00A2DD32 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D68D028D4C29B00A2DD32 /* Tool.swift */; };
 		449D68D328D86C8A00A2DD32 /* ResultTownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D68D228D86C8A00A2DD32 /* ResultTownViewController.swift */; };
 		44A7DA21288FF54F00A81E44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */; };
 		44A7DA25288FFB3300A81E44 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7DA23288FFB3300A81E44 /* SearchViewController.swift */; };
@@ -38,24 +38,22 @@
 		44B989BC288EBF140038B4F7 /* FindMyTool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44B989BA288EBF140038B4F7 /* FindMyTool.xcdatamodeld */; };
 		44B989BE288EBF160038B4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B989BD288EBF160038B4F7 /* Assets.xcassets */; };
 		44B989C1288EBF160038B4F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B989BF288EBF160038B4F7 /* LaunchScreen.storyboard */; };
-		44B989CC288EBF160038B4F7 /* FindMyToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989CB288EBF160038B4F7 /* FindMyToolTests.swift */; };
-		44B989D6288EBF160038B4F7 /* FindMyToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989D5288EBF160038B4F7 /* FindMyToolUITests.swift */; };
-		44B989D8288EBF160038B4F7 /* FindMyToolUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989D7288EBF160038B4F7 /* FindMyToolUITestsLaunchTests.swift */; };
+		44B989CC288EBF160038B4F7 /* URLProtocolFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989CB288EBF160038B4F7 /* URLProtocolFake.swift */; };
 		44B989EB288ECECB0038B4F7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 44B989EA288ECECB0038B4F7 /* FirebaseAnalytics */; };
 		44B989ED288ECECB0038B4F7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44B989EC288ECECB0038B4F7 /* FirebaseAuth */; };
 		44B989EF288ECECB0038B4F7 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 44B989EE288ECECB0038B4F7 /* FirebaseDatabase */; };
 		44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E26238288FC7A4003425AC /* SubscribeViewController.swift */; };
+		44EDC72728EC5E30005893E4 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC72628EC5E30005893E4 /* MessageData.swift */; };
+		44EDC72928EC5E4F005893E4 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC72828EC5E4F005893E4 /* ChatManager.swift */; };
+		44EDC72D28EC610C005893E4 /* DataBaseServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC72C28EC610C005893E4 /* DataBaseServiceTest.swift */; };
+		44EDC72F28EC6130005893E4 /* PostalCodeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC72E28EC6130005893E4 /* PostalCodeTestCase.swift */; };
+		44EDC73128EC6151005893E4 /* FakeResponseDataCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC73028EC6151005893E4 /* FakeResponseDataCP.swift */; };
+		44EDC73328EC6163005893E4 /* PostalCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 44EDC73228EC6163005893E4 /* PostalCode.json */; };
+		44EDC73728EC6243005893E4 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC73628EC6243005893E4 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		44B989C8288EBF160038B4F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 44B989A6288EBF140038B4F7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 44B989AD288EBF140038B4F7;
-			remoteInfo = FindMyTool;
-		};
-		44B989D2288EBF160038B4F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 44B989A6288EBF140038B4F7 /* Project object */;
 			proxyType = 1;
@@ -74,7 +72,7 @@
 		4466894628AE327B002A55E4 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		4466894828AE6FDB002A55E4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		449A9A7F28CF2D6C0000C008 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		449D68D028D4C29B00A2DD32 /* ToolsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsResult.swift; sourceTree = "<group>"; };
+		449D68D028D4C29B00A2DD32 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		449D68D228D86C8A00A2DD32 /* ResultTownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTownViewController.swift; sourceTree = "<group>"; };
 		44A7DA20288FF54F00A81E44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44A7DA23288FFB3300A81E44 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -96,11 +94,15 @@
 		44B989C0288EBF160038B4F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44B989C2288EBF160038B4F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44B989C7288EBF160038B4F7 /* FindMyToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44B989CB288EBF160038B4F7 /* FindMyToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyToolTests.swift; sourceTree = "<group>"; };
-		44B989D1288EBF160038B4F7 /* FindMyToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44B989D5288EBF160038B4F7 /* FindMyToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyToolUITests.swift; sourceTree = "<group>"; };
-		44B989D7288EBF160038B4F7 /* FindMyToolUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyToolUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44B989CB288EBF160038B4F7 /* URLProtocolFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolFake.swift; sourceTree = "<group>"; };
 		44E26238288FC7A4003425AC /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		44EDC72628EC5E30005893E4 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		44EDC72828EC5E4F005893E4 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		44EDC72C28EC610C005893E4 /* DataBaseServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseServiceTest.swift; sourceTree = "<group>"; };
+		44EDC72E28EC6130005893E4 /* PostalCodeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeTestCase.swift; sourceTree = "<group>"; };
+		44EDC73028EC6151005893E4 /* FakeResponseDataCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataCP.swift; sourceTree = "<group>"; };
+		44EDC73228EC6163005893E4 /* PostalCode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PostalCode.json; sourceTree = "<group>"; };
+		44EDC73628EC6243005893E4 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +120,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		44B989C4288EBF160038B4F7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44B989CE288EBF160038B4F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -173,14 +168,14 @@
 		44A7DA2A289160F400A81E44 /* AppView */ = {
 			isa = PBXGroup;
 			children = (
-				4466894828AE6FDB002A55E4 /* MainTabBarController.swift */,
+				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
 				44A7DA42289404CD00A81E44 /* AddToolViewController.swift */,
 				44A7DA2B2891611B00A81E44 /* MyToolsViewController.swift */,
 				44A7DA23288FFB3300A81E44 /* SearchViewController.swift */,
 				449D68D228D86C8A00A2DD32 /* ResultTownViewController.swift */,
 				449A9A7F28CF2D6C0000C008 /* ResultViewController.swift */,
-				44A7DA2D2891612E00A81E44 /* ChatViewController.swift */,
 				44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */,
+				44EDC73628EC6243005893E4 /* DetailsViewController.swift */,
 			);
 			path = AppView;
 			sourceTree = "<group>";
@@ -199,7 +194,6 @@
 			children = (
 				44B989B0288EBF140038B4F7 /* FindMyTool */,
 				44B989CA288EBF160038B4F7 /* FindMyToolTests */,
-				44B989D4288EBF160038B4F7 /* FindMyToolUITests */,
 				44B989AF288EBF140038B4F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,7 +203,6 @@
 			children = (
 				44B989AE288EBF140038B4F7 /* FindMyTool.app */,
 				44B989C7288EBF160038B4F7 /* FindMyToolTests.xctest */,
-				44B989D1288EBF160038B4F7 /* FindMyToolUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,28 +227,21 @@
 		44B989CA288EBF160038B4F7 /* FindMyToolTests */ = {
 			isa = PBXGroup;
 			children = (
-				44B989CB288EBF160038B4F7 /* FindMyToolTests.swift */,
+				44B989CB288EBF160038B4F7 /* URLProtocolFake.swift */,
+				44EDC73528EC6197005893E4 /* DataBaseService */,
+				44EDC73428EC6190005893E4 /* PostalCode */,
 			);
 			path = FindMyToolTests;
-			sourceTree = "<group>";
-		};
-		44B989D4288EBF160038B4F7 /* FindMyToolUITests */ = {
-			isa = PBXGroup;
-			children = (
-				44B989D5288EBF160038B4F7 /* FindMyToolUITests.swift */,
-				44B989D7288EBF160038B4F7 /* FindMyToolUITestsLaunchTests.swift */,
-			);
-			path = FindMyToolUITests;
 			sourceTree = "<group>";
 		};
 		44B989E4288EBF330038B4F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				445D289228C21AB80028D5FF /* NetworkError.swift */,
-				44A7DA392893D1BC00A81E44 /* ToolsData.swift */,
+				44EDC72B28EC5F29005893E4 /* Error */,
 				445D289628C236870028D5FF /* Postal Code */,
+				44EDC72A28EC5E77005893E4 /* Tools */,
 				445D289728C2369D0028D5FF /* Authentification */,
-				449D68D028D4C29B00A2DD32 /* ToolsResult.swift */,
+				44EDC72528EC5E06005893E4 /* Chat */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,10 +260,55 @@
 		44B989E6288EBF420038B4F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4466894828AE6FDB002A55E4 /* MainTabBarController.swift */,
 				44A7DA29289160EE00A81E44 /* HomeView */,
 				44A7DA2A289160F400A81E44 /* AppView */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		44EDC72528EC5E06005893E4 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				44EDC72628EC5E30005893E4 /* MessageData.swift */,
+				44EDC72828EC5E4F005893E4 /* ChatManager.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		44EDC72A28EC5E77005893E4 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				449D68D028D4C29B00A2DD32 /* Tool.swift */,
+				44A7DA392893D1BC00A81E44 /* ToolsData.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		44EDC72B28EC5F29005893E4 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				445D289228C21AB80028D5FF /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		44EDC73428EC6190005893E4 /* PostalCode */ = {
+			isa = PBXGroup;
+			children = (
+				44EDC72E28EC6130005893E4 /* PostalCodeTestCase.swift */,
+				44EDC73028EC6151005893E4 /* FakeResponseDataCP.swift */,
+				44EDC73228EC6163005893E4 /* PostalCode.json */,
+			);
+			path = PostalCode;
+			sourceTree = "<group>";
+		};
+		44EDC73528EC6197005893E4 /* DataBaseService */ = {
+			isa = PBXGroup;
+			children = (
+				44EDC72C28EC610C005893E4 /* DataBaseServiceTest.swift */,
+			);
+			path = DataBaseService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,24 +357,6 @@
 			productReference = 44B989C7288EBF160038B4F7 /* FindMyToolTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		44B989D0288EBF160038B4F7 /* FindMyToolUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44B989E1288EBF160038B4F7 /* Build configuration list for PBXNativeTarget "FindMyToolUITests" */;
-			buildPhases = (
-				44B989CD288EBF160038B4F7 /* Sources */,
-				44B989CE288EBF160038B4F7 /* Frameworks */,
-				44B989CF288EBF160038B4F7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				44B989D3288EBF160038B4F7 /* PBXTargetDependency */,
-			);
-			name = FindMyToolUITests;
-			productName = FindMyToolUITests;
-			productReference = 44B989D1288EBF160038B4F7 /* FindMyToolUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -358,10 +371,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					44B989C6288EBF160038B4F7 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 44B989AD288EBF140038B4F7;
-					};
-					44B989D0288EBF160038B4F7 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 44B989AD288EBF140038B4F7;
 					};
@@ -386,7 +395,6 @@
 			targets = (
 				44B989AD288EBF140038B4F7 /* FindMyTool */,
 				44B989C6288EBF160038B4F7 /* FindMyToolTests */,
-				44B989D0288EBF160038B4F7 /* FindMyToolUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -409,13 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44B989CF288EBF160038B4F7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				44EDC73328EC6163005893E4 /* PostalCode.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EDC72928EC5E4F005893E4 /* ChatManager.swift in Sources */,
 				44A7DA25288FFB3300A81E44 /* SearchViewController.swift in Sources */,
 				44B989BC288EBF140038B4F7 /* FindMyTool.xcdatamodeld in Sources */,
 				449A9A8028CF2D6C0000C008 /* ResultViewController.swift in Sources */,
@@ -438,8 +441,9 @@
 				44A7DA2C2891611B00A81E44 /* MyToolsViewController.swift in Sources */,
 				44A7DA43289404CD00A81E44 /* AddToolViewController.swift in Sources */,
 				445D289128C219650028D5FF /* PostalCodeService.swift in Sources */,
+				44EDC73728EC6243005893E4 /* DetailsViewController.swift in Sources */,
 				44B989B4288EBF140038B4F7 /* SceneDelegate.swift in Sources */,
-				449D68D128D4C29B00A2DD32 /* ToolsResult.swift in Sources */,
+				449D68D128D4C29B00A2DD32 /* Tool.swift in Sources */,
 				44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */,
 				4466894928AE6FDB002A55E4 /* MainTabBarController.swift in Sources */,
 				4466894728AE327B002A55E4 /* DatabaseService.swift in Sources */,
@@ -447,6 +451,7 @@
 				44A7DA2E2891612E00A81E44 /* ChatViewController.swift in Sources */,
 				44A7DA372893CBB600A81E44 /* ToolsTableViewCell.swift in Sources */,
 				44A7DA282891136800A81E44 /* Alert.swift in Sources */,
+				44EDC72728EC5E30005893E4 /* MessageData.swift in Sources */,
 				4466894528AE3006002A55E4 /* AuthService.swift in Sources */,
 				445D289328C21AB80028D5FF /* NetworkError.swift in Sources */,
 			);
@@ -456,16 +461,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44B989CC288EBF160038B4F7 /* FindMyToolTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44B989CD288EBF160038B4F7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44B989D6288EBF160038B4F7 /* FindMyToolUITests.swift in Sources */,
-				44B989D8288EBF160038B4F7 /* FindMyToolUITestsLaunchTests.swift in Sources */,
+				44EDC72D28EC610C005893E4 /* DataBaseServiceTest.swift in Sources */,
+				44EDC72F28EC6130005893E4 /* PostalCodeTestCase.swift in Sources */,
+				44EDC73128EC6151005893E4 /* FakeResponseDataCP.swift in Sources */,
+				44B989CC288EBF160038B4F7 /* URLProtocolFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,11 +475,6 @@
 			isa = PBXTargetDependency;
 			target = 44B989AD288EBF140038B4F7 /* FindMyTool */;
 			targetProxy = 44B989C8288EBF160038B4F7 /* PBXContainerItemProxy */;
-		};
-		44B989D3288EBF160038B4F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 44B989AD288EBF140038B4F7 /* FindMyTool */;
-			targetProxy = 44B989D2288EBF160038B4F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -714,42 +708,6 @@
 			};
 			name = Release;
 		};
-		44B989E2288EBF160038B4F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K46AS943RY;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ocr.FindMyToolUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FindMyTool;
-			};
-			name = Debug;
-		};
-		44B989E3288EBF160038B4F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K46AS943RY;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ocr.FindMyToolUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FindMyTool;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -776,15 +734,6 @@
 			buildConfigurations = (
 				44B989DF288EBF160038B4F7 /* Debug */,
 				44B989E0288EBF160038B4F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		44B989E1288EBF160038B4F7 /* Build configuration list for PBXNativeTarget "FindMyToolUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44B989E2288EBF160038B4F7 /* Debug */,
-				44B989E3288EBF160038B4F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

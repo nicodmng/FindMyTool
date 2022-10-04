@@ -8,21 +8,24 @@
 import UIKit
 
 class AddToolViewController: UIViewController {
-
+    
     // MARK: - Properties
+    
     private let databaseService: DatabaseService = DatabaseService()
     private let authService: AuthService = AuthService()
+    private let imagePickerController = UIImagePickerController()
+    
     var serviceCP = CPService()
     
     var uidRender: String?
     var uidLender: String?
- 
-    var townUser: String?
-    var imageTool: URL?
+    
+    var imageTool: String?
     var isAvailable: Bool?
     
     var nameTool = ""
-    let name = ["Boîte à outils",
+    let name = ["LISTE OUTILS",
+                "Boîte à outils",
                 "Marteau-piqueur",
                 "Motoculteur",
                 "Outils de jardinage",
@@ -30,32 +33,45 @@ class AddToolViewController: UIViewController {
                 "Taille-haie",
                 "Motoculteur"]
     
+    func UrlBuild() {
+        var components = URLComponents(string: "")!
+        components.host = "gs://findmytool-380cd.appspot.com"
+        components.path = "nom du fichier"
+        components.path = ""
+    }
+    
     // MARK: - IBOutlet & IBAction
     
     @IBOutlet weak var toolsPickerView: UIPickerView!
     
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var localisationTextField: UITextField!
-    
-    @IBOutlet weak var imageUrlTextField: UITextField!
+    @IBOutlet weak var townTextField: UITextField!
+    @IBAction func addImageButton(_ sender: UIButton) {
+        showPopUp()
+    }
     
     @IBAction func addToolButton(_ sender: UIButton) {
         databaseService.addToolInDatabase(name: nameTool,
-                                       localisation: localisationTextField.text ?? "",
-                                       price: priceTextField.text ?? "",
-                                       town: townUser ?? "",
-                                       render: fetchUserID(),
-                                       lender: uidLender ?? "",
-                                       isAvailable: true)
+                                          localisation: localisationTextField.text ?? "",
+                                          price: priceTextField.text ?? "",
+                                          town: townTextField.text ?? "",
+                                          imageTool: imageTool ?? "http://apple.com/chfr",
+                                          render: fetchUserID(),
+                                          lender: uidLender ?? "",
+                                          isAvailable: true)
         authService.getDocumentID()
-        }
-
+    }
+    
     // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePickerController.delegate = self
     }
     
     // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
     }
@@ -69,9 +85,27 @@ class AddToolViewController: UIViewController {
         }
         return userID
     }
-  
+    
+    // MARK: - Alert Controller for "Photo Library", "Camera" or "Cancel" selection
+    
+    private func showPopUp() {
+        let actionSheet = UIAlertController(title: "FindMyTool", message: "Choisissez une photo", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
+            self.imagePickerController.sourceType = .camera
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
 }
-
 
     // MARK: - Extensions
 
@@ -92,6 +126,19 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nameTool = name[row]
+    }
+    
+}
+
+// MARK: - Extensions
+
+extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+//            databaseService.addPhotoInDatabase(fileURL: url)
+            print(url)
+        }
+        imagePickerController.dismiss(animated: true, completion: nil)
     }
     
 }

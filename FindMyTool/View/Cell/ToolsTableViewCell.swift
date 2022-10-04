@@ -14,20 +14,17 @@ class ToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var toolImageView: UIImageView!
     @IBOutlet weak var titleToolLabel: UILabel!
     @IBOutlet weak var priceToolLabel: UILabel!
+    @IBOutlet weak var CPToolLabel: UILabel!
     @IBOutlet weak var localisationToolLabel: UILabel!
     
+    
     // MARK: - Properties
-    var toolFromCell: Tool? {
+    var toolFromCell: ToolData? {
         didSet {
             titleToolLabel.text = toolFromCell?.name
             priceToolLabel.text = toolFromCell?.price
-            localisationToolLabel.text = toolFromCell?.localisation
-        }
-    }
-    
-    var resultFromCell: ToolsResult? {
-        didSet {
-            titleToolLabel.text = resultFromCell?.name
+            CPToolLabel.text = toolFromCell?.postalCode
+            localisationToolLabel.text = toolFromCell?.town
         }
     }
     

@@ -11,14 +11,14 @@ import Foundation
 class MyToolsViewController: UIViewController {
     
     // MARK: - Properties
+    
     private let databaseService: DatabaseService = DatabaseService()
     private let authService: AuthService = AuthService()
     
-    var addToolVC: AddToolViewController?
-    var tools = [Tool]()
-    var tool: Tool?
+    var tools = [ToolData]()
     
     // MARK: - IBOutlets & IBActions
+    
     // IBActions
     @IBAction func plusPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToAddToolViewController", sender: self)
@@ -45,7 +45,7 @@ class MyToolsViewController: UIViewController {
 
 }
 
-// MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
 
 extension MyToolsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,8 +60,8 @@ extension MyToolsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            databaseService.deleteToolFromDB()
+            let id = tools[indexPath.row].docId
+            databaseService.deleteToolFromDB(id: id)
             
             tools.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -69,7 +69,7 @@ extension MyToolsViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
 
 extension MyToolsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -94,5 +94,4 @@ extension MyToolsViewController: UITableViewDelegate {
     }
     
 }
-// End of class
 

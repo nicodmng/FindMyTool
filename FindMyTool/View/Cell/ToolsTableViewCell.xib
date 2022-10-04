@@ -31,26 +31,26 @@
                                 <rect key="frame" x="167" y="17" width="360" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cq-h4-Mje" userLabel="TitleTool Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="60.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="57"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-Fx-mOd" userLabel="PriceTool Label">
-                                        <rect key="frame" x="0.0" y="63.666666666666671" width="360" height="18"/>
+                                        <rect key="frame" x="0.0" y="60" width="360" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-tz-gEv" userLabel="LocalisationTool Label">
-                                        <rect key="frame" x="0.0" y="84.666666666666671" width="360" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-tz-gEv" userLabel="CPTool Label">
+                                        <rect key="frame" x="0.0" y="81" width="360" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Disponible ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaZ-pT-CBT" userLabel="AvailableTool Label">
-                                        <rect key="frame" x="0.0" y="105.66666666666667" width="360" height="14.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-Lp-zna" userLabel="LocalisationTool Label">
+                                        <rect key="frame" x="0.0" y="102" width="360" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -81,9 +81,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="localisationToolLabel" destination="aIO-tz-gEv" id="kmb-kG-lCN"/>
+                <outlet property="CPToolLabel" destination="aIO-tz-gEv" id="ezw-GG-7TF"/>
+                <outlet property="localisationToolLabel" destination="Vc0-Lp-zna" id="eXg-WF-AkF"/>
                 <outlet property="priceToolLabel" destination="EEV-Fx-mOd" id="JdS-Kj-klr"/>
-                <outlet property="titleToolLabel" destination="9Cq-h4-Mje" id="GmH-xE-IFJ"/>
+                <outlet property="titleToolLabel" destination="9Cq-h4-Mje" id="z2S-AG-2T0"/>
                 <outlet property="toolImageView" destination="koP-e9-ZoN" id="gSl-kd-Db9"/>
             </connections>
             <point key="canvasLocation" x="249.23076923076923" y="78.199052132701425"/>

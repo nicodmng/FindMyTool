@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     private let authFirebase: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
+    
     // IBOutlets
     
     @IBOutlet weak var usernameLabel: UILabel!
@@ -25,13 +26,15 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         authFirebase.displayUsername { username in
-            self.usernameLabel.text = username 
+            self.usernameLabel.text = username
         }
     }
     
     // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -39,4 +42,4 @@ class SettingsViewController: UIViewController {
     // MARK: - Functions
 
 }
-// End of class
+

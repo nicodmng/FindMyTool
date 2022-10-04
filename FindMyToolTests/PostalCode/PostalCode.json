@@ -1,0 +1,57 @@
+[
+    {
+        "codePostal": "74160",
+        "codeCommune": "74016",
+        "nomCommune": "Archamps",
+        "libelleAcheminement": "ARCHAMPS"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74031",
+        "nomCommune": "Beaumont",
+        "libelleAcheminement": "BEAUMONT"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74044",
+        "nomCommune": "Bossey",
+        "libelleAcheminement": "BOSSEY"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74082",
+        "nomCommune": "Collonges-sous-Salève",
+        "libelleAcheminement": "COLLONGES-SOUS-SALEVE"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74124",
+        "nomCommune": "Feigères",
+        "libelleAcheminement": "FEIGERES"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74201",
+        "nomCommune": "Neydens",
+        "libelleAcheminement": "NEYDENS"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74216",
+        "nomCommune": "Présilly",
+        "libelleAcheminement": "PRESILLY"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74243",
+        "nomCommune": "Saint-Julien-en-Genevois",
+        "libelleAcheminement": "SAINT-JULIEN-EN-GENEVOIS"
+    },
+    {
+        "codePostal": "74160",
+        "codeCommune": "74296",
+        "nomCommune": "Vers",
+        "libelleAcheminement": "VERS"
+    }
+]
+

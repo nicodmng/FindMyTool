@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+    // MARK: - Protocol
+
 protocol ResultTownViewControllerDelegate {
     func didSelectTown(town: String, postalCode: String)
 }
@@ -15,13 +17,11 @@ protocol ResultTownViewControllerDelegate {
 class ResultTownViewController: UIViewController {
     
     // MARK: - Properties
+    
     var serviceCP = CPService()
     var townList: [TownData]?
-    
     var delegate: ResultTownViewControllerDelegate?
-    
-    //var searchViewController: SearchViewController!
-    
+        
     // MARK: - IBOutlets & IBActions
     
     @IBOutlet weak var postalCodeTextField: UITextField!
@@ -61,7 +61,7 @@ class ResultTownViewController: UIViewController {
     
 }
 
-// MARK: - Tableview Delegate & Datasource
+    // MARK: - Tableview Delegate & Datasource
 
 extension ResultTownViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -76,10 +76,8 @@ extension ResultTownViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         delegate?.didSelectTown(town: townList?[indexPath.row].nomCommune ?? "",
                                 postalCode: townList?[indexPath.row].codePostal ?? "")
-        
         dismiss(animated: true)
     }
     

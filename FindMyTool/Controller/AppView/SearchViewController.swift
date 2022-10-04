@@ -13,29 +13,36 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     
     // MARK: - Properties
     
-    var codePostal: String = ""
-    var town: String = ""
-    
-    let db = Firestore.firestore()
-    
+    let dataBaseService = DatabaseService()
     var nameTool = ""
-    let name = ["Boîte à outils",
+    let name = ["LISTE OUTILS",
+                "Boîte à outils",
                 "Marteau-piqueur",
                 "Motoculteur",
                 "Outils de jardinage",
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
+    var codePostal: String = ""
+    var town: String = ""
+    let db = Firestore.firestore()
+    let segueToResult = "segueToResult"
+    var resultTools: [ToolData] = []
     
     // MARK: - IBOutlets & IBActions
+    
     // IBOutlets
-    
     @IBOutlet weak var townNameLabel: UILabel!
-    
     @IBOutlet weak var postalCodeLabel: UILabel!
     
+    // IBActions
     @IBAction func SearchButton(_ sender: UIButton) {
-        findToolsFromDB(nameTool: nameTool, toolCP: postalCodeLabel.text ?? "")
+        
+        findToolsFromDB(nameTool: nameTool, toolCP: postalCodeLabel.text ?? "") { tools in
+            self.resultTools = tools
+            self.performSegue(withIdentifier: self.segueToResult, sender: nil)
+        }
+
     }
     
     // MARK: - ViewWillAppear
@@ -54,19 +61,28 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultTownViewController = segue.destination as? ResultTownViewController
         resultTownViewController?.delegate = self
+        
+        if segue.identifier == segueToResult {
+            let resultViewController = segue.destination as? ResultViewController
+            resultViewController?.tools = resultTools
+        }
     }
     
     // MARK: - Functions
-    
-    func findToolsFromDB(nameTool: String, toolCP: String) {
-        db.collection("tools").whereField("localisation", isEqualTo: toolCP).whereField("name", isEqualTo: nameTool)
+
+    func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
+        var tools = [ToolData]()
+        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
+                        let dict = document.data()
+                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                        tools.append(tool)
                     }
+                    callback(tools)
                 }
             }
     }
@@ -79,6 +95,7 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
         self.postalCodeLabel.text = postalCode
         self.codePostal = postalCode
     }
+    
 }
 
 // MARK: - Extensions
@@ -103,6 +120,3 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
 }
-// End of class
-
-
