@@ -12,7 +12,8 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseFirestore
-//import FirebaseStorage
+import FirebaseFirestoreSwift
+import FirebaseStorage
 
 class DatabaseService {
     
@@ -63,28 +64,28 @@ class DatabaseService {
         ])
     }
     
-//    func addPhotoInDatabase(fileURL: URL) {
-//        let storage = Storage.storage()
-//        let data = Data()
-//        let storageRef = storage.reference()
-//        let localFile = fileURL
-//        let photoRef = storageRef.child("images/file.png")
-//        let uploadTask = photoRef.putFile(from: localFile, metadata: nil) { (medaData, error) in
-//            guard medaData != nil else {
-//                print(error?.localizedDescription)
-//                
-//                storageRef.child("images/file.png").downloadURL { url, error in
-//                    guard let url = url, error == nil else {
-//                        return
-//                    }
-//                    let urlString = url.absoluteString
-//                    print("Download URL: \(urlString)")
-//                }
-//                return
-//            }
-//            print("Photo Uploaded !")
-//        }
-//    }
+    func addPhotoInDatabase(fileURL: URL) {
+        let storage = Storage.storage()
+        let data = Data()
+        let storageRef = storage.reference()
+        let localFile = fileURL
+        let photoRef = storageRef.child("images/file.png")
+        let uploadTask = photoRef.putFile(from: localFile, metadata: nil) { (medaData, error) in
+            guard medaData != nil else {
+                print(error?.localizedDescription)
+                
+                storageRef.child("images/file.png").downloadURL { url, error in
+                    guard let url = url, error == nil else {
+                        return
+                    }
+                    let urlString = url.absoluteString
+                    print("Download URL: \(urlString)")
+                }
+                return
+            }
+            print("Photo Uploaded !")
+        }
+    }
     
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()

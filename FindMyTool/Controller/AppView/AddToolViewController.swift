@@ -135,7 +135,7 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-//            databaseService.addPhotoInDatabase(fileURL: url)
+            databaseService.addPhotoInDatabase(fileURL: url)
             print(url)
         }
         imagePickerController.dismiss(animated: true, completion: nil)
