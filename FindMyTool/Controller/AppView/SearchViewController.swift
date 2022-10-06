@@ -79,7 +79,7 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, description: dict["description"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
                         tools.append(tool)
                     }
                     callback(tools)
