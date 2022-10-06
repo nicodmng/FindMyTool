@@ -13,22 +13,17 @@ class DetailsViewController: UIViewController {
     // MARK: - Properties
     
     var tool: Tool?
+    var timer: Timer?
     
     // MARK: - IBOutlets & IBActions
     
     @IBOutlet weak var toolImage: UIImageView!
-    
     @IBOutlet weak var nameToolLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    
     @IBOutlet weak var townLabel: UILabel!
-    
     @IBOutlet weak var postalCodeLabel: UILabel!
-    
     @IBOutlet weak var idRenderLabel: UILabel!
-    
-    var timer: Timer?
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     // MARK: - View Lifecycle
     
@@ -46,5 +41,8 @@ class DetailsViewController: UIViewController {
     func displayDetails() {
         nameToolLabel.text = tool?.name
         priceLabel.text = tool?.price
+        descriptionTextView.text = tool?.description
+        townLabel.text = tool?.town
+        postalCodeLabel.text = tool?.postalCode
     }
 }
