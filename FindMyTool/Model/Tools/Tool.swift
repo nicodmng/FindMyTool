@@ -12,12 +12,13 @@ struct Tool {
     let price: String
     let town: String
     let postalCode: String
+    let description: String
 
-    init(name: String, price: String, town: String, postalCode: String) {
+    init(name: String, price: String, town: String, postalCode: String, description: String) {
         self.name = name
         self.price = price
         self.town = town
         self.postalCode = postalCode
-
+        self.description = description
     }
 }

@@ -12,6 +12,7 @@ struct ToolData: Codable {
     
     var docId: String
     var name: String
+    var description: String
     var postalCode: String
     var price: String
     var town: String

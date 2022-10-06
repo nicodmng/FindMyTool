@@ -43,7 +43,7 @@ class DatabaseService {
             } else {
                 for document in querySnapshot!.documents {
                     let dict = document.data()
-                    let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                    let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, description: dict["description"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
                     tools.append(tool)
                 }
                 callback(tools)
@@ -51,10 +51,11 @@ class DatabaseService {
         })
     }
     
-    func addToolInDatabase(name: String, localisation: String, price: String, town: String, imageTool: String, render: String, lender: String?, isAvailable: Bool) {
+    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageTool: String, render: String, lender: String?, isAvailable: Bool) {
         db.collection("tools").addDocument(data: [
             "name": name,
             "localisation": localisation,
+            "description": description,
             "price": price,
             "town": town,
             "imageTool": imageTool,
@@ -96,7 +97,7 @@ class DatabaseService {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, description: dict["description"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
                         tools.append(tool)
                     }
                     callback(tools)

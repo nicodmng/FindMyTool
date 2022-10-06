@@ -47,6 +47,10 @@ class AddToolViewController: UIViewController {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var localisationTextField: UITextField!
     @IBOutlet weak var townTextField: UITextField!
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    
     @IBAction func addImageButton(_ sender: UIButton) {
         showPopUp()
     }
@@ -54,6 +58,7 @@ class AddToolViewController: UIViewController {
     @IBAction func addToolButton(_ sender: UIButton) {
         databaseService.addToolInDatabase(name: nameTool,
                                           localisation: localisationTextField.text ?? "",
+                                          description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
                                           imageTool: imageTool ?? "http://apple.com/chfr",
