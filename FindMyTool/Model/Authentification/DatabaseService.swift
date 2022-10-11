@@ -20,10 +20,11 @@ class DatabaseService {
     // MARK: - Properties
     
     let db = Firestore.firestore()
-    var toolId: ToolData?
     var town: String = ""
     
     // MARK: - Methodes
+    
+    // Username Manager
     
     func displayUsername(callback: @escaping (String) -> Void) {
         let ref = Database.database().reference()
@@ -35,6 +36,8 @@ class DatabaseService {
         }
     }
     
+    // Tool Manager
+    
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
         db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
@@ -43,7 +46,14 @@ class DatabaseService {
             } else {
                 for document in querySnapshot!.documents {
                     let dict = document.data()
-                    let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, description: dict["description"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                    let tool = ToolData(description: dict["description"] as? String,
+                                docId: document.documentID,
+                                name: dict["name"] as! String,
+                                postalCode: dict["localisation"] as! String,
+                                price: dict["price"] as! String,
+                                lender: dict["lender"] as! String,
+                                imageRef: dict["imageRef"] as? String,
+                                town: dict["town"] as! String)
                     tools.append(tool)
                 }
                 callback(tools)
@@ -65,29 +75,6 @@ class DatabaseService {
         ])
     }
     
-    func addPhotoInDatabase(fileURL: URL) {
-        let storage = Storage.storage()
-        let data = Data()
-        let storageRef = storage.reference()
-        let localFile = fileURL
-        let photoRef = storageRef.child("images/file.png")
-        let uploadTask = photoRef.putFile(from: localFile, metadata: nil) { (medaData, error) in
-            guard medaData != nil else {
-                print(error?.localizedDescription)
-                
-                storageRef.child("images/file.png").downloadURL { url, error in
-                    guard let url = url, error == nil else {
-                        return
-                    }
-                    let urlString = url.absoluteString
-                    print("Download URL: \(urlString)")
-                }
-                return
-            }
-            print("Photo Uploaded !")
-        }
-    }
-    
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
         db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
@@ -97,7 +84,7 @@ class DatabaseService {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        let tool = ToolData(docId: document.documentID, name: dict["name"] as! String, description: dict["description"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, town: dict["town"] as! String, lender: dict["lender"] as! String)
+                        let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, town: dict["town"] as! String)
                         tools.append(tool)
                     }
                     callback(tools)
@@ -106,7 +93,6 @@ class DatabaseService {
     }
     
     func deleteToolFromDB(id: String) {
-        // TODO: trouver comment insérer ID Document dans document
         db.collection("tools").document(id).delete() { err in
             if let err = err {
                 print("Error removing document: \(err) ")
@@ -116,8 +102,17 @@ class DatabaseService {
         }
     }
     
-    func getImageTool() {
-        
+    // Image Manager
+    
+    func uploadImage(fileURL: URL) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let path = "images/\(UUID().uuidString).jpg"
+        let imageRef = storageRef.child(path)
+        imageRef.putFile(from: fileURL, metadata: nil) { metadata, error in
+            guard metadata != nil else { return }
+        }
     }
+    
     
 }
