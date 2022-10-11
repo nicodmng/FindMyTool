@@ -10,14 +10,14 @@ import FirebaseFirestoreSwift
 
 struct ToolData: Codable {
     
+    var description: String?
     var docId: String
     var name: String
-    var description: String
     var postalCode: String
     var price: String
-    var town: String
     var render: String?
     var lender: String
     var isAvailable: Bool?
-    var image: URL?
+    var imageRef: String?
+    var town: String
 }
