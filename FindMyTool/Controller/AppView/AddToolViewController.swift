@@ -54,7 +54,7 @@ class AddToolViewController: UIViewController {
                                           description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
-                                          imageTool: databaseService.imagePath,
+                                          imageTool: databaseService.imagePath ?? "",
                                           render: fetchUserID(),
                                           lender: uidLender ?? "",
                                           isAvailable: true)
@@ -135,6 +135,7 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             databaseService.uploadImage(fileURL: url)
+            databaseService.downloadImage()
         }
         imagePickerController.dismiss(animated: true)
     }

@@ -21,7 +21,7 @@ class DatabaseService {
     
     let db = Firestore.firestore()
     var town: String = ""
-    var imagePath: String!
+    var imagePath: String?
     
     // MARK: - Methodes
     
@@ -108,14 +108,22 @@ class DatabaseService {
     func uploadImage(fileURL: URL) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        let path = "images/\(UUID().uuidString).jpg"
+        let path = "images/\(UUID().uuidString)"
         let imageRef = storageRef.child(path)
         imageRef.putFile(from: fileURL, metadata: nil) { metadata, error in
-            self.imagePath = metadata?.path
+            self.imagePath = metadata?.name
             print("--->",self.imagePath)
             
             guard metadata != nil else { return }
         }
+    }
+    
+    func downloadImage() {
+        let storage = Storage.storage().reference()
+        storage.child("images/0B000C29-2867-47D3-8B5A-254C0DAE2370").downloadURL { url, error in
+            print("======>\(url)")
+        }
+        
     }
     
 }
