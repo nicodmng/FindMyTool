@@ -33,13 +33,6 @@ class AddToolViewController: UIViewController {
                 "Taille-haie",
                 "Motoculteur"]
     
-    func UrlBuild() {
-        var components = URLComponents(string: "")!
-        components.host = "gs://findmytool-380cd.appspot.com"
-        components.path = "nom du fichier"
-        components.path = ""
-    }
-    
     // MARK: - IBOutlet & IBAction
     
     @IBOutlet weak var toolsPickerView: UIPickerView!
@@ -61,7 +54,7 @@ class AddToolViewController: UIViewController {
                                           description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
-                                          imageTool: imageTool ?? "http://apple.com/chfr",
+                                          imageTool: databaseService.imagePath,
                                           render: fetchUserID(),
                                           lender: uidLender ?? "",
                                           isAvailable: true)

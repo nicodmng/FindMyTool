@@ -25,6 +25,9 @@ class ToolsTableViewCell: UITableViewCell {
             priceToolLabel.text = toolFromCell?.price
             CPToolLabel.text = toolFromCell?.postalCode
             localisationToolLabel.text = toolFromCell?.town
+            
+            guard let urlTool = URL(string: "") else { return }
+            toolImageView.load(url: urlTool)
         }
     }
     
