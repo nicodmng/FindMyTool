@@ -29,9 +29,6 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { _ in
-            print("test")
-        })
 
         displayDetails()
     }
@@ -44,5 +41,8 @@ class DetailsViewController: UIViewController {
         descriptionTextView.text = tool?.description
         townLabel.text = tool?.town
         postalCodeLabel.text = tool?.postalCode
+        
+        guard let urlTool = URL(string: tool?.imageTool ?? "") else { return }
+        toolImage.load(url: urlTool)
     }
 }

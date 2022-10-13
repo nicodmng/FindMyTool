@@ -22,6 +22,7 @@ class DatabaseService {
     let db = Firestore.firestore()
     var town: String = ""
     var imagePath: String?
+    var imageURL: String?
     
     // MARK: - Methodes
     
@@ -90,6 +91,7 @@ class DatabaseService {
                                             postalCode: dict["localisation"] as! String,
                                             price: dict["price"] as! String,
                                             lender: dict["lender"] as! String,
+                                            imageTool: dict["imageTool"] as? String,
                                             town: dict["town"] as! String)
                         tools.append(tool)
                     }
@@ -128,8 +130,8 @@ class DatabaseService {
         let storage = Storage.storage().reference()
         storage.child("images/\(imagePath ?? "no url")").downloadURL { url, error in
             guard let urlImage = url else { return }
-            
-            print("OOOOOOO->",urlImage)
+            let urlString: String = urlImage.absoluteString
+            self.imageURL = urlString
         }
         
     }
