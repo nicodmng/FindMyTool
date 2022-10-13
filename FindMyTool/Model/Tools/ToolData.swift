@@ -18,6 +18,6 @@ struct ToolData: Codable {
     var render: String?
     var lender: String
     var isAvailable: Bool?
-    var imageRef: String?
+    var imageTool: String?
     var town: String
 }

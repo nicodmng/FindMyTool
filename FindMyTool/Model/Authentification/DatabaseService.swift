@@ -53,7 +53,7 @@ class DatabaseService {
                                 postalCode: dict["localisation"] as! String,
                                 price: dict["price"] as! String,
                                 lender: dict["lender"] as! String,
-                                imageRef: dict["imageRef"] as? String,
+                                imageTool: dict["imageTool"] as? String,
                                 town: dict["town"] as! String)
                     tools.append(tool)
                 }
@@ -85,7 +85,12 @@ class DatabaseService {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, town: dict["town"] as! String)
+                        let tool = ToolData(description: dict["description"] as? String,
+                                            docId: document.documentID, name: dict["name"] as! String,
+                                            postalCode: dict["localisation"] as! String,
+                                            price: dict["price"] as! String,
+                                            lender: dict["lender"] as! String,
+                                            town: dict["town"] as! String)
                         tools.append(tool)
                     }
                     callback(tools)
@@ -111,17 +116,20 @@ class DatabaseService {
         let path = "images/\(UUID().uuidString)"
         let imageRef = storageRef.child(path)
         imageRef.putFile(from: fileURL, metadata: nil) { metadata, error in
-            self.imagePath = metadata?.name
-            print("--->",self.imagePath)
-            
+            guard let path = metadata?.name else { return }
+            self.imagePath = path
+
             guard metadata != nil else { return }
         }
     }
     
     func downloadImage() {
+        // Create an URL from picture
         let storage = Storage.storage().reference()
-        storage.child("images/0B000C29-2867-47D3-8B5A-254C0DAE2370").downloadURL { url, error in
-            print("======>\(url)")
+        storage.child("images/\(imagePath ?? "no url")").downloadURL { url, error in
+            guard let urlImage = url else { return }
+            
+            print("OOOOOOO->",urlImage)
         }
         
     }

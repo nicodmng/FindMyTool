@@ -26,7 +26,7 @@ class ToolsTableViewCell: UITableViewCell {
             CPToolLabel.text = toolFromCell?.postalCode
             localisationToolLabel.text = toolFromCell?.town
             
-            guard let urlTool = URL(string: "https://firebasestorage.googleapis.com:443/v0/b/findmytool-380cd.appspot.com/o/images%2F0B000C29-2867-47D3-8B5A-254C0DAE2370?alt=media&token=3c413a19-04da-4707-8348-c7870299ae2b") else { return }
+            guard let urlTool = URL(string: toolFromCell?.imageTool ?? "") else { return }
             toolImageView.load(url: urlTool)
         }
     }

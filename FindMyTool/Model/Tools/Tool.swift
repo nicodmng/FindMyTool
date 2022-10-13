@@ -11,15 +11,15 @@ struct Tool {
     let name: String
     let price: String
     let town: String
-    let imageRef: String?
+    let imageTool: String?
     let postalCode: String
     let description: String?
 
-    init(name: String, price: String, town: String, imageRef: String?, postalCode: String, description: String?) {
+    init(name: String, price: String, town: String, imageTool: String?, postalCode: String, description: String?) {
         self.name = name
         self.price = price
         self.town = town
-        self.imageRef = imageRef
+        self.imageTool = imageTool
         self.postalCode = postalCode
         self.description = description
     }

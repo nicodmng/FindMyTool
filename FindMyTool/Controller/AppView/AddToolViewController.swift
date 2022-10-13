@@ -20,7 +20,8 @@ class AddToolViewController: UIViewController {
     var uidRender: String?
     var uidLender: String?
     
-    var imageTool: String?
+    var imageTool = ""
+    
     var isAvailable: Bool?
     
     var nameTool = ""
@@ -54,7 +55,7 @@ class AddToolViewController: UIViewController {
                                           description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
-                                          imageTool: databaseService.imagePath ?? "",
+                                          imageTool: imageTool,
                                           render: fetchUserID(),
                                           lender: uidLender ?? "",
                                           isAvailable: true)
