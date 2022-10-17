@@ -26,7 +26,7 @@ class ToolsTableViewCell: UITableViewCell {
             CPToolLabel.text = toolFromCell?.postalCode
             localisationToolLabel.text = toolFromCell?.town
             
-            guard let urlTool = URL(string: "") else { return }
+            guard let urlTool = URL(string: toolFromCell?.imageLink ?? "") else { return }
             toolImageView.load(url: urlTool)
         }
     }

@@ -20,8 +20,8 @@ class AddToolViewController: UIViewController {
     var uidRender: String?
     var uidLender: String?
     
-    var imageTool: String?
     var isAvailable: Bool?
+    var imageLink: String?
     
     var nameTool = ""
     let name = ["LISTE OUTILS",
@@ -49,12 +49,19 @@ class AddToolViewController: UIViewController {
     }
     
     @IBAction func addToolButton(_ sender: UIButton) {
+        
+        databaseService.downloadImage { url in
+            let link: String = url
+            self.imageLink = link
+        }
+        
         databaseService.addToolInDatabase(name: nameTool,
                                           localisation: localisationTextField.text ?? "",
                                           description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
-                                          imageTool: databaseService.imagePath,
+                                          imageLink: imageLink ?? "",
+                                          imagePath: databaseService.imagePath ?? "",
                                           render: fetchUserID(),
                                           lender: uidLender ?? "",
                                           isAvailable: true)
@@ -105,7 +112,7 @@ class AddToolViewController: UIViewController {
     
 }
 
-    // MARK: - Extensions
+// MARK: - Extensions
 
 extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -126,6 +133,7 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         nameTool = name[row]
     }
     
+    
 }
 
 // MARK: - Extensions
@@ -135,7 +143,7 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             databaseService.uploadImage(fileURL: url)
-        }
+            }
         imagePickerController.dismiss(animated: true)
     }
     

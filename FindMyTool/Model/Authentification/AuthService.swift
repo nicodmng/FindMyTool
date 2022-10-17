@@ -22,8 +22,7 @@ class AuthService {
         ref.getDocuments { querySnapshot, error in
             if let querySnapshot = querySnapshot {
                 for document in querySnapshot.documents {
-                    let id = document.documentID
-                    print(id)
+                    _ = document.documentID
                 }
             }
         }
@@ -56,4 +55,3 @@ class AuthService {
     }
     
 }
-// End of class

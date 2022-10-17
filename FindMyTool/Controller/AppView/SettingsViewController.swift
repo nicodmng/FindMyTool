@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     private let authService: AuthService = AuthService()
@@ -38,8 +38,5 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    // MARK: - Functions
-
 }
 
