@@ -13,7 +13,6 @@ class DetailsViewController: UIViewController {
     // MARK: - Properties
     
     var tool: Tool?
-    var timer: Timer?
     
     // MARK: - IBOutlets & IBActions
     
@@ -42,7 +41,7 @@ class DetailsViewController: UIViewController {
         townLabel.text = tool?.town
         postalCodeLabel.text = tool?.postalCode
         
-        guard let urlTool = URL(string: tool?.imageTool ?? "") else { return }
+        guard let urlTool = URL(string: tool?.imageLink ?? "") else { return }
         toolImage.load(url: urlTool)
     }
 }

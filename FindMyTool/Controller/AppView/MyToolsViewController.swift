@@ -61,7 +61,10 @@ extension MyToolsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let id = tools[indexPath.row].docId
+            let image = tools[indexPath.row].imagePath
+
             databaseService.deleteToolFromDB(id: id)
+            databaseService.deleteImageFromDB(toolImage: image ?? "")
             
             tools.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
