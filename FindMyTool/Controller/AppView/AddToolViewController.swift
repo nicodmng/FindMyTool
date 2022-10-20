@@ -20,8 +20,9 @@ class AddToolViewController: UIViewController {
     var uidRender: String?
     var uidLender: String?
     
-    var isAvailable: Bool?
     var imageLink: String?
+    var imageLocalUrl: URL?
+    var imagePath: String?
     
     var nameTool = ""
     let name = ["LISTE OUTILS",
@@ -49,22 +50,34 @@ class AddToolViewController: UIViewController {
     }
     
     @IBAction func addToolButton(_ sender: UIButton) {
+        databaseService.uploadImageToStorage(imageLocalUrl: imageLocalUrl!)
         
-        databaseService.downloadImage { url in
-            let link: String = url
-            self.imageLink = link
-        }
+//        guard let imageUrl = imageUrl else { return }
+//        databaseService.uploadImage(fileURL: imageUrl) { url in
+//            guard let urlImage = url else { return }
+//            let image: String = urlImage
+//            self.imagePath = image
+//            print(self.imagePath ?? "")
+//        }
+        
+//
+//        databaseService.fetchImageLink { url in
+//            let link: String = url
+//            self.imageLink = link
+//            print(link)
+//        }
         
         databaseService.addToolInDatabase(name: nameTool,
                                           localisation: localisationTextField.text ?? "",
                                           description: descriptionTextView.text ?? "",
                                           price: priceTextField.text ?? "",
                                           town: townTextField.text ?? "",
-                                          imageLink: imageLink ?? "",
-                                          imagePath: databaseService.imagePath ?? "",
+                                          imageLink: databaseService.imageURL ?? "",
+                                          imagePath: imagePath ?? "",
                                           render: fetchUserID(),
                                           lender: uidLender ?? "",
                                           isAvailable: true)
+
         authService.getDocumentID()
     }
     
@@ -142,7 +155,8 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-            databaseService.uploadImage(fileURL: url)
+            self.imageLocalUrl = url
+            // file: // blablabla
             }
         imagePickerController.dismiss(animated: true)
     }

@@ -9,6 +9,12 @@ import UIKit
 
 class ToolsTableViewCell: UITableViewCell {
 
+    // MARK: Layout
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cornerRadius()
+    }
+    
     // MARK: - IBOutlets & IBActions
     // IBOutlets
     @IBOutlet weak var toolImageView: UIImageView!
@@ -31,4 +37,7 @@ class ToolsTableViewCell: UITableViewCell {
         }
     }
     
+    func cornerRadius() {
+        self.toolImageView.layer.cornerRadius = 8
+    }
 }
