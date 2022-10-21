@@ -24,6 +24,22 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var idRenderLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    
+    
+    @IBAction func contactButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
+        
+        if let presentationController = viewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        self.present(viewController, animated: true)
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {

@@ -31,7 +31,7 @@ class ResultViewController: UIViewController {
         super.viewWillAppear(animated)
         self.resultTableView.reloadData()
     }
-
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -74,7 +74,7 @@ extension ResultViewController: UITableViewDelegate {
         if segue.identifier == "segueToDetails",
             let next = segue.destination as? DetailsViewController {
             next.tool = tool
-            
         }
     }
+    
 }

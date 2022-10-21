@@ -18,8 +18,8 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     let name = ["LISTE OUTILS",
                 "Boîte à outils",
                 "Marteau-piqueur",
-                "Motoculteur",
                 "Outils de jardinage",
+                "Scie",
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
@@ -117,6 +117,20 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nameTool = name[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        30
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+        
+        toolLabel.text = name[row]
+        toolLabel.font = .boldSystemFont(ofSize: 25)
+        toolLabel.textColor = UIColor.white
+        return toolLabel
     }
     
 }
