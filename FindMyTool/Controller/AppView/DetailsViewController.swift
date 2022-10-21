@@ -27,13 +27,7 @@ class DetailsViewController: UIViewController {
     
     
     @IBAction func contactButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
-        
-        if let presentationController = viewController.presentationController as? UISheetPresentationController {
-            presentationController.detents = [.medium()]
-        }
-        self.present(viewController, animated: true)
+        openPresentModally()
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -59,5 +53,15 @@ class DetailsViewController: UIViewController {
         
         guard let urlTool = URL(string: tool?.imageLink ?? "") else { return }
         toolImage.load(url: urlTool)
+    }
+    
+    func openPresentModally() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
+        
+        if let presentationController = viewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        self.present(viewController, animated: true)
     }
 }
