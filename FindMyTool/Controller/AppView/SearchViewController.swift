@@ -15,14 +15,15 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     
     let dataBaseService = DatabaseService()
     var nameTool = ""
-    let name = ["LISTE OUTILS",
+    let name = [
                 "Boîte à outils",
                 "Marteau-piqueur",
                 "Outils de jardinage",
                 "Scie",
                 "Tondeuse à gazon",
                 "Taille-haie",
-                "Motoculteur"]
+                "Motoculteur"
+    ]
     var codePostal: String = ""
     var town: String = ""
     let db = Firestore.firestore()
