@@ -30,6 +30,7 @@ class ResultTownViewController: UIViewController {
     
     @IBAction func getTownButton(_ sender: UIButton) {
         fetchPostalCode()
+        // Retirer clavier
     }
     
     // MARK: - ViewDidLoad
