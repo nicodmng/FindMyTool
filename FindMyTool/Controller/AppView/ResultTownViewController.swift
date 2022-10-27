@@ -30,6 +30,7 @@ class ResultTownViewController: UIViewController {
     
     @IBAction func getTownButton(_ sender: UIButton) {
         fetchPostalCode()
+        // Retirer clavier
     }
     
     // MARK: - ViewDidLoad
@@ -53,7 +54,7 @@ class ResultTownViewController: UIViewController {
                     self?.townList = towns
                     self?.townTableView.reloadData()
                 case .failure(let error):
-                    self?.showAlert(message: error.description)
+                    self?.showAlert(message: "Merci de bien vouloir entrer un code postal correct et existant (exemple: 74160)")
                 }
             }
         }

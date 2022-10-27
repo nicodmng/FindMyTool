@@ -14,6 +14,8 @@ extension UIImageView {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
+                        //self?.layoutIfNeeded()
+                        //self?.setNeedsDisplay()
                     }
                 }
             }

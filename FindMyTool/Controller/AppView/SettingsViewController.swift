@@ -18,11 +18,18 @@ class SettingsViewController: UIViewController {
     
     // IBOutlets
     
+    
+    @IBOutlet weak var userMail: UILabel!
+    
     @IBOutlet weak var usernameLabel: UILabel!
     
     // IBActions
     @IBAction func logOutPressed(_ sender: UIButton) {
         authService.logOut()
+        let storyboard = UIStoryboard(name: "LogIn", bundle: nil)
+        let logInViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
+        logInViewController.modalPresentationStyle = .fullScreen
+        self.present(logInViewController, animated: true)
     }
     
     // MARK: - ViewWillAppear
@@ -31,12 +38,14 @@ class SettingsViewController: UIViewController {
         authFirebase.displayUsername { username in
             self.usernameLabel.text = username
         }
+        self.userMail.text = authService.fetchUserEmail()
     }
     
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }
 

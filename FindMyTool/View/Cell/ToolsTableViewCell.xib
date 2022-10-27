@@ -20,53 +20,57 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZB-1v-3Nc">
                         <rect key="frame" x="0.0" y="0.0" width="558" height="154"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cq-h4-Mje" userLabel="TitleTool Label">
+                                <rect key="frame" x="157" y="15" width="300" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="p7l-hB-iVR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="koP-e9-ZoN">
                                 <rect key="frame" x="15" y="15" width="127" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="127" id="GFl-Ox-25q"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dfs-XO-pcy">
-                                <rect key="frame" x="167" y="17" width="360" height="120"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="RxQ-G9-nQ2">
+                                <rect key="frame" x="157" y="51" width="300" height="56"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cq-h4-Mje" userLabel="TitleTool Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="57"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-Fx-mOd" userLabel="PriceTool Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-Fx-mOd" userLabel="PriceTool Label">
-                                        <rect key="frame" x="0.0" y="60" width="360" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-tz-gEv" userLabel="CPTool Label">
+                                        <rect key="frame" x="0.0" y="19" width="300" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-tz-gEv" userLabel="CPTool Label">
-                                        <rect key="frame" x="0.0" y="81" width="360" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-Lp-zna" userLabel="LocalisationTool Label">
-                                        <rect key="frame" x="0.0" y="102" width="360" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-Lp-zna" userLabel="LocalisationTool Label">
+                                        <rect key="frame" x="0.0" y="38" width="300" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="360" id="Q31-GL-KpL"/>
+                                    <constraint firstAttribute="width" constant="300" id="D9X-TT-7N6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9Cq-h4-Mje" firstAttribute="top" secondItem="bZB-1v-3Nc" secondAttribute="top" constant="15" id="2zk-Wc-PhQ"/>
                             <constraint firstAttribute="bottom" secondItem="koP-e9-ZoN" secondAttribute="bottom" constant="15" id="D2Q-5n-ZXD"/>
                             <constraint firstItem="koP-e9-ZoN" firstAttribute="leading" secondItem="bZB-1v-3Nc" secondAttribute="leading" constant="15" id="FQt-oy-K6U"/>
-                            <constraint firstItem="Dfs-XO-pcy" firstAttribute="leading" secondItem="koP-e9-ZoN" secondAttribute="trailing" constant="25" id="RD9-vm-hzj"/>
-                            <constraint firstItem="Dfs-XO-pcy" firstAttribute="top" secondItem="bZB-1v-3Nc" secondAttribute="top" constant="17" id="csG-hV-vM2"/>
+                            <constraint firstItem="9Cq-h4-Mje" firstAttribute="leading" secondItem="koP-e9-ZoN" secondAttribute="trailing" constant="15" id="R3R-or-3i8"/>
+                            <constraint firstItem="RxQ-G9-nQ2" firstAttribute="leading" secondItem="koP-e9-ZoN" secondAttribute="trailing" constant="15" id="cxb-zg-QV8"/>
                             <constraint firstItem="koP-e9-ZoN" firstAttribute="top" secondItem="bZB-1v-3Nc" secondAttribute="top" constant="15" id="dNG-DH-cC6"/>
-                            <constraint firstAttribute="bottom" secondItem="Dfs-XO-pcy" secondAttribute="bottom" constant="17" id="idp-lt-eku"/>
+                            <constraint firstItem="RxQ-G9-nQ2" firstAttribute="top" secondItem="9Cq-h4-Mje" secondAttribute="bottom" constant="12" id="xwg-5Y-Red"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -44,6 +44,23 @@ class AuthService {
         return userID
     }
     
+    func getUserEmail(callback: @escaping (String) -> Void) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            guard let email = user.email else { return }
+            callback(email)
+            print(email)
+        }
+    }
+    
+    func fetchUserEmail() -> String {
+        var userMail = ""
+        getUserEmail { mail in
+            userMail = mail
+        }
+        return userMail
+    }
+    
     func logOut() {
         let firebaseAuth = Auth.auth()
         do {

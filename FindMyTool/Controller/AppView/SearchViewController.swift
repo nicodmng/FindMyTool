@@ -15,14 +15,16 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     
     let dataBaseService = DatabaseService()
     var nameTool = ""
-    let name = ["LISTE OUTILS",
+    let name = [
                 "Boîte à outils",
                 "Marteau-piqueur",
-                "Motoculteur",
                 "Outils de jardinage",
+                "Scie",
                 "Tondeuse à gazon",
                 "Taille-haie",
-                "Motoculteur"]
+                "Motoculteur"
+    ]
+    
     var codePostal: String = ""
     var town: String = ""
     let db = Firestore.firestore()
@@ -37,12 +39,10 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     
     // IBActions
     @IBAction func SearchButton(_ sender: UIButton) {
-        
         findToolsFromDB(nameTool: nameTool, toolCP: postalCodeLabel.text ?? "") { tools in
             self.resultTools = tools
             self.performSegue(withIdentifier: self.segueToResult, sender: nil)
         }
-
     }
     
     // MARK: - ViewWillAppear
@@ -72,19 +72,19 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
 
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
-        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let dict = document.data()
-                        let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, town: dict["town"] as! String)
-                        tools.append(tool)
-                    }
-                    callback(tools)
+        
+        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("\(err.localizedDescription)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let dict = document.data()
+                    let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, imageLink: dict["imageLink"] as! String, town: dict["town"] as! String)
+                    tools.append(tool)
                 }
+                callback(tools)
             }
+        }
     }
     
     // MARK: - ResultTownViewControllerDelegate
@@ -117,6 +117,20 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nameTool = name[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        30
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+        
+        toolLabel.text = name[row]
+        toolLabel.font = .boldSystemFont(ofSize: 25)
+        toolLabel.textColor = UIColor.white
+        return toolLabel
     }
     
 }

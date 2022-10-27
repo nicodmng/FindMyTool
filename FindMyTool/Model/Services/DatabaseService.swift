@@ -23,7 +23,7 @@ class DatabaseService {
     var town: String = ""
     var imageURL: String?
     var imageName: String?
-    var imagePath: String?
+
     
     // MARK: - Methodes
     
@@ -32,6 +32,7 @@ class DatabaseService {
     func displayUsername(callback: @escaping (String) -> Void) {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
+        
         ref.child("users").child(userID!).observeSingleEvent(of: .value) { snapshot in
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
@@ -41,7 +42,7 @@ class DatabaseService {
     
     // Tool Manager
     
-    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool) {
+    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)? ) {
         db.collection("tools").addDocument(data: [
             "name": name,
             "localisation": localisation,
@@ -53,10 +54,13 @@ class DatabaseService {
             "render": render,
             "lender": lender as Any,
             "isAvailable": isAvailable
-        ])
+        ]) { error in
+            completion?(error)
+        }
     }
     
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
+        
         var tools = [ToolData]()
         db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
             if let err = err {
@@ -81,6 +85,7 @@ class DatabaseService {
     
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
+        
         db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -115,7 +120,6 @@ class DatabaseService {
     // Image Manager
     
     func deleteImageFromDB(toolImage: String) {
-        
         let storeRef = Storage.storage()
         let imageRef = storeRef.reference().child(toolImage)
         
@@ -128,33 +132,28 @@ class DatabaseService {
         }
     }
     
-    func uploadImage(fileURL: URL) {
+    func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void ) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let path = "images/\(UUID().uuidString)"
         let imageRef = storageRef.child(path)
-        imageRef.putFile(from: fileURL, metadata: nil) { metadata, error in
-            guard let name = metadata?.name else { return }
-            self.imageName = name
-            print("========>", self.imageName ?? "")
-            guard let path = metadata?.path else { return }
-            self.imagePath = path
-            print("_-_-_-_->", self.imagePath ?? "")
+        
+        imageRef.putFile(from: imageLocalUrl, metadata: nil) { metadata, error in
+            guard metadata != nil else {
+                completion()
+                return
+            }
             
-            guard metadata != nil else { return }
+            imageRef.downloadURL { url, error in
+                guard url != nil else {return}
+                let urlString: String = url?.absoluteString ?? "no url"
+                self.imageURL = urlString
+                print(self.imageURL ?? "")
+                completion()
+            }
         }
     }
-    
-    func downloadImage(callback: @escaping(String) -> Void) {
-        //Create an URL from picture
-        let storage = Storage.storage().reference()
-        storage.child("images/\(self.imageName ?? "no url")").downloadURL { url, error in
-            guard let urlImage = url else { return }
-            let urlString: String = urlImage.absoluteString
-            //self.imageURL = urlString
-            callback(urlString)
-            print("------>", urlString)
-        }
-    }
-    
+
 }
+    
+

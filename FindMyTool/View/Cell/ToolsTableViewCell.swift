@@ -9,6 +9,12 @@ import UIKit
 
 class ToolsTableViewCell: UITableViewCell {
 
+    // MARK: Layout
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cornerRadius()
+    }
+    
     // MARK: - IBOutlets & IBActions
     // IBOutlets
     @IBOutlet weak var toolImageView: UIImageView!
@@ -22,7 +28,7 @@ class ToolsTableViewCell: UITableViewCell {
     var toolFromCell: ToolData? {
         didSet {
             titleToolLabel.text = toolFromCell?.name
-            priceToolLabel.text = toolFromCell?.price
+            priceToolLabel.text = (toolFromCell?.price ?? "") + " € / jour"
             CPToolLabel.text = toolFromCell?.postalCode
             localisationToolLabel.text = toolFromCell?.town
             
@@ -31,4 +37,7 @@ class ToolsTableViewCell: UITableViewCell {
         }
     }
     
+    func cornerRadius() {
+        self.toolImageView.layer.cornerRadius = 8
+    }
 }

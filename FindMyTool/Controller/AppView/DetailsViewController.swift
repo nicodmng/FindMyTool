@@ -24,6 +24,16 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var idRenderLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    
+    
+    @IBAction func contactButton(_ sender: UIButton) {
+        openPresentModally()
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -43,5 +53,15 @@ class DetailsViewController: UIViewController {
         
         guard let urlTool = URL(string: tool?.imageLink ?? "") else { return }
         toolImage.load(url: urlTool)
+    }
+    
+    func openPresentModally() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
+        
+        if let presentationController = viewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        self.present(viewController, animated: true)
     }
 }

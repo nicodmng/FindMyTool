@@ -33,10 +33,20 @@ class MyToolsViewController: UIViewController {
         
         myToolsTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         myToolsTableView.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDidAddNewTool), name: AddToolViewController.didAddNewTool, object: nil)
+    }
+    
+    @objc
+    func didReceiveDidAddNewTool() {
+        fetchTools()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchTools()
+    }
+    
+    func fetchTools() {
         databaseService.fetchTools(render: authService.fetchUserID()) { tools in
             self.tools = tools
             self.myToolsTableView.reloadData()

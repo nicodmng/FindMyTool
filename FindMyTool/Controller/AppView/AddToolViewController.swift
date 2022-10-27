@@ -15,20 +15,28 @@ class AddToolViewController: UIViewController {
     private let authService: AuthService = AuthService()
     private let imagePickerController = UIImagePickerController()
     
+    static let didAddNewTool: Notification.Name = .init("AddToolViewController.didAddNewTool")
+    
     var serviceCP = CPService()
     
     var uidRender: String?
     var uidLender: String?
     
-    var isAvailable: Bool?
     var imageLink: String?
+    var imageLocalUrl: URL? {
+        didSet {
+            print("did set imageLocalUrl")
+        }
+    }
+    var imagePath: String?
     
     var nameTool = ""
-    let name = ["LISTE OUTILS",
+    let name = [
                 "Boîte à outils",
                 "Marteau-piqueur",
                 "Motoculteur",
                 "Outils de jardinage",
+                "Scie",
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
@@ -38,8 +46,9 @@ class AddToolViewController: UIViewController {
     @IBOutlet weak var toolsPickerView: UIPickerView!
     
     @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var localisationTextField: UITextField!
-    @IBOutlet weak var townTextField: UITextField!
+
+    @IBOutlet weak var townLabel: UILabel!
+    @IBOutlet weak var CpLabel: UILabel!
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -50,22 +59,30 @@ class AddToolViewController: UIViewController {
     
     @IBAction func addToolButton(_ sender: UIButton) {
         
-        databaseService.downloadImage { url in
-            let link: String = url
-            self.imageLink = link
-        }
+        self.databaseService.uploadImageToStorage(imageLocalUrl: self.imageLocalUrl!, completion: {
+            
+            self.self.databaseService.addToolInDatabase(name: self.nameTool,
+                                                        localisation: self.CpLabel.text ?? "",
+                                                        description: self.descriptionTextView.text ?? "",
+                                                        price: self.priceTextField.text ?? "",
+                                                        town: self.townLabel.text ?? "",
+                                                        imageLink: self.databaseService.imageURL ?? "",
+                                                        imagePath: self.imagePath ?? "",
+                                                        render: self.fetchUserID(),
+                                                        lender: self.uidLender ?? "",
+                                              isAvailable: true) { error in
+                if error == nil {
+                    self.dismiss(animated: true)
+                    NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
+                } else {
+                    self.showAlert(message: "Votre outil n'a pas été correctement sauvegardé")
+                }
+            }
+            self.authService.getDocumentID()
+            
+        })
         
-        databaseService.addToolInDatabase(name: nameTool,
-                                          localisation: localisationTextField.text ?? "",
-                                          description: descriptionTextView.text ?? "",
-                                          price: priceTextField.text ?? "",
-                                          town: townTextField.text ?? "",
-                                          imageLink: imageLink ?? "",
-                                          imagePath: databaseService.imagePath ?? "",
-                                          render: fetchUserID(),
-                                          lender: uidLender ?? "",
-                                          isAvailable: true)
-        authService.getDocumentID()
+        
     }
     
     // MARK: - ViewDidLoad
@@ -133,7 +150,6 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         nameTool = name[row]
     }
     
-    
 }
 
 // MARK: - Extensions
@@ -142,7 +158,8 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-            databaseService.uploadImage(fileURL: url)
+            self.imageLocalUrl = url
+            // file: // blablabla
             }
         imagePickerController.dismiss(animated: true)
     }
