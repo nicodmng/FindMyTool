@@ -1,0 +1,4 @@
+module FirebaseStorageInternal {
+umbrella "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorageInternal/Sources/Public"
+export *
+}
