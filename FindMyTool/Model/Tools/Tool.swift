@@ -30,6 +30,6 @@ struct Tool {
         self.town = entity.town ?? ""
         self.postalCode = entity.postalCode ?? ""
         self.description = entity.description
-        self.imageLink = entity.image
+        self.imageLink = entity.image ?? ""
     }
 }

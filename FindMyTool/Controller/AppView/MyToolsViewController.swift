@@ -87,7 +87,7 @@ extension MyToolsViewController: UITableViewDataSource {
 extension MyToolsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let messageForUser = UILabel()
-        messageForUser.text = "Aucun outil dans la liste"
+        messageForUser.text = "Votre liste d'outil est vide."
         messageForUser.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         messageForUser.textAlignment = .center
         messageForUser.textColor = .darkGray

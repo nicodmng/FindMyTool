@@ -42,7 +42,7 @@ class ToolsTableViewCell: UITableViewCell {
             priceToolLabel.text = (toolEntity?.price ?? "") + " € / jour"
             localisationToolLabel.text = toolEntity?.town
             CPToolLabel.text = toolEntity?.postalCode
-            guard let urlTool = URL(string: toolFromCell?.imageLink ?? "") else { return }
+            guard let urlTool = URL(string: toolEntity?.image ?? "") else { return }
             toolImageView.load(url: urlTool)
         }
     }

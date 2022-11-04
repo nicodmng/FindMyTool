@@ -29,6 +29,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         resultTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         resultTableView.delegate = self
+        resultTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
