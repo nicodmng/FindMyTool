@@ -19,6 +19,7 @@ class ContactViewController: UIViewController {
         sendEmail(userLender: authService.fetchUserID() , tool: nameTool)
     }
     
+    
     @IBOutlet weak var messageTextView: UITextView!
     
     override func viewDidLoad() {

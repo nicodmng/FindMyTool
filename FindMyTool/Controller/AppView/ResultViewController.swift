@@ -19,6 +19,10 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backAction()
+    }
+
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
@@ -32,6 +36,11 @@ class ResultViewController: UIViewController {
         self.resultTableView.reloadData()
     }
     
+    // MARK: - Methodes
+    
+    func backAction() -> Void {
+        self.dismiss(animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource

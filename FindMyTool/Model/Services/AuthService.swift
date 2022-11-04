@@ -65,9 +65,8 @@ class AuthService {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            //self.navigationController?.popToRootViewController(animated: true)
         } catch {
-            //showAlert(message: "Impossible de se déconnecter.")
+            //print("Impossible de se déconnecter")
         }
     }
     

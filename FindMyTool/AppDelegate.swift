@@ -13,10 +13,11 @@ import FirebaseFirestore
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    lazy var coreDataStack = CoreDataStack(modelName: "FindMyTool")
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-
         return true
     }
 

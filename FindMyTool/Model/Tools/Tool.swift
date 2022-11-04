@@ -23,4 +23,13 @@ struct Tool {
         self.postalCode = postalCode
         self.description = description
     }
+    
+    init(entity: ToolEntity) {
+        self.name = entity.name ?? ""
+        self.price = entity.price ?? ""
+        self.town = entity.town ?? ""
+        self.postalCode = entity.postalCode ?? ""
+        self.description = entity.description
+        self.imageLink = entity.image
+    }
 }

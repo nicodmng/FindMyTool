@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "7e80c25b51c2ffa238879b07fbfc5baa54bb3050",
-        "version" : "9.6.0"
+        "branch" : "master",
+        "revision" : "3d6305a9fa5295773ae447d82badd441a0a55f1b"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "c1cfde8067668027b23a42c29d11c246152fe046",
-        "version" : "9.6.0"
+        "revision" : "71eb6700dd53a851473c48d392f00a3ab26699a6",
+        "version" : "10.1.0"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nathantannar4/InputBarAccessoryView",
       "state" : {
-        "revision" : "e5da8c5e3c6ff2740ec2b721dd71e2cf24053001",
-        "version" : "6.1.0"
+        "revision" : "039a9cb3ae8c5bc4d39242a6aa688b88023633d3",
+        "version" : "6.2.0"
       }
     },
     {
@@ -93,10 +93,10 @@
     {
       "identity" : "messagekit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MessageKit/MessageKit",
+      "location" : "https://github.com/MessageKit/MessageKit.git",
       "state" : {
-        "revision" : "f3f61ebbc9c56533700c2e7b5742682849cc314d",
-        "version" : "4.0.0"
+        "revision" : "14bfa7eb9f93267c3d7b8cdf58615bba27be672a",
+        "version" : "4.1.1"
       }
     },
     {

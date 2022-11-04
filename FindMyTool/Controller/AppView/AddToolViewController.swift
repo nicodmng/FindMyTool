@@ -12,16 +12,13 @@ class AddToolViewController: UIViewController {
     // MARK: - Properties
     
     private let databaseService: DatabaseService = DatabaseService()
+    
     private let authService: AuthService = AuthService()
     private let imagePickerController = UIImagePickerController()
-    
     static let didAddNewTool: Notification.Name = .init("AddToolViewController.didAddNewTool")
-    
     var serviceCP = CPService()
-    
     var uidRender: String?
     var uidLender: String?
-    
     var imageLink: String?
     var imageLocalUrl: URL? {
         didSet {
@@ -29,7 +26,6 @@ class AddToolViewController: UIViewController {
         }
     }
     var imagePath: String?
-    
     var nameTool = ""
     let name = [
                 "Boîte à outils",
@@ -40,6 +36,10 @@ class AddToolViewController: UIViewController {
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
+
+    // MARK: - Initializer
+    
+    
     
     // MARK: - IBOutlet & IBAction
     
@@ -48,7 +48,7 @@ class AddToolViewController: UIViewController {
     @IBOutlet weak var priceTextField: UITextField!
 
     @IBOutlet weak var townLabel: UILabel!
-    @IBOutlet weak var CpLabel: UILabel!
+    @IBOutlet weak var cpLabel: UILabel!
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -60,29 +60,10 @@ class AddToolViewController: UIViewController {
     @IBAction func addToolButton(_ sender: UIButton) {
         
         self.databaseService.uploadImageToStorage(imageLocalUrl: self.imageLocalUrl!, completion: {
-            
-            self.self.databaseService.addToolInDatabase(name: self.nameTool,
-                                                        localisation: self.CpLabel.text ?? "",
-                                                        description: self.descriptionTextView.text ?? "",
-                                                        price: self.priceTextField.text ?? "",
-                                                        town: self.townLabel.text ?? "",
-                                                        imageLink: self.databaseService.imageURL ?? "",
-                                                        imagePath: self.imagePath ?? "",
-                                                        render: self.fetchUserID(),
-                                                        lender: self.uidLender ?? "",
-                                              isAvailable: true) { error in
-                if error == nil {
-                    self.dismiss(animated: true)
-                    NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
-                } else {
-                    self.showAlert(message: "Votre outil n'a pas été correctement sauvegardé")
-                }
-            }
+            self.addTool()
+
             self.authService.getDocumentID()
-            
         })
-        
-        
     }
     
     // MARK: - ViewDidLoad
@@ -99,6 +80,26 @@ class AddToolViewController: UIViewController {
     }
     
     // MARK: - Methodes
+    
+    func addTool() {
+        self.databaseService.addToolInDatabase(name: self.nameTool,
+                                                    localisation: self.cpLabel.text ?? "",
+                                                    description: self.descriptionTextView.text ?? "",
+                                                    price: self.priceTextField.text ?? "",
+                                                    town: self.townLabel.text ?? "",
+                                                    imageLink: self.databaseService.imageURL ?? "",
+                                                    imagePath: self.imagePath ?? "",
+                                                    render: self.fetchUserID(),
+                                                    lender: self.uidLender ?? "",
+                                          isAvailable: true) { error in
+            if error == nil {
+                self.dismiss(animated: true)
+                NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
+            } else {
+                self.showAlert(message: "Votre outil n'a pas été correctement sauvegardé")
+            }
+        }
+    }
     
     func fetchUserID() -> String {
         var userID = ""
@@ -159,7 +160,6 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             self.imageLocalUrl = url
-            // file: // blablabla
             }
         imagePickerController.dismiss(animated: true)
     }

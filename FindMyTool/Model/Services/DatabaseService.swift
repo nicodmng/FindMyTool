@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import FirebaseCore
 import Firebase
 import FirebaseDatabase
@@ -16,23 +15,28 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 
 class DatabaseService {
-    
+
     // MARK: - Properties
     
     let db = Firestore.firestore()
     var town: String = ""
     var imageURL: String?
     var imageName: String?
-
+    
+    let session: FirebaseSession
+    
+    // MARK: - Initializer
+    
+    init(session: FirebaseSession = DatabaseSession()) {
+        self.session = session
+    }
     
     // MARK: - Methodes
-    
     // Username Manager
     
     func displayUsername(callback: @escaping (String) -> Void) {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
-        
         ref.child("users").child(userID!).observeSingleEvent(of: .value) { snapshot in
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
@@ -43,6 +47,7 @@ class DatabaseService {
     // Tool Manager
     
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)? ) {
+
         db.collection("tools").addDocument(data: [
             "name": name,
             "localisation": localisation,
@@ -60,27 +65,26 @@ class DatabaseService {
     }
     
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
-        
         var tools = [ToolData]()
-        db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let dict = document.data()
-                    let tool = ToolData(description: dict["description"] as? String,
-                                        docId: document.documentID,
-                                        name: dict["name"] as! String,
-                                        postalCode: dict["localisation"] as! String,
-                                        price: dict["price"] as! String,
-                                        lender: dict["lender"] as! String,
-                                        imageLink: dict["imageLink"] as? String,
-                                        town: dict["town"] as! String)
-                    tools.append(tool)
+            db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let dict = document.data()
+                        let tool = ToolData(description: dict["description"] as? String,
+                                            docId: document.documentID,
+                                            name: dict["name"] as! String,
+                                            postalCode: dict["localisation"] as! String,
+                                            price: dict["price"] as! String,
+                                            lender: dict["lender"] as! String,
+                                            imageLink: dict["imageLink"] as? String,
+                                            town: dict["town"] as! String)
+                        tools.append(tool)
+                    }
+                    callback(tools)
                 }
-                callback(tools)
-            }
-        })
+            })
     }
     
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {

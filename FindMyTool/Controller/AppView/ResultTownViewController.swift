@@ -53,7 +53,7 @@ class ResultTownViewController: UIViewController {
                 case .success(let towns):
                     self?.townList = towns
                     self?.townTableView.reloadData()
-                case .failure(let error):
+                case .failure(_):
                     self?.showAlert(message: "Merci de bien vouloir entrer un code postal correct et existant (exemple: 74160)")
                 }
             }

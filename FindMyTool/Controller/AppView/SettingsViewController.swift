@@ -32,6 +32,13 @@ class SettingsViewController: UIViewController {
         self.present(logInViewController, animated: true)
     }
     
+    @IBAction func contactSupportButton(_ sender: Any) {
+        
+        // ToDo : Redirige vers la boîte e-mail de l'utilisateur
+        
+    }
+    
+    
     // MARK: - ViewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
