@@ -10,13 +10,21 @@ import MessageUI
 
 class ContactViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var userLender = ""
     var userRender = ""
     var nameTool = "motoculteur"
-    var authService = AuthService()
+    var databaseService: DatabaseService = DatabaseService()
+    
+    // MARK: - IBOulets & IBActions
     
     @IBAction func sendMessage(_ sender: UIButton) {
-        sendEmail(userLender: authService.fetchUserID() , tool: nameTool)
+        sendEmail(userLender: databaseService.fetchUserID() , tool: nameTool)
+    }
+    
+    @IBAction func eraseButtonPressed(_ sender: Any) {
+        messageTextView.text = ""
     }
     
     @IBOutlet weak var messageTextView: UITextView!

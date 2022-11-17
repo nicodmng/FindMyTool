@@ -11,7 +11,7 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let authService: AuthService = AuthService()
+
     private let authFirebase: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
@@ -25,12 +25,19 @@ class SettingsViewController: UIViewController {
     
     // IBActions
     @IBAction func logOutPressed(_ sender: UIButton) {
-        authService.logOut()
+        authFirebase.logOut()
         let storyboard = UIStoryboard(name: "LogIn", bundle: nil)
         let logInViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
         logInViewController.modalPresentationStyle = .fullScreen
         self.present(logInViewController, animated: true)
     }
+    
+    @IBAction func contactSupportButton(_ sender: Any) {
+        
+        // ToDo : Redirige vers la boîte e-mail de l'utilisateur
+        
+    }
+    
     
     // MARK: - ViewWillAppear
     
@@ -38,7 +45,7 @@ class SettingsViewController: UIViewController {
         authFirebase.displayUsername { username in
             self.usernameLabel.text = username
         }
-        self.userMail.text = authService.fetchUserEmail()
+        self.userMail.text = authFirebase.fetchUserEmail()
     }
     
     // MARK: - ViewDidLoad

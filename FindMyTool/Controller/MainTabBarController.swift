@@ -10,11 +10,11 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    private let authService: AuthService = AuthService()
+    private let auth: DatabaseService = DatabaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if authService.isUserConnected() == false {
+        if auth.isUserConnected() == false {
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "LogIn", bundle: nil)
                 let signInViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")

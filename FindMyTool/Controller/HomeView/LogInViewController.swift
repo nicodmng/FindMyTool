@@ -11,7 +11,7 @@ import FirebaseAuth
 class LogInViewController: UIViewController {
 
     // MARK: - Properties
-    let authService: AuthService = AuthService()
+    var databaseService: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
     // IBOutlets
@@ -46,7 +46,7 @@ class LogInViewController: UIViewController {
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //authService.isUserConnected()
+        databaseService.isUserConnected()
         setupButton()
         setupTextFieldManager()
     }

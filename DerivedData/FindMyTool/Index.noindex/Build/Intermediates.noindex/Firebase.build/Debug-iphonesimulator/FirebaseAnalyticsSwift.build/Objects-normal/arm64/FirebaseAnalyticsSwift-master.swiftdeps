@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "76be10f255d00231013efdbf80232eeef2dd96c1547d7b956381e5ecbb9e3b50"
+build_start_time: [1667561781, 787063121]
+build_end_time: [1667561783, 122534036]
+inputs:
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseAnalyticsSwift/Sources/Analytics+SwiftUI.swift"
+  : [1666086362, 987509250]

@@ -19,12 +19,17 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backAction()
+    }
+
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resultTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         resultTableView.delegate = self
+        resultTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +37,11 @@ class ResultViewController: UIViewController {
         self.resultTableView.reloadData()
     }
     
+    // MARK: - Methodes
+    
+    func backAction() -> Void {
+        self.dismiss(animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource

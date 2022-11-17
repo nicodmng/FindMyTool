@@ -1,0 +1,32 @@
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/CoreData/CoreDataStack.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/CoreData/CoreDataService.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/SearchViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/ResultViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/HomeView/LogInViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Extensions/View+cornerRadius.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/ResultTownViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Extensions/UIImage.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Services/FirebaseSession.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Tools/ToolData.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/SettingsViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Extensions/Generic.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/AppDelegate.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/MyToolsViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/AddToolViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/Favorites/FavoritesViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Postal\ Code/PostalCodeService.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/DetailsViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/SceneDelegate.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Tools/Tool.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/HomeView/SubscribeViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/MainTabBarController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Services/DatabaseService.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Postal\ Code/PostalCodeData.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/View/Cell/ToolsTableViewCell.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Extensions/Alert.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Services/AuthService.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Model/Error/NetworkError.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/FindMyTool/Controller/AppView/ContactViewController.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/DerivedData/FindMyTool/Index.noindex/Build/Intermediates.noindex/FindMyTool.build/Debug-iphonesimulator/FindMyTool.build/DerivedSources/CoreDataGenerated/FindMyTool/ToolEntity+CoreDataClass.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/DerivedData/FindMyTool/Index.noindex/Build/Intermediates.noindex/FindMyTool.build/Debug-iphonesimulator/FindMyTool.build/DerivedSources/CoreDataGenerated/FindMyTool/ToolEntity+CoreDataProperties.swift
+/Users/nicolasdemange/Desktop/P12_projet/FindMyTool/DerivedData/FindMyTool/Index.noindex/Build/Intermediates.noindex/FindMyTool.build/Debug-iphonesimulator/FindMyTool.build/DerivedSources/CoreDataGenerated/FindMyTool/FindMyTool+CoreDataModel.swift

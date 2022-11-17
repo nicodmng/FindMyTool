@@ -13,7 +13,7 @@ class MyToolsViewController: UIViewController {
     // MARK: - Properties
     
     private let databaseService: DatabaseService = DatabaseService()
-    private let authService: AuthService = AuthService()
+
     
     var tools = [ToolData]()
     
@@ -30,7 +30,6 @@ class MyToolsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         myToolsTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         myToolsTableView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDidAddNewTool), name: AddToolViewController.didAddNewTool, object: nil)
@@ -47,7 +46,7 @@ class MyToolsViewController: UIViewController {
     }
     
     func fetchTools() {
-        databaseService.fetchTools(render: authService.fetchUserID()) { tools in
+        databaseService.fetchTools(render: databaseService.fetchUserID()) { tools in
             self.tools = tools
             self.myToolsTableView.reloadData()
         }
@@ -71,10 +70,10 @@ extension MyToolsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let id = tools[indexPath.row].docId
-            let image = tools[indexPath.row].imagePath
+            _ = tools[indexPath.row].imagePath
 
             databaseService.deleteToolFromDB(id: id)
-            databaseService.deleteImageFromDB(toolImage: image ?? "")
+            // databaseService.deleteImageFromDB(toolImage: image ?? "")
             
             tools.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -87,7 +86,7 @@ extension MyToolsViewController: UITableViewDataSource {
 extension MyToolsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let messageForUser = UILabel()
-        messageForUser.text = "Aucun outil dans la liste"
+        messageForUser.text = "Votre liste d'outil est vide."
         messageForUser.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         messageForUser.textAlignment = .center
         messageForUser.textColor = .darkGray

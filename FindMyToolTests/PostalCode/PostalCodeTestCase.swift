@@ -20,7 +20,7 @@ final class PostalCodeTestCase: XCTestCase {
 
     // MARK: - Tests
     func testsGetPostalCode_WhenFakeSessionWithErrorIsPassed_ThenShouldReturnAnError() {
-        URLProtocolFake.fakeURLs = [FakeResponseDataExchange.url: (nil, nil, FakeResponseDataExchange.error)]
+        URLProtocolFake.fakeURLs = [FakeResponseDataPostalCode.url: (nil, nil, FakeResponseDataPostalCode.error)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
         let sut: CPService = .init(session: fakeSession)
         
@@ -37,7 +37,7 @@ final class PostalCodeTestCase: XCTestCase {
     }
     
     func testsGetPostalCode_WhenFakeSessionWithCorrectDataAndInvalidResponseArePassed_ThenShouldReturnAnError() {
-        URLProtocolFake.fakeURLs = [FakeResponseDataExchange.url: (FakeResponseDataExchange.exchangeCorrectData, FakeResponseDataExchange.responseKO, nil)]
+        URLProtocolFake.fakeURLs = [FakeResponseDataPostalCode.url: (FakeResponseDataPostalCode.exchangeCorrectData, FakeResponseDataPostalCode.responseKO, nil)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
         let sut: CPService = .init(session: fakeSession)
         
@@ -54,7 +54,7 @@ final class PostalCodeTestCase: XCTestCase {
     }
     
     func testsGetPostalCode_WhenFakeSessionWithIncorrectDataAndValidResponseArePassed_ThenShouldReturnAnError() {
-        URLProtocolFake.fakeURLs = [FakeResponseDataExchange.url: (FakeResponseDataExchange.exchangeIncorrectData, FakeResponseDataExchange.responseOK, nil)]
+        URLProtocolFake.fakeURLs = [FakeResponseDataPostalCode.url: (FakeResponseDataPostalCode.postalCodeIncorrectData, FakeResponseDataPostalCode.responseOK, nil)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
         let sut: CPService = .init(session: fakeSession)
         
@@ -72,7 +72,7 @@ final class PostalCodeTestCase: XCTestCase {
     
     
     func testsGetExchange_WhenFakeSessionWithCorrectDataAndValidResponseArePassed_ThenShouldACorrectConvertion() {
-        URLProtocolFake.fakeURLs = [FakeResponseDataExchange.url: (FakeResponseDataExchange.exchangeCorrectData, FakeResponseDataExchange.responseOK, nil)]
+        URLProtocolFake.fakeURLs = [FakeResponseDataPostalCode.url: (FakeResponseDataPostalCode.exchangeCorrectData, FakeResponseDataPostalCode.responseOK, nil)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
         let sut: CPService = .init(session: fakeSession)
         

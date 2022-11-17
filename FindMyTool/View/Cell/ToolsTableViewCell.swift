@@ -23,7 +23,6 @@ class ToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var CPToolLabel: UILabel!
     @IBOutlet weak var localisationToolLabel: UILabel!
     
-    
     // MARK: - Properties
     var toolFromCell: ToolData? {
         didSet {
@@ -33,6 +32,17 @@ class ToolsTableViewCell: UITableViewCell {
             localisationToolLabel.text = toolFromCell?.town
             
             guard let urlTool = URL(string: toolFromCell?.imageLink ?? "") else { return }
+            toolImageView.load(url: urlTool)
+        }
+    }
+    
+    var toolEntity: ToolEntity? {
+        didSet {
+            titleToolLabel.text = toolEntity?.name
+            priceToolLabel.text = (toolEntity?.price ?? "") + " € / jour"
+            localisationToolLabel.text = toolEntity?.town
+            CPToolLabel.text = toolEntity?.postalCode
+            guard let urlTool = URL(string: toolEntity?.image ?? "") else { return }
             toolImageView.load(url: urlTool)
         }
     }

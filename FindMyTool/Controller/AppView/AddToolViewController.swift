@@ -7,21 +7,25 @@
 
 import UIKit
 
-class AddToolViewController: UIViewController {
-    
+class AddToolViewController: UIViewController, ResultTownViewControllerDelegate {
+
     // MARK: - Properties
     
     private let databaseService: DatabaseService = DatabaseService()
-    private let authService: AuthService = AuthService()
-    private let imagePickerController = UIImagePickerController()
     
+
+    private let imagePickerController = UIImagePickerController()
     static let didAddNewTool: Notification.Name = .init("AddToolViewController.didAddNewTool")
     
-    var serviceCP = CPService()
+    let databaseSession = DatabaseSession()
     
+    var codePostal: String = ""
+    var town: String = ""
+    
+    var passedDescription: String?
+    var serviceCP = CPService()
     var uidRender: String?
     var uidLender: String?
-    
     var imageLink: String?
     var imageLocalUrl: URL? {
         didSet {
@@ -29,7 +33,6 @@ class AddToolViewController: UIViewController {
         }
     }
     var imagePath: String?
-    
     var nameTool = ""
     let name = [
                 "Boîte à outils",
@@ -40,49 +43,32 @@ class AddToolViewController: UIViewController {
                 "Tondeuse à gazon",
                 "Taille-haie",
                 "Motoculteur"]
+
+    // MARK: - Initializer
+    
+    
     
     // MARK: - IBOutlet & IBAction
     
     @IBOutlet weak var toolsPickerView: UIPickerView!
-    
     @IBOutlet weak var priceTextField: UITextField!
-
     @IBOutlet weak var townLabel: UILabel!
-    @IBOutlet weak var CpLabel: UILabel!
-    
+    @IBOutlet weak var cpLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBAction func descriptionToolButtonPressed(_ sender: Any) {
+        openDescriptionPresentModally()
+    }
     
     @IBAction func addImageButton(_ sender: UIButton) {
         showPopUp()
     }
     
     @IBAction func addToolButton(_ sender: UIButton) {
-        
-        self.databaseService.uploadImageToStorage(imageLocalUrl: self.imageLocalUrl!, completion: {
-            
-            self.self.databaseService.addToolInDatabase(name: self.nameTool,
-                                                        localisation: self.CpLabel.text ?? "",
-                                                        description: self.descriptionTextView.text ?? "",
-                                                        price: self.priceTextField.text ?? "",
-                                                        town: self.townLabel.text ?? "",
-                                                        imageLink: self.databaseService.imageURL ?? "",
-                                                        imagePath: self.imagePath ?? "",
-                                                        render: self.fetchUserID(),
-                                                        lender: self.uidLender ?? "",
-                                              isAvailable: true) { error in
-                if error == nil {
-                    self.dismiss(animated: true)
-                    NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
-                } else {
-                    self.showAlert(message: "Votre outil n'a pas été correctement sauvegardé")
-                }
-            }
-            self.authService.getDocumentID()
-            
+        self.databaseSession.uploadImageToStorage(imageLocalUrl: self.imageLocalUrl!, completion: {
+            self.addTool()
+            self.databaseService.getDocumentID()
         })
-        
-        
     }
     
     // MARK: - ViewDidLoad
@@ -90,6 +76,7 @@ class AddToolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        priceTextField.inputAccessoryView = toolBar()
     }
     
     // MARK: - ViewWillAppear
@@ -98,14 +85,60 @@ class AddToolViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    
     // MARK: - Methodes
+    
+    func addTool() {
+        self.databaseSession.addToolInDatabase(name: self.nameTool,
+                                                    localisation: self.cpLabel.text ?? "",
+                                                    description: self.descriptionTextView.text ?? "",
+                                                    price: self.priceTextField.text ?? "",
+                                                    town: self.townLabel.text ?? "",
+                                                    imageLink: self.databaseSession.imageURL ?? "",
+                                                    imagePath: self.imagePath ?? "",
+                                                    render: self.fetchUserID(),
+                                                    lender: self.uidLender ?? "",
+                                          isAvailable: true) { error in
+            if error == nil {
+                self.dismiss(animated: true)
+                NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
+            } else {
+                self.showAlert(message: "Votre outil n'a pas été correctement sauvegardé")
+            }
+        }
+    }
+    
+    func didSelectTown(town: String, postalCode: String) {
+        townLabel.text = town
+        self.town = town
+        self.cpLabel.text = postalCode
+        self.codePostal = postalCode
+    }
     
     func fetchUserID() -> String {
         var userID = ""
-        authService.getUserId { uid in
+        databaseService.getUserId { uid in
             userID = uid
         }
         return userID
+    }
+    
+    func openDescriptionPresentModally() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let descriptionToolViewController = storyboard.instantiateViewController(withIdentifier: "DescriptionToolViewController") as! DescriptionToolViewController
+        
+        descriptionToolViewController.delegate = self
+        descriptionToolViewController.text = descriptionTextView.text
+        
+        if let presentationController = descriptionToolViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        self.present(descriptionToolViewController, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultTownViewController = segue.destination as? ResultTownViewController
+        resultTownViewController?.delegate = self
     }
     
     // MARK: - Alert Controller for "Photo Library", "Camera" or "Cancel" selection
@@ -159,9 +192,16 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             self.imageLocalUrl = url
-            // file: // blablabla
             }
         imagePickerController.dismiss(animated: true)
+    }
+    
+}
+
+extension AddToolViewController: DescriptionToolViewControllerDelegate {
+    
+    func didChangeText(controller: DescriptionToolViewController, text: String) {
+        descriptionTextView.text = text
     }
     
 }

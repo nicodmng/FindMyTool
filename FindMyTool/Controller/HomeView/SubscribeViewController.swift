@@ -85,7 +85,6 @@ class SubscribeViewController: UIViewController {
     }
     
 }
-// End of class
 
 // MARK: - Extensions
 extension SubscribeViewController: UITextFieldDelegate {
@@ -95,4 +94,3 @@ extension SubscribeViewController: UITextFieldDelegate {
     }
     
 }
-// End of extension

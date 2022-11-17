@@ -124,7 +124,7 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let _ = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
         
         toolLabel.text = name[row]

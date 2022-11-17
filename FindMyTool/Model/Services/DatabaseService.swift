@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import FirebaseCore
 import Firebase
 import FirebaseDatabase
@@ -16,144 +15,87 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 
 class DatabaseService {
-    
+
     // MARK: - Properties
     
-    let db = Firestore.firestore()
-    var town: String = ""
+    let session: APISession
     var imageURL: String?
-    var imageName: String?
-
     
-    // MARK: - Methodes
+    // MARK: - Initializer
     
-    // Username Manager
-    
-    func displayUsername(callback: @escaping (String) -> Void) {
-        let ref = Database.database().reference()
-        let userID = Auth.auth().currentUser?.uid
-        
-        ref.child("users").child(userID!).observeSingleEvent(of: .value) { snapshot in
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            callback(username)
-        }
+    init(session: APISession = DatabaseSession()) {
+        self.session = session
     }
     
+    // MARK: - Methodes
     // Tool Manager
     
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)? ) {
-        db.collection("tools").addDocument(data: [
-            "name": name,
-            "localisation": localisation,
-            "description": description,
-            "price": price,
-            "town": town,
-            "imageLink": imageLink,
-            "imagePath": imagePath,
-            "render": render,
-            "lender": lender as Any,
-            "isAvailable": isAvailable
-        ]) { error in
-            completion?(error)
-        }
+        session.addToolInDatabase(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, imagePath: imagePath, render: render, lender: lender, isAvailable: isAvailable, completion: completion)
     }
     
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
-        
-        var tools = [ToolData]()
-        db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let dict = document.data()
-                    let tool = ToolData(description: dict["description"] as? String,
-                                        docId: document.documentID,
-                                        name: dict["name"] as! String,
-                                        postalCode: dict["localisation"] as! String,
-                                        price: dict["price"] as! String,
-                                        lender: dict["lender"] as! String,
-                                        imageLink: dict["imageLink"] as? String,
-                                        town: dict["town"] as! String)
-                    tools.append(tool)
-                }
-                callback(tools)
-            }
-        })
+        session.fetchTools(render: render, callback: callback)
     }
     
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
-        var tools = [ToolData]()
-        
-        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let dict = document.data()
-                        let tool = ToolData(description: dict["description"] as? String,
-                                            docId: document.documentID, name: dict["name"] as! String,
-                                            postalCode: dict["localisation"] as! String,
-                                            price: dict["price"] as! String,
-                                            lender: dict["lender"] as! String,
-                                            imageLink: dict["imageLink"] as? String,
-                                            town: dict["town"] as! String)
-                        tools.append(tool)
-                    }
-                    callback(tools)
-                }
-            }
+        session.findToolsFromDB(nameTool: nameTool, toolCP: toolCP, callback: callback)
     }
     
     func deleteToolFromDB(id: String) {
-        db.collection("tools").document(id).delete() { err in
-            if let err = err {
-                print("Error removing document: \(err) ")
-            } else {
-                print("Document successfully removed!")
-            }
-        }
+        session.deleteToolFromDB(id: id)
     }
     
     // Image Manager
     
-    func deleteImageFromDB(toolImage: String) {
-        let storeRef = Storage.storage()
-        let imageRef = storeRef.reference().child(toolImage)
-        
-        imageRef.delete { error in
-            if let error = error {
-                print("Oups \(error.localizedDescription)")
-            } else {
-                print("Image deleted !")
-            }
-        }
-    }
-    
     func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void ) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let path = "images/\(UUID().uuidString)"
-        let imageRef = storageRef.child(path)
-        
-        imageRef.putFile(from: imageLocalUrl, metadata: nil) { metadata, error in
-            guard metadata != nil else {
-                completion()
-                return
-            }
-            
-            imageRef.downloadURL { url, error in
-                guard url != nil else {return}
-                let urlString: String = url?.absoluteString ?? "no url"
-                self.imageURL = urlString
-                print(self.imageURL ?? "")
-                completion()
-            }
-        }
+        session.uploadImageToStorage(imageLocalUrl: imageLocalUrl, completion: completion)
     }
-
-}
     
+    // Authentification
+    
+    func displayUsername(callback: @escaping (String) -> Void) {
+        session.displayUsername(callback: callback)
+    }
+    
+    func logOut() {
+        session.logOut()
+    }
+    
+    func isUserConnected() -> Bool {
+        session.isUserConnected()
+    }
+    
+    func getDocumentID() {
+        session.getDocumentID()
+    }
+    
+    func getUserId(callback: @escaping (String) -> Void) {
+        session.getUserId(callback: callback)
+    }
+    
+    @discardableResult func fetchUserID() -> String {
+        session.fetchUserID()
+    }
+    
+    func getUserEmail(callback: @escaping (String) -> Void) {
+        session.getUserEmail(callback: callback)
+    }
+    
+    func fetchUserEmail() -> String {
+        session.fetchUserEmail()
+    }
+}
 
+//    func deleteImageFromDB(toolImage: String) {
+//        let storeRef = Storage.storage()
+//        let imageRef = storeRef.reference().child(toolImage)
+//
+//        imageRef.delete { error in
+//            if let error = error {
+//                print("Oups \(error.localizedDescription)")
+//            } else {
+//                print("Image deleted !")
+//            }
+//        }
+//    }

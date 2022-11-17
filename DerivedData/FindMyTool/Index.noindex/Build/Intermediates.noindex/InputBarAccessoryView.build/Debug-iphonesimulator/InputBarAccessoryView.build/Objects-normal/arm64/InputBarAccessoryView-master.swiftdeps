@@ -1,0 +1,73 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "9db6ac18e6fcc8f728ede869ec78e77bd521906814d2f345c5b46cefdffac447"
+build_start_time: [1667561780, 280869960]
+build_end_time: [1667561782, 794198989]
+inputs:
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Controls/InputBarButtonItem.swift"
+  : [1666086398, 375803470]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Controls/InputBarSendButton.swift"
+  : [1666086398, 375881195]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Extensions/NSMutableAttributedString+Extensions.swift"
+  : [1666086398, 375996589]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Extensions/NSNotification+Extensions.swift"
+  : [1666086398, 376065731]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Extensions/String+Extensions.swift"
+  : [1666086398, 376139163]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Extensions/UITextView+Extensions.swift"
+  : [1666086398, 376330375]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Extensions/UIView+AutoLayout.swift"
+  : [1666086398, 376449823]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/InputBarAccessoryView.swift"
+  : [1666086398, 376631736]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/KeyboardManager/KeyboardEvent.swift"
+  : [1666086398, 376769542]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/KeyboardManager/KeyboardManager.swift"
+  : [1666086398, 376886844]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/KeyboardManager/KeyboardNotification.swift"
+  : [1666086398, 376996994]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Models/HorizontalEdgePadding.swift"
+  : [1666086398, 377123355]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Models/NSConstraintLayoutSet.swift"
+  : [1666086398, 377201318]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/AttachmentManager.swift"
+  : [1666086398, 377382993]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/Protocols/AttachmentManagerDataSource.swift"
+  : [1666086398, 377515792]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/Protocols/AttachmentManagerDelegate.swift"
+  : [1666086398, 377592325]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/Views/AttachmentCell.swift"
+  : [1666086398, 377741336]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/Views/AttachmentsView.swift"
+  : [1666086398, 377818107]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AttachmentManager/Views/ImageAttachmentCell.swift"
+  : [1666086398, 377890586]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/AutocompleteManager.swift"
+  : [1666086398, 378073215]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Models/AutocompleteCompletion.swift"
+  : [1666086398, 378303289]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Models/AutocompleteSession.swift"
+  : [1666086398, 378384113]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Protocols/AutocompleteManagerDataSource.swift"
+  : [1666086398, 378571033]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Protocols/AutocompleteManagerDelegate.swift"
+  : [1666086398, 378695011]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Views/AutocompleteCell.swift"
+  : [1666086398, 378879070]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Plugins/AutocompleteManager/Views/AutocompleteTableView.swift"
+  : [1666086398, 378979682]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Protocols/InputBarAccessoryViewDelegate.swift"
+  : [1666086398, 379119634]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Protocols/InputItem.swift"
+  : [1666086398, 379258155]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Protocols/InputPlugin.swift"
+  : [1666086398, 379384040]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Supporting/InputBarAccessoryView+Availability.swift"
+  : [1666086398, 379661083]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/ViewControllers/InputBarViewController.swift"
+  : [1666086398, 379955530]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Views/InputStackView.swift"
+  : [1666086398, 380141019]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Views/InputTextView.swift"
+  : [1666086398, 380319595]
+  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/InputBarAccessoryView/Sources/Views/SeparatorLine.swift"
+  : [1666086398, 380462408]

@@ -25,12 +25,9 @@ class ResultTownViewController: UIViewController {
     // MARK: - IBOutlets & IBActions
     
     @IBOutlet weak var postalCodeTextField: UITextField!
-    
     @IBOutlet weak var townTableView: UITableView!
-    
     @IBAction func getTownButton(_ sender: UIButton) {
         fetchPostalCode()
-        // Retirer clavier
     }
     
     // MARK: - ViewDidLoad
@@ -38,6 +35,7 @@ class ResultTownViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         townTableView.delegate = self
+        postalCodeTextField.inputAccessoryView = toolBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +51,7 @@ class ResultTownViewController: UIViewController {
                 case .success(let towns):
                     self?.townList = towns
                     self?.townTableView.reloadData()
-                case .failure(let error):
+                case .failure(_):
                     self?.showAlert(message: "Merci de bien vouloir entrer un code postal correct et existant (exemple: 74160)")
                 }
             }
@@ -83,3 +81,4 @@ extension ResultTownViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
