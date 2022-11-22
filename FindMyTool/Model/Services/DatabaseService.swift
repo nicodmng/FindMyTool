@@ -34,6 +34,18 @@ class DatabaseService {
         session.addToolInDatabase(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, imagePath: imagePath, render: render, lender: lender, isAvailable: isAvailable, completion: completion)
     }
     
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
+        session.addToolInFavorite(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, render: render, toolId: toolId, callback: callback)
+    }
+    
+    func fetchFavoriteTool(render: String, callback: @escaping ([FavoriteToolData]) -> Void) {
+        session.fetchFavoriteTool(render: render, callback: callback)
+    }
+    
+    func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void)  {
+        session.isFavoriteTool(toolId: toolId, callback: callback)
+    }
+    
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
         session.fetchTools(render: render, callback: callback)
     }
@@ -45,6 +57,8 @@ class DatabaseService {
     func deleteToolFromDB(id: String) {
         session.deleteToolFromDB(id: id)
     }
+    
+
     
     // Image Manager
     

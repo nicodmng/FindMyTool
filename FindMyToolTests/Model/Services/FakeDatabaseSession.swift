@@ -10,6 +10,24 @@ import Firebase
 @testable import FindMyTool
 
 final class FakeDatabaseSession: APISession {
+    
+    
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
+        <#code#>
+    }
+    
+    func fetchFavoriteTool(render: String, callback: @escaping ([FindMyTool.FavoriteToolData]) -> Void) {
+        <#code#>
+    }
+    
+    func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
+        <#code#>
+    }
+    
+    func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void) {
+        <#code#>
+    }
+    
 
     enum DatabaseAction {
         case saved, notSaved

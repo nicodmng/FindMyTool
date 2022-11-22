@@ -26,6 +26,21 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButtonPressed(_ sender: Any) {
+        logIn()
+    }
+    
+    // MARK: - ViewDidLoad & ViewDidAppear
+    // viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        databaseService.isUserConnected()
+        setupButton()
+        setupTextFieldManager()
+    }
+    
+    // MARK: - Private functions
+    
+    private func logIn() {
         if usernameTextField.text != "" && passwordTextField.text != "" {
             Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (authResult, error) in
                 if error != nil {
@@ -42,16 +57,6 @@ class LogInViewController: UIViewController {
         }
     }
     
-    // MARK: - ViewDidLoad & ViewDidAppear
-    // viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        databaseService.isUserConnected()
-        setupButton()
-        setupTextFieldManager()
-    }
-    
-    // MARK: - Private functions
     private func setupButton() {
         logInButton.layer.cornerRadius = 10
     }
@@ -71,7 +76,6 @@ class LogInViewController: UIViewController {
     }
     
 }
-// End of class
 
     // MARK: - Extensions
     extension LogInViewController: UITextFieldDelegate {

@@ -62,7 +62,7 @@ extension ResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tool = tools[indexPath.row]
         
-        self.tool = Tool(name: tool.name, price: tool.price, town: tool.town, imageLink: tool.imageLink, postalCode: tool.postalCode, description: tool.description)
+        self.tool = Tool(name: tool.name, price: tool.price, town: tool.town, imageLink: tool.imageLink, postalCode: tool.postalCode, description: tool.description, toolId: tool.toolId ?? "", docId: tool.docId ?? "")
         
         performSegue(withIdentifier: "segueToDetails", sender: nil)
     }

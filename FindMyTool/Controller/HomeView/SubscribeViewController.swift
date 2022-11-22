@@ -71,6 +71,7 @@ class SubscribeViewController: UIViewController {
                     ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])
                     self.showInformation(message: "Merci \(self.usernameSubTextField.text ?? ""). Votre compte a bien été enregistré.")
                 }
+                
             }
         } else {
             showAlert(message: "Merci de remplir tous les champs.")

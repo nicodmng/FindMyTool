@@ -16,13 +16,25 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     let dataBaseService = DatabaseService()
     var nameTool = ""
     let name = [
-                "Boîte à outils",
-                "Marteau-piqueur",
-                "Outils de jardinage",
-                "Scie",
-                "Tondeuse à gazon",
-                "Taille-haie",
-                "Motoculteur"
+        "Aspirateur",
+        "Boîte à outils",
+        "Marteau-piqueur",
+        "Motobineuse",
+        "Motoculteur",
+        "Outils de jardinage",
+        "Perceuse manuelle",
+        "Perceuse à percussion",
+        "Perceuse sans fil",
+        "Perforateur",
+        "Pince monseigneur",
+        "Ponceuse électrique",
+        "Rallonge électrique",
+        "Scie",
+        "Scie cloche",
+        "Scie sauteuse",
+        "Taille-haie",
+        "Tondeuse à gazon",
+        "Tronçonneuse",
     ]
     
     var codePostal: String = ""
@@ -56,7 +68,7 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
         self.tabBarController?.navigationItem.hidesBackButton = true
     }
     
-     //MARK: - UIStoryboardSegue
+    //MARK: - UIStoryboardSegue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let resultTownViewController = segue.destination as? ResultTownViewController
@@ -69,7 +81,7 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
     }
     
     // MARK: - Functions
-
+    
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
         
@@ -79,7 +91,7 @@ class SearchViewController: UIViewController, ResultTownViewControllerDelegate {
             } else {
                 for document in querySnapshot!.documents {
                     let dict = document.data()
-                    let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, imageLink: dict["imageLink"] as! String, town: dict["town"] as! String)
+                    let tool = ToolData(description: dict["description"] as? String, docId: document.documentID, name: dict["name"] as! String, postalCode: dict["localisation"] as! String, price: dict["price"] as! String, lender: dict["lender"] as! String, imageLink: dict["imageLink"] as? String, town: dict["town"] as! String, toolId: document.documentID)
                     tools.append(tool)
                 }
                 callback(tools)

@@ -13,8 +13,6 @@ class MyToolsViewController: UIViewController {
     // MARK: - Properties
     
     private let databaseService: DatabaseService = DatabaseService()
-
-    
     var tools = [ToolData]()
     
     // MARK: - IBOutlets & IBActions

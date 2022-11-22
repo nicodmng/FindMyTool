@@ -16,11 +16,12 @@ class ContactViewController: UIViewController {
     var userRender = ""
     var nameTool = "motoculteur"
     var databaseService: DatabaseService = DatabaseService()
+    var databaseSession: DatabaseSession = DatabaseSession()
     
     // MARK: - IBOulets & IBActions
     
     @IBAction func sendMessage(_ sender: UIButton) {
-        sendEmail(userLender: databaseService.fetchUserID() , tool: nameTool)
+        sendEmail(userLender: databaseSession.fetchUsername())
     }
     
     @IBAction func eraseButtonPressed(_ sender: Any) {
@@ -44,12 +45,12 @@ class ContactViewController: UIViewController {
 
 extension ContactViewController: MFMailComposeViewControllerDelegate {
     
-    func sendEmail(userLender: String, tool: String) {
+    func sendEmail(userLender: String) {
         guard MFMailComposeViewController.canSendMail() else { return }
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = self
         mail.setToRecipients(["nicolas.demange@yahoo.fr"])
-        mail.setSubject("\(userLender) aimerait louer votre \(tool)")
+        mail.setSubject("\(userLender) aimerait louer votre outil !")
         mail.setMessageBody("\(String(describing: messageTextView.text ?? ""))", isHTML: false)
         present(mail, animated: true)
     }
