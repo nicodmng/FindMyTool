@@ -12,19 +12,30 @@ class DetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var tool: Tool?
-//    var coreDataService: CoreDataService?
+    var tool: Tool!
+    let databaseSession = DatabaseSession()
     
     var favoriteImage: UIImage {
         return UIImage(systemName: "star.fill")!
     }
-    
     var unfavoriteImage: UIImage {
         return UIImage(systemName: "star")!
+    }
+    var toolIsFavorite: Bool? {
+        didSet {
+            guard let toolIsFavorite else { return }
+
+            if toolIsFavorite {
+                self.favoriteButton.setBackgroundImage(self.favoriteImage, for: .normal)
+            } else {
+                self.favoriteButton.setBackgroundImage(self.unfavoriteImage, for: .normal)
+            }
+        }
     }
     
     // MARK: - IBOutlets & IBActions
     
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var toolImage: UIImageView!
     @IBOutlet weak var nameToolLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -32,10 +43,29 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var postalCodeLabel: UILabel!
     @IBOutlet weak var idRenderLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBAction func favoriteButtonPressed(_ sender: Any) {
-//        addToFavorites()
+        guard let toolIsFavorite else { return }
+
+        let tappedButton = sender as? UIButton
+        tappedButton?.isEnabled = false
+        
+        if toolIsFavorite {
+            databaseSession.deleteFavoriteTool(docID: tool.docId ?? "") { status in
+                if status {
+                    tappedButton?.isEnabled = true
+                    self.toolIsFavorite?.toggle()
+                }
+            }
+        } else {
+            databaseSession.addToolInFavorite(name: tool?.name ?? "", localisation: tool?.postalCode ?? "", description: tool?.description ?? "", price: tool?.price ?? "", town: tool?.town ?? "", imageLink: tool?.imageLink ?? "", render: databaseSession.fetchUserID(), toolId: tool.toolId!) { error in
+                tappedButton?.isEnabled = true
+                if error == nil {
+                    self.toolIsFavorite?.toggle()
+                }
+            }
+        }
     }
     
     @IBAction func contactButton(_ sender: UIButton) {
@@ -44,7 +74,6 @@ class DetailsViewController: UIViewController {
     
     @IBAction func cancelButton(_ sender: UIButton) {
         dismiss(animated: true)
-        
     }
     
     // MARK: - View Lifecycle
@@ -52,35 +81,31 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        let coreDataStack = appDelegate.coreDataStack
-//        coreDataService = CoreDataService(coreDataStack: coreDataStack)
-        
+        self.activityIndicator.startAnimating()
         displayDetails()
+        
+        favoriteButton.isHidden = true
+
+        databaseSession.isFavoriteTool(toolId: tool.toolId!) { isFavorite in
+            self.toolIsFavorite = isFavorite
+            self.favoriteButton.isHidden = false
+            if isFavorite {
+                self.favoriteButton.setBackgroundImage(self.favoriteImage, for: .normal)
+            } else {
+                self.favoriteButton.setBackgroundImage(self.unfavoriteImage, for: .normal)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
-    
     
     // MARK: - Methods
     
-//    func addToFavorites() {
-//        guard let tool = tool else { return }
-//        guard let coreDataService = coreDataService else { return }
-//
-//        if coreDataService.isToolRegistered(name: tool.name) {
-//            coreDataService.deleteTool(name: tool.name)
-//        } else {
-//            coreDataService.createFavoriteTool(tool: tool)
-//        }
-//    }
-    
     func displayDetails() {
         nameToolLabel.text = tool?.name
-        priceLabel.text = tool?.price
+        priceLabel.text = (tool?.price ?? "") + " € / jour"
         descriptionTextView.text = tool?.description
         townLabel.text = tool?.town
         postalCodeLabel.text = tool?.postalCode

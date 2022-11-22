@@ -1,5 +1,5 @@
 //
-//  Generic.swift
+//  URLSession.swift
 //  FindMyTool
 //
 //  Created by Nicolas Demange on 02/09/2022.

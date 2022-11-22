@@ -14,7 +14,6 @@ protocol DescriptionToolViewControllerDelegate: AnyObject {
 
 class DescriptionToolViewController: UIViewController {
     
-    let addToolVC = AddToolViewController()
     weak var delegate: DescriptionToolViewControllerDelegate?
     var text: String?
     
@@ -33,10 +32,10 @@ class DescriptionToolViewController: UIViewController {
     
     @IBAction func validateButtonPressed(_ sender: UIButton) {
         delegate?.didChangeText(controller: self, text: descriptionToolTextView.text)
-        dismissVC()
+        dismissViewController()
     }
 
-    func dismissVC() {
+    func dismissViewController() {
         self.dismiss(animated: true)
     }
     

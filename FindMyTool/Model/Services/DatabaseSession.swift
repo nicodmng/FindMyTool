@@ -13,10 +13,8 @@ import FirebaseStorage
 
 final class DatabaseSession: APISession {
 
-    
-
-    
     // MARK: - Properties
+    
     var db = Firestore.firestore()
     var town: String = ""
     var imageURL: String?
@@ -46,6 +44,30 @@ final class DatabaseSession: APISession {
         })
     }
     
+    func fetchFavoriteTool(render: String, callback: @escaping ([FavoriteToolData]) -> Void) {
+        db.collection("favorites").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                var favoritesTools = [FavoriteToolData]()
+                for document in querySnapshot!.documents {
+                    let dict = document.data()
+                    let favoriteTool = FavoriteToolData(description: dict["description"] as? String,
+                                                docId: document.documentID,
+                                                name: dict["name"] as! String,
+                                                localisation: dict["localisation"] as! String,
+                                                price: dict["price"] as! String,
+                                                imageLink: dict["imageLink"] as? String,
+                                                town: dict["town"] as! String,
+                                                render: dict["render"] as! String,
+                                                toolId: dict["toolId"] as? String)
+                    favoritesTools.append(favoriteTool)
+                }
+                callback(favoritesTools)
+            }
+        })
+    }
+    
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)?) {
         db.collection("tools").addDocument(data: [
             "name": name,
@@ -63,28 +85,46 @@ final class DatabaseSession: APISession {
         }
     }
     
-    func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
-        var tools = [ToolData]()
-        
-        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let dict = document.data()
-                        let tool = ToolData(description: dict["description"] as? String,
-                                            docId: document.documentID, name: dict["name"] as! String,
-                                            postalCode: dict["localisation"] as! String,
-                                            price: dict["price"] as! String,
-                                            lender: dict["lender"] as! String,
-                                            imageLink: dict["imageLink"] as? String,
-                                            town: dict["town"] as! String)
-                        tools.append(tool)
-                    }
-                    callback(tools)
-                }
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
+        db.collection("favorites").addDocument(data:[
+            "name": name,
+            "localisation": localisation,
+            "description": description,
+            "price": price,
+            "town": town,
+            "imageLink": imageLink,
+            "render": render,
+            "toolId": toolId],
+            completion: callback)
+    }
+    
+    func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void) {
+        db.collection("favorites").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else {
+                callback(false)
+                return
             }
+            
+            let isFavorite = documents.contains(where: { document in
+                let ref = document.data()["toolId"] as? String
+                return ref == toolId
+            })
+            callback(isFavorite)
+        }
+    }
+    
+    func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
+        db.collection("favorites").getDocuments { qs, error in
+            let favoritesIdToDelete = qs?.documents.map({ doc in
+                self.db.collection("favorites").document(docID).delete() { error in
+                    if error == nil {
+                        callback(true)
+                    } else {
+                        callback(false)
+                    }
+                }
+            })
+        }
     }
     
     func deleteToolFromDB(id: String) {
@@ -95,6 +135,31 @@ final class DatabaseSession: APISession {
                 print("Document successfully removed!")
             }
         }
+    }
+    
+    func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
+        var tools = [ToolData]()
+        db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let dict = document.data()
+                        let tool = ToolData(description: dict["description"] as? String,
+                                            docId: document.documentID,
+                                            name: dict["name"] as! String,
+                                            postalCode: dict["localisation"] as! String,
+                                            price: dict["price"] as! String,
+                                            lender: dict["lender"] as! String,
+                                            imageLink: dict["imageLink"] as? String,
+                                            town: dict["town"] as! String,
+                                            toolId: document.documentID)
+                        tools.append(tool)
+                    }
+                    callback(tools)
+                }
+            }
     }
     
     func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void) {
@@ -120,6 +185,11 @@ final class DatabaseSession: APISession {
     }
     
     // Authentification
+    
+    func getToolId(callback: @escaping (String) -> Void) {
+        let toolId = db.collection("tools").document().documentID
+        callback(toolId)
+    }
     
     func displayUsername(callback: @escaping (String) -> Void) {
         let ref = Database.database().reference()
@@ -155,6 +225,39 @@ final class DatabaseSession: APISession {
         }
     }
     
+    func getFavoriteDocumentID() -> String {
+        var id = ""
+        let ref = Firestore.firestore().collection("favorites")
+        ref.getDocuments { querySnapshot, error in
+            if let querySnapshot = querySnapshot {
+                for document in querySnapshot.documents {
+                    id = document.documentID
+                }
+            }
+        }
+        return id
+    }
+    
+    // TODO : --->
+    
+    func getUsername(callback: @escaping (String) -> Void) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let username = user.displayName ?? ""
+            callback(username)
+        }
+    }
+    
+    func fetchUsername() -> String {
+        var user = ""
+        getUsername { username in
+            user = username
+        }
+        return user
+    }
+    
+    // <------
+    
     func getUserId(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -176,7 +279,6 @@ final class DatabaseSession: APISession {
         if let user = user {
             guard let email = user.email else { return }
             callback(email)
-            print(email)
         }
     }
     

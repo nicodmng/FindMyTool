@@ -13,7 +13,7 @@ extension UIViewController{
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
-        toolBar.barTintColor = UIColor.init(red: 240/255, green: 240/255, blue: 240/255, alpha: 1) //Write what you want for color
+        toolBar.barTintColor = UIColor.init(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         var buttonTitle = "OK"
         var cancelButtonTitle = "Annuler"

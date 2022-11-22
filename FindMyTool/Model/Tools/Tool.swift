@@ -14,22 +14,19 @@ struct Tool {
     let imageLink: String?
     let postalCode: String
     let description: String?
+    let toolId: String?
+    let docId: String?
 
-    init(name: String, price: String, town: String, imageLink: String?, postalCode: String, description: String?) {
+    init(name: String, price: String, town: String, imageLink: String?, postalCode: String, description: String?, toolId: String, docId: String) {
         self.name = name
         self.price = price
         self.town = town
         self.imageLink = imageLink
         self.postalCode = postalCode
         self.description = description
+        self.toolId = toolId
+        self.docId = docId
     }
     
-    init(entity: ToolEntity) {
-        self.name = entity.name ?? ""
-        self.price = entity.price ?? ""
-        self.town = entity.town ?? ""
-        self.postalCode = entity.postalCode ?? ""
-        self.description = entity.description
-        self.imageLink = entity.image ?? ""
-    }
 }
+

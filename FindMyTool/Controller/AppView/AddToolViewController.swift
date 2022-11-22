@@ -12,12 +12,10 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
     // MARK: - Properties
     
     private let databaseService: DatabaseService = DatabaseService()
-    
+    let databaseSession = DatabaseSession()
 
     private let imagePickerController = UIImagePickerController()
     static let didAddNewTool: Notification.Name = .init("AddToolViewController.didAddNewTool")
-    
-    let databaseSession = DatabaseSession()
     
     var codePostal: String = ""
     var town: String = ""
@@ -32,17 +30,30 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
             print("did set imageLocalUrl")
         }
     }
+    
     var imagePath: String?
     var nameTool = ""
     let name = [
+                "Aspirateur",
                 "Boîte à outils",
                 "Marteau-piqueur",
+                "Motobineuse",
                 "Motoculteur",
                 "Outils de jardinage",
+                "Perceuse manuelle",
+                "Perceuse à percussion",
+                "Perceuse sans fil",
+                "Perforateur",
+                "Pince monseigneur",
+                "Ponceuse électrique",
+                "Rallonge électrique",
                 "Scie",
-                "Tondeuse à gazon",
+                "Scie cloche",
+                "Scie sauteuse",
                 "Taille-haie",
-                "Motoculteur"]
+                "Tondeuse à gazon",
+                "Tronçonneuse",
+                ]
 
     // MARK: - Initializer
     
@@ -55,6 +66,7 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
     @IBOutlet weak var townLabel: UILabel!
     @IBOutlet weak var cpLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var previewImage: UIImageView!
     
     @IBAction func descriptionToolButtonPressed(_ sender: Any) {
         openDescriptionPresentModally()
@@ -98,7 +110,7 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
                                                     imagePath: self.imagePath ?? "",
                                                     render: self.fetchUserID(),
                                                     lender: self.uidLender ?? "",
-                                          isAvailable: true) { error in
+                                                    isAvailable: true) { error in
             if error == nil {
                 self.dismiss(animated: true)
                 NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
@@ -113,6 +125,14 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
         self.town = town
         self.cpLabel.text = postalCode
         self.codePostal = postalCode
+    }
+    
+    func fetchToolId() -> String {
+        var toolId = ""
+        databaseSession.getToolId { id in
+            toolId = id
+        }
+        return toolId
     }
     
     func fetchUserID() -> String {
@@ -183,6 +203,16 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         nameTool = name[row]
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let _ = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+        
+        toolLabel.text = name[row]
+        toolLabel.font = .boldSystemFont(ofSize: 25)
+        toolLabel.textColor = UIColor.white
+        return toolLabel
+    }
+    
 }
 
 // MARK: - Extensions
@@ -195,7 +225,6 @@ extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationCo
             }
         imagePickerController.dismiss(animated: true)
     }
-    
 }
 
 extension AddToolViewController: DescriptionToolViewControllerDelegate {
@@ -203,5 +232,4 @@ extension AddToolViewController: DescriptionToolViewControllerDelegate {
     func didChangeText(controller: DescriptionToolViewController, text: String) {
         descriptionTextView.text = text
     }
-    
 }

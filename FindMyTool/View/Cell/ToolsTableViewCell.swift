@@ -16,6 +16,7 @@ class ToolsTableViewCell: UITableViewCell {
     }
     
     // MARK: - IBOutlets & IBActions
+    
     // IBOutlets
     @IBOutlet weak var toolImageView: UIImageView!
     @IBOutlet weak var titleToolLabel: UILabel!
@@ -24,6 +25,7 @@ class ToolsTableViewCell: UITableViewCell {
     @IBOutlet weak var localisationToolLabel: UILabel!
     
     // MARK: - Properties
+    
     var toolFromCell: ToolData? {
         didSet {
             titleToolLabel.text = toolFromCell?.name
@@ -36,18 +38,20 @@ class ToolsTableViewCell: UITableViewCell {
         }
     }
     
-    var toolEntity: ToolEntity? {
+    var favToolFromCell: FavoriteToolData? {
         didSet {
-            titleToolLabel.text = toolEntity?.name
-            priceToolLabel.text = (toolEntity?.price ?? "") + " € / jour"
-            localisationToolLabel.text = toolEntity?.town
-            CPToolLabel.text = toolEntity?.postalCode
-            guard let urlTool = URL(string: toolEntity?.image ?? "") else { return }
+            titleToolLabel.text = favToolFromCell?.name
+            priceToolLabel.text = (favToolFromCell?.price ?? "") + " € / jour"
+            CPToolLabel.text = favToolFromCell?.localisation
+            localisationToolLabel.text = favToolFromCell?.town
+            
+            guard let urlTool = URL(string: favToolFromCell?.imageLink ?? "") else { return }
             toolImageView.load(url: urlTool)
         }
     }
     
     func cornerRadius() {
         self.toolImageView.layer.cornerRadius = 8
+        
     }
 }

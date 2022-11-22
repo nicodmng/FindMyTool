@@ -1,24 +1,21 @@
 //
-//  Tools.swift
+//  FavoriteToolData.swift
 //  FindMyTool
 //
-//  Created by Nicolas Demange on 29/07/2022.
+//  Created by Nicolas Demange on 17/11/2022.
 //
 
 import Foundation
 import FirebaseFirestoreSwift
 
-struct ToolData: Codable {
+struct FavoriteToolData: Codable {
     var description: String?
     var docId: String
     var name: String
-    var postalCode: String
+    var localisation: String
     var price: String
-    var render: String?
-    var lender: String
-    var isAvailable: Bool?
     var imageLink: String?
-    var imagePath: String?
     var town: String
+    var render: String
     var toolId: String?
 }

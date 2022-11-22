@@ -34,8 +34,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func contactSupportButton(_ sender: Any) {
         
-        // ToDo : Redirige vers la boîte e-mail de l'utilisateur
-        
+        openPresentModally()
     }
     
     
@@ -54,5 +53,16 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    func openPresentModally() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
+        
+        if let presentationController = viewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        self.present(viewController, animated: true)
+    }
+    
 }
 
