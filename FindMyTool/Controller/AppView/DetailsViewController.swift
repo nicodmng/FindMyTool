@@ -49,18 +49,18 @@ class DetailsViewController: UIViewController {
         guard let toolIsFavorite else { return }
 
         let tappedButton = sender as? UIButton
-        tappedButton?.isEnabled = false
+        //tappedButton?.isEnabled = false
         
         if toolIsFavorite {
             databaseSession.deleteFavoriteTool(docID: tool.docId ?? "") { status in
                 if status {
-                    tappedButton?.isEnabled = true
+                    //tappedButton?.isEnabled = true
                     self.toolIsFavorite?.toggle()
                 }
             }
         } else {
-            databaseSession.addToolInFavorite(name: tool?.name ?? "", localisation: tool?.postalCode ?? "", description: tool?.description ?? "", price: tool?.price ?? "", town: tool?.town ?? "", imageLink: tool?.imageLink ?? "", render: databaseSession.fetchUserID(), toolId: tool.toolId!) { error in
-                tappedButton?.isEnabled = true
+            databaseSession.addToolInFavorite(name: tool?.name ?? "", localisation: tool?.postalCode ?? "", description: tool?.description ?? "", price: tool?.price ?? "", town: tool?.town ?? "", imageLink: tool?.imageLink ?? "", render: databaseSession.fetchUserID(), toolId: tool.toolId!, email: tool?.email ?? "") { error in
+                //tappedButton?.isEnabled = true
                 if error == nil {
                     self.toolIsFavorite?.toggle()
                 }
@@ -69,7 +69,9 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func contactButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "segueDetailsToContact", sender: nil)
         openPresentModally()
+        
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -80,7 +82,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.activityIndicator.startAnimating()
         displayDetails()
         
@@ -99,6 +101,7 @@ class DetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     // MARK: - Methods
@@ -122,4 +125,13 @@ class DetailsViewController: UIViewController {
         }
         self.present(viewController, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueDetailsToContact",
+           let next = segue.destination as? ContactViewController {
+            next.tool = tool
+        }
+    }
+    
+
 }

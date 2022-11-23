@@ -110,7 +110,8 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
                                                     imagePath: self.imagePath ?? "",
                                                     render: self.fetchUserID(),
                                                     lender: self.uidLender ?? "",
-                                                    isAvailable: true) { error in
+                                                    isAvailable: true,
+                                                    email: databaseSession.fetchUserEmail()) { error in
             if error == nil {
                 self.dismiss(animated: true)
                 NotificationCenter.default.post(name: Self.didAddNewTool, object: nil)
@@ -208,7 +209,7 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
         
         toolLabel.text = name[row]
-        toolLabel.font = .boldSystemFont(ofSize: 25)
+        toolLabel.font = .boldSystemFont(ofSize: 20)
         toolLabel.textColor = UIColor.white
         return toolLabel
     }

@@ -21,4 +21,5 @@ struct ToolData: Codable {
     var imagePath: String?
     var town: String
     var toolId: String?
+    var email: String?
 }

@@ -18,4 +18,5 @@ struct FavoriteToolData: Codable {
     var town: String
     var render: String
     var toolId: String?
+    var email: String?
 }

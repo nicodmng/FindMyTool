@@ -56,7 +56,7 @@ class SettingsViewController: UIViewController {
     
     func openPresentModally() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ContactSupportViewController")
         
         if let presentationController = viewController.presentationController as? UISheetPresentationController {
             presentationController.detents = [.medium()]

@@ -72,6 +72,7 @@
 		44B989BE288EBF160038B4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B989BD288EBF160038B4F7 /* Assets.xcassets */; };
 		44B989C1288EBF160038B4F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B989BF288EBF160038B4F7 /* LaunchScreen.storyboard */; };
 		44B989CC288EBF160038B4F7 /* URLProtocolFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B989CB288EBF160038B4F7 /* URLProtocolFake.swift */; };
+		44BDA011292DF53500596553 /* ContactSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BDA010292DF53500596553 /* ContactSupportViewController.swift */; };
 		44E26239288FC7A4003425AC /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E26238288FC7A4003425AC /* SubscribeViewController.swift */; };
 		44EDC72F28EC6130005893E4 /* PostalCodeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC72E28EC6130005893E4 /* PostalCodeTestCase.swift */; };
 		44EDC73128EC6151005893E4 /* FakeResponseDataCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EDC73028EC6151005893E4 /* FakeResponseDataCP.swift */; };
@@ -130,6 +131,7 @@
 		44B989C2288EBF160038B4F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44B989C7288EBF160038B4F7 /* FindMyToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B989CB288EBF160038B4F7 /* URLProtocolFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolFake.swift; sourceTree = "<group>"; };
+		44BDA010292DF53500596553 /* ContactSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSupportViewController.swift; sourceTree = "<group>"; };
 		44E26238288FC7A4003425AC /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		44EDC72E28EC6130005893E4 /* PostalCodeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeTestCase.swift; sourceTree = "<group>"; };
 		44EDC73028EC6151005893E4 /* FakeResponseDataCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataCP.swift; sourceTree = "<group>"; };
@@ -241,8 +243,9 @@
 				44A7DA2F2891613D00A81E44 /* SettingsViewController.swift */,
 				44EDC73628EC6243005893E4 /* DetailsViewController.swift */,
 				44872FD3292670BD00D05CFE /* FavoritesViewController.swift */,
-				44822E482902904A00AADB64 /* ContactViewController.swift */,
 				4430DD10291D009A001EE911 /* DescriptionToolViewController.swift */,
+				44822E482902904A00AADB64 /* ContactViewController.swift */,
+				44BDA010292DF53500596553 /* ContactSupportViewController.swift */,
 			);
 			path = AppView;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				449A9A8028CF2D6C0000C008 /* ResultViewController.swift in Sources */,
 				44B989B6288EBF140038B4F7 /* LogInViewController.swift in Sources */,
 				44822E472901484F00AADB64 /* View+cornerRadius.swift in Sources */,
+				44BDA011292DF53500596553 /* ContactSupportViewController.swift in Sources */,
 				449D68D328D86C8A00A2DD32 /* ResultTownViewController.swift in Sources */,
 				449A3F1D28F6900B00B65EB8 /* UIImage.swift in Sources */,
 				44575D852915109B009B2753 /* APISession.swift in Sources */,

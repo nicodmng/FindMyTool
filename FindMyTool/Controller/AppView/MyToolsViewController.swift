@@ -30,6 +30,7 @@ class MyToolsViewController: UIViewController {
         super.viewDidLoad()
         myToolsTableView.register(UINib(nibName: "ToolsTableViewCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         myToolsTableView.delegate = self
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDidAddNewTool), name: AddToolViewController.didAddNewTool, object: nil)
     }
     
@@ -71,7 +72,6 @@ extension MyToolsViewController: UITableViewDataSource {
             _ = tools[indexPath.row].imagePath
 
             databaseService.deleteToolFromDB(id: id)
-            // databaseService.deleteImageFromDB(toolImage: image ?? "")
             
             tools.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

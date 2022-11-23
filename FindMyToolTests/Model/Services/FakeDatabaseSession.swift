@@ -12,23 +12,6 @@ import Firebase
 final class FakeDatabaseSession: APISession {
     
     
-    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
-        <#code#>
-    }
-    
-    func fetchFavoriteTool(render: String, callback: @escaping ([FindMyTool.FavoriteToolData]) -> Void) {
-        <#code#>
-    }
-    
-    func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
-        <#code#>
-    }
-    
-    func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void) {
-        <#code#>
-    }
-    
-
     enum DatabaseAction {
         case saved, notSaved
         case fetched, notFetched
@@ -55,7 +38,7 @@ final class FakeDatabaseSession: APISession {
     
     // MARK: - Methods
     
-    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)?) {
+    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)?) {
         switch result {
         case .success:
             databaseActions.append(.saved)
@@ -66,11 +49,55 @@ final class FakeDatabaseSession: APISession {
         }
     }
     
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, email: String, callback: @escaping (Error?) -> Void) {
+        switch result {
+        case .success:
+            databaseActions.append(.saved)
+            callback(nil)
+        case let .failure(error):
+            databaseActions.append(.notSaved)
+            callback((error))
+        }
+    }
+    
+    func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void) {
+        switch result {
+        case .success:
+            databaseActions.append(.saved)
+            callback(true)
+        case .failure(_):
+            databaseActions.append(.notSaved)
+            callback(false)
+        }
+    }
+    
+    func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
+        switch result {
+        case .success:
+            databaseActions.append(.deleted)
+            callback(true)
+        case .failure(_):
+            databaseActions.append(.notDeleted)
+            callback(true)
+        }
+    }
+    
     func fetchTools(render: String, callback: @escaping ([FindMyTool.ToolData]) -> Void) {
         switch result {
         case .success:
             databaseActions.append(.fetched)
             callback([.init(docId: "hfjkahfjsfsak", name: "Motoculteur", postalCode: "74160", price: "25", lender: "", town: "Archamps")])
+        case .failure:
+            databaseActions.append(.notFetched)
+            callback([])
+        }
+    }
+    
+    func fetchFavoriteTool(render: String, callback: @escaping ([FindMyTool.FavoriteToolData]) -> Void) {
+        switch result {
+        case .success:
+            databaseActions.append(.fetched)
+            callback([.init(docId: "fef454fe", name: "Perceuse", localisation: "74160", price: "45", town: "Archamps", render: "J3ffeefsFEa44")])
         case .failure:
             databaseActions.append(.notFetched)
             callback([])

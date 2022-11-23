@@ -17,16 +17,16 @@ class FavoritesViewController: UIViewController {
     private let databaseService: DatabaseService = DatabaseService()
     var favoritesTools = [FavoriteToolData]()
     var tool: Tool?
-
     
     // MARK: - IBOutlets & IBActions
     
     @IBOutlet weak var favoritesTableView: UITableView!
-
+    
     // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // MARK: - ViewWillAppear
@@ -65,8 +65,8 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let id = favoritesTools[indexPath.row].docId
-            // FIXME: shoudl use version with callback argument
-            //databaseSession.deleteToolFromFavorite(id: id)
+            databaseSession.deleteFavoriteTool(docID: id) { _ in
+            }
             favoritesTableView.reloadData()
         }
     }
@@ -94,14 +94,15 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favTool = favoritesTools[indexPath.row]
-        self.tool = Tool(name: favTool.name, price: favTool.price, town: favTool.town, imageLink: favTool.imageLink, postalCode: favTool.localisation, description: favTool.description, toolId: favTool.toolId ?? "", docId: favTool.docId ?? "")
+        self.tool = Tool(name: favTool.name, price: favTool.price, town: favTool.town, imageLink: favTool.imageLink, postalCode: favTool.localisation, description: favTool.description, toolId: favTool.toolId ?? "", docId: favTool.docId ?? "", email: favTool.email ?? "")
         
         performSegue(withIdentifier: "segueFavoritesToDetails", sender: nil)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFavoritesToDetails",
-            let next = segue.destination as? DetailsViewController {
+           let next = segue.destination as? DetailsViewController {
             next.tool = tool
         }
     }

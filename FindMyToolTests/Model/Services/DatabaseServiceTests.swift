@@ -22,7 +22,7 @@ class DatabaseServiceTests: XCTestCase {
         let session = FakeDatabaseSession(result: .success(()))
         let sut = DatabaseService(session: session)
         
-        sut.addToolInDatabase(name: "Tondeuse", localisation: "74160", description: "Très bon outil", price: "20", town: "Archamps", imageLink: "", imagePath: "", render: "jj", lender: "", isAvailable: true) { _ in
+        sut.addToolInDatabase(name: "Tondeuse", localisation: "74160", description: "Très bon outil", price: "20", town: "Archamps", imageLink: "", imagePath: "", render: "jj", lender: "", isAvailable: true, email: "nicolas.demange@yahoo.fr") { _ in
             print("")
         }
         
@@ -34,8 +34,56 @@ class DatabaseServiceTests: XCTestCase {
         let sut = DatabaseService(session: session)
         let expectation = expectation(description: "Waiting...")
         
-        sut.addToolInDatabase(name: "Tondeuse", localisation: "74160", description: "Très bon outil", price: "20", town: "Archamps", imageLink: "", imagePath: "", render: "jj", lender: "", isAvailable: true) { _ in
+        sut.addToolInDatabase(name: "Tondeuse", localisation: "74160", description: "Très bon outil", price: "20", town: "Archamps", imageLink: "", imagePath: "", render: "jj", lender: "", isAvailable: true, email: "nicolas.demange@yahoo.fr") { _ in
             XCTAssertEqual(session.databaseActions, [.notSaved])
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+    }
+    
+    func testAddToolInFavorite_WhenToolIsSaved_ThenShouldAddToolInFavorite() {
+        let session = FakeDatabaseSession(result: .success(()))
+        let sut = DatabaseService(session: session)
+        let expectation = expectation(description: "Waiting...")
+        
+        sut.addToolInFavorite(name: "Tondeuse", localisation: "74160", description: "Très bon outil", price: "20", town: "Archamps", imageLink: "", render: "jj", toolId: "fsfa45", email: "nicolas.demange@yahoo.fr") { _ in
+            XCTAssertEqual(session.databaseActions, [.saved])
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+    }
+    
+    func testIsFavoriteTool_WhenToolIsPresent_ThenShouldToolIsTrue() {
+        let session = FakeDatabaseSession(result: .success(()))
+        let sut = DatabaseService(session: session)
+        let expectation = expectation(description: "Waiting...")
+        
+        sut.isFavoriteTool(toolId: "fkfa3mfal") { _ in
+            XCTAssertEqual(session.databaseActions, [.saved])
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+    }
+    
+    func testFetchFavoriteTool_WhenFavoriteToolIsFetched_ThenShouldFetchFavoriteTool() {
+        let session = FakeDatabaseSession(result: .success(()))
+        let sut = DatabaseService(session: session)
+        let expectation = expectation(description: "Waiting...")
+        
+        sut.fetchFavoriteTool(render: "Jfkfakfjksfak32") { arrFavToolData in
+            XCTAssertEqual(session.databaseActions, [.fetched])
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.1)
+    }
+    
+    func testDeleteFavoriteTool_WhenFavoriteToolIsDeleted_ThenShouldDeleteFavoriteTool() {
+        let session = FakeDatabaseSession(result: .success(()))
+        let sut = DatabaseService(session: session)
+        let expectation = expectation(description: "Waiting...")
+        
+        sut.deleteFavoriteTool(docID: "JFkafma2") { _ in
+            XCTAssertEqual(session.databaseActions, [.deleted])
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.1)

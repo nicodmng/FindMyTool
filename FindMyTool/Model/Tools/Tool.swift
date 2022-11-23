@@ -16,8 +16,9 @@ struct Tool {
     let description: String?
     let toolId: String?
     let docId: String?
+    let email: String?
 
-    init(name: String, price: String, town: String, imageLink: String?, postalCode: String, description: String?, toolId: String, docId: String) {
+    init(name: String, price: String, town: String, imageLink: String?, postalCode: String, description: String?, toolId: String, docId: String, email: String) {
         self.name = name
         self.price = price
         self.town = town
@@ -26,6 +27,7 @@ struct Tool {
         self.description = description
         self.toolId = toolId
         self.docId = docId
+        self.email = email
     }
     
 }

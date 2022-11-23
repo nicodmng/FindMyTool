@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 final class DatabaseSession: APISession {
+    
 
     // MARK: - Properties
     
@@ -36,7 +37,8 @@ final class DatabaseSession: APISession {
                                         price: dict["price"] as! String,
                                         lender: dict["lender"] as! String,
                                         imageLink: dict["imageLink"] as? String,
-                                        town: dict["town"] as! String)
+                                        town: dict["town"] as! String,
+                                        email: dict["email"] as? String)
                     tools.append(tool)
                 }
                 callback(tools)
@@ -60,7 +62,8 @@ final class DatabaseSession: APISession {
                                                 imageLink: dict["imageLink"] as? String,
                                                 town: dict["town"] as! String,
                                                 render: dict["render"] as! String,
-                                                toolId: dict["toolId"] as? String)
+                                                toolId: dict["toolId"] as? String,
+                                                email: dict["email"] as? String)
                     favoritesTools.append(favoriteTool)
                 }
                 callback(favoritesTools)
@@ -68,7 +71,7 @@ final class DatabaseSession: APISession {
         })
     }
     
-    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)?) {
+    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)?) {
         db.collection("tools").addDocument(data: [
             "name": name,
             "localisation": localisation,
@@ -79,13 +82,14 @@ final class DatabaseSession: APISession {
             "imagePath": imagePath,
             "render": render,
             "lender": lender as Any,
-            "isAvailable": isAvailable
+            "isAvailable": isAvailable,
+            "email": email,
         ]) { error in
             completion?(error)
         }
     }
     
-    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, email: String, callback: @escaping (Error?) -> Void) {
         db.collection("favorites").addDocument(data:[
             "name": name,
             "localisation": localisation,
@@ -94,7 +98,8 @@ final class DatabaseSession: APISession {
             "town": town,
             "imageLink": imageLink,
             "render": render,
-            "toolId": toolId],
+            "toolId": toolId,
+            "email": email],
             completion: callback)
     }
     
@@ -238,11 +243,18 @@ final class DatabaseSession: APISession {
         return id
     }
     
-    // TODO : --->
+    func getEmailFromRender(callback: @escaping (String) -> Void) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let email = user.email ?? ""
+            callback(email)
+        }
+    }
     
     func getUsername(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
+            let email = user.email ?? ""
             let username = user.displayName ?? ""
             callback(username)
         }

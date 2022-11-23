@@ -30,12 +30,12 @@ class DatabaseService {
     // MARK: - Methodes
     // Tool Manager
     
-    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, completion: ((Error?) -> Void)? ) {
-        session.addToolInDatabase(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, imagePath: imagePath, render: render, lender: lender, isAvailable: isAvailable, completion: completion)
+    func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)? ) {
+        session.addToolInDatabase(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, imagePath: imagePath, render: render, lender: lender, isAvailable: isAvailable, email: email, completion: completion)
     }
     
-    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, callback: @escaping (Error?) -> Void) {
-        session.addToolInFavorite(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, render: render, toolId: toolId, callback: callback)
+    func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, email: String, callback: @escaping (Error?) -> Void) {
+        session.addToolInFavorite(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, render: render, toolId: toolId, email: email, callback: callback)
     }
     
     func fetchFavoriteTool(render: String, callback: @escaping ([FavoriteToolData]) -> Void) {
@@ -58,7 +58,9 @@ class DatabaseService {
         session.deleteToolFromDB(id: id)
     }
     
-
+    func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
+        session.deleteFavoriteTool(docID: docID, callback: callback)
+    }
     
     // Image Manager
     
