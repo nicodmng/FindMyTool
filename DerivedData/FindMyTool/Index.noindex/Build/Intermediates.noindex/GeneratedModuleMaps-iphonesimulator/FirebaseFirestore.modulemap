@@ -1,4 +1,0 @@
-module FirebaseFirestore {
-umbrella header "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Source/Public/FirebaseFirestore/FirebaseFirestore.h"
-export *
-}

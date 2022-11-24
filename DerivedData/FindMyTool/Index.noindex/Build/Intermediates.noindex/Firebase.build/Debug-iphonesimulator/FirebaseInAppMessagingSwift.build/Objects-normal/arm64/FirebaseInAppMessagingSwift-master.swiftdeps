@@ -1,9 +1,0 @@
-version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
-options: "f8b181563291f0846b3f0c2bfc0112ad413df9941391d867b93019e397abbb5c"
-build_start_time: [1667561781, 743394851]
-build_end_time: [1667561783, 635411977]
-inputs:
-  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseInAppMessaging/Swift/Source/CustomInAppMessageDisplayViewModifier.swift"
-  : [1666086363, 131835460]
-  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseInAppMessaging/Swift/Source/SwiftUIPreviewHelpers.swift"
-  : [1666086363, 131932735]

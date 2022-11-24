@@ -1,4 +1,0 @@
-module gRPC_Core {
-umbrella "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/grpc-ios/native_src/spm-core-include"
-export *
-}

@@ -1,9 +1,0 @@
-version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
-options: "08ab4dab8470d89c8c08ea690d16cd6ea290baed1497e83fbdd5b8e143a06a6c"
-build_start_time: [1667561783, 174973964]
-build_end_time: [1667561783, 305199146]
-inputs:
-  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCombineSwift/Sources/Functions/Functions+Combine.swift"
-  : [1666086363, 56935787]
-  ? "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCombineSwift/Sources/Functions/HTTPSCallable+Combine.swift"
-  : [1666086363, 57030200]

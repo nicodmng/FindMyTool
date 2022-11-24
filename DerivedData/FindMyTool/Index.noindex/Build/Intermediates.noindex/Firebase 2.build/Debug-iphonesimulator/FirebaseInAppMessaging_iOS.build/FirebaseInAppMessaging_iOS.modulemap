@@ -1,4 +1,0 @@
-module FirebaseInAppMessaging_iOS {
-umbrella header "/Users/nicolasdemange/Library/Developer/Xcode/DerivedData/FindMyTool-arxotpwqfrxihqglvdtsakpaaeya/SourcePackages/checkouts/firebase-ios-sdk/FirebaseInAppMessaging/iOS/include/FirebaseInAppMessaging_iOS.h"
-export *
-}
