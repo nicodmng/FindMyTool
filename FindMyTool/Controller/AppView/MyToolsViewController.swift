@@ -34,6 +34,8 @@ class MyToolsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDidAddNewTool), name: AddToolViewController.didAddNewTool, object: nil)
     }
     
+    // MARK: - Methods
+    
     @objc
     func didReceiveDidAddNewTool() {
         fetchTools()

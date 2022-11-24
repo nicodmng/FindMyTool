@@ -12,6 +12,8 @@ enum NetworkError: Error {
 }
 
 extension NetworkError: CustomStringConvertible {
+    
+    // Some error for different case
     var description: String {
         switch self {
         case .noData:

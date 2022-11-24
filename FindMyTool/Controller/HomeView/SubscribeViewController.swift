@@ -12,11 +12,11 @@ import FirebaseDatabase
 class SubscribeViewController: UIViewController {
     
     // MARK: IBOutlets & IBActions
+    
     // IBOutlets
     @IBOutlet weak var usernameSubTextField: UITextField!
     @IBOutlet weak var emailSubTextField: UITextField!
     @IBOutlet weak var passwordSubTextField: UITextField!
-    
     @IBOutlet weak var registerButton: UIButton!
     
     //IBActions
@@ -40,7 +40,7 @@ class SubscribeViewController: UIViewController {
         setupTextFieldManager()
     }
     
-    // MARK: - Private functions
+    // MARK: - Private methods
     private func setupButton() {
         registerButton.layer.cornerRadius = 10
     }
@@ -58,6 +58,7 @@ class SubscribeViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    // Create a profil in Firebase
     func createUser() {
         if usernameSubTextField.text != "" && emailSubTextField.text != "" &&
             passwordSubTextField.text != "" {
@@ -65,7 +66,7 @@ class SubscribeViewController: UIViewController {
                 if error != nil {
                     print(error.debugDescription)
                 } else {
-                    // Inscription du Username dans la BDD :
+                    // Save username in Firebase
                     let ref = Database.database().reference()
                     let userID = Auth.auth().currentUser?.uid
                     ref.child("users").child(userID!).setValue(["username": self.usernameSubTextField.text!])

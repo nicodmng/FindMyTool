@@ -38,11 +38,7 @@ class ResultTownViewController: UIViewController {
         postalCodeTextField.inputAccessoryView = toolBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    // MARK: - Methodes
+    // MARK: - Methods
     
     func fetchPostalCode() {
         serviceCP.getLocation(postalCode: postalCodeTextField.text ?? "") { [weak self] result in

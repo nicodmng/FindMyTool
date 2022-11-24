@@ -14,6 +14,7 @@ class LogInViewController: UIViewController {
     var databaseService: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
+    
     // IBOutlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -30,6 +31,7 @@ class LogInViewController: UIViewController {
     }
     
     // MARK: - ViewDidLoad & ViewDidAppear
+    
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,9 @@ class LogInViewController: UIViewController {
         setupTextFieldManager()
     }
     
-    // MARK: - Private functions
+    // MARK: - Private methods
     
+    // Log in function
     private func logIn() {
         if usernameTextField.text != "" && passwordTextField.text != "" {
             Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (authResult, error) in
@@ -57,6 +60,7 @@ class LogInViewController: UIViewController {
         }
     }
     
+    // Setup corner radius on logInButton
     private func setupButton() {
         logInButton.layer.cornerRadius = 10
     }
@@ -64,12 +68,12 @@ class LogInViewController: UIViewController {
     private func setupTextFieldManager() {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Actions
+    
     @objc private func hideKeyboard() {
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -78,6 +82,7 @@ class LogInViewController: UIViewController {
 }
 
     // MARK: - Extensions
+
     extension LogInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
@@ -85,4 +90,4 @@ class LogInViewController: UIViewController {
     }
         
 }
-// End of extension
+

@@ -16,7 +16,9 @@ class CPService {
         self.session = session
     }
     
-    // MARK: - Functions
+    // MARK: - Methods
+    
+    // Get location with an URL and postal code parameter
     func getLocation(postalCode: String, callback: @escaping (Result<[TownData], NetworkError>) -> Void) {
         guard let url = URL(string: "https://apicarto.ign.fr/api/codes-postaux/communes/\(postalCode)")
         else { return }

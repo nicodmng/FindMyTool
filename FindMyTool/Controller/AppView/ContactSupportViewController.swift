@@ -12,10 +12,6 @@ class ContactSupportViewController: UIViewController {
     
     // MARK: - Properties
     
-    var databaseService: DatabaseService = DatabaseService()
-    var databaseSession: DatabaseSession = DatabaseSession()
-    var tool: Tool?
-    
     var rapport: [String] = ["un bug",
                              "une question",
                              "une remarque",
@@ -29,14 +25,14 @@ class ContactSupportViewController: UIViewController {
     @IBAction func eraseButtonPressed(_ sender: UIButton) {
         messageSupportTextView.text = ""
     }
-    
     @IBAction func sendMessageToSupportPressed(_ sender: UIButton) {
         sendEmailToSupport(reportType: feedback)
     }
     
     @IBOutlet weak var choiceObjectPickerView: UIPickerView!
     
-
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,8 +63,6 @@ extension ContactSupportViewController: MFMailComposeViewControllerDelegate {
     }
     
 }
-
-// MARK: - Extension
 
 extension ContactSupportViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -21,11 +21,6 @@ class DescriptionToolViewController: UIViewController {
     
     @IBOutlet weak var descriptionToolTextView: UITextView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        descriptionToolTextView.text = text
-    }
-    
     @IBAction func eraseButtonPressed(_ sender: UIButton) {
         descriptionToolTextView.text = ""
     }
@@ -34,7 +29,16 @@ class DescriptionToolViewController: UIViewController {
         delegate?.didChangeText(controller: self, text: descriptionToolTextView.text)
         dismissViewController()
     }
-
+    
+    // MARK: - ViewDidLoad
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        descriptionToolTextView.text = text
+    }
+    
+    // MARK: - Methods
+    
     func dismissViewController() {
         self.dismiss(animated: true)
     }

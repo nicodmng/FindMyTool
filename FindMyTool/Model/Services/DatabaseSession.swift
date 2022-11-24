@@ -13,7 +13,6 @@ import FirebaseStorage
 
 final class DatabaseSession: APISession {
     
-
     // MARK: - Properties
     
     var db = Firestore.firestore()
@@ -22,6 +21,7 @@ final class DatabaseSession: APISession {
     
     // MARK: - Functions
     
+    // Retrieves tool items from database
     func fetchTools(render: String, callback: @escaping ([ToolData]) -> Void) {
         db.collection("tools").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
             if let err = err {
@@ -46,6 +46,7 @@ final class DatabaseSession: APISession {
         })
     }
     
+    // Retrieves favorite tool items from database
     func fetchFavoriteTool(render: String, callback: @escaping ([FavoriteToolData]) -> Void) {
         db.collection("favorites").whereField("render", isEqualTo: render).getDocuments(completion: { (querySnapshot, err) in
             if let err = err {
@@ -71,6 +72,7 @@ final class DatabaseSession: APISession {
         })
     }
     
+    // Adds tool items to database
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)?) {
         db.collection("tools").addDocument(data: [
             "name": name,
@@ -89,6 +91,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Adds favorite tool items to database
     func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, email: String, callback: @escaping (Error?) -> Void) {
         db.collection("favorites").addDocument(data:[
             "name": name,
@@ -103,6 +106,7 @@ final class DatabaseSession: APISession {
             completion: callback)
     }
     
+    // Catch boolean if tool is already in favorites in Firebase
     func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void) {
         db.collection("favorites").getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else {
@@ -118,6 +122,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Remove favorite tool from "favorites" collection in Firebase
     func deleteFavoriteTool(docID: String, callback: @escaping (Bool) -> Void) {
         db.collection("favorites").getDocuments { qs, error in
             let favoritesIdToDelete = qs?.documents.map({ doc in
@@ -132,6 +137,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Remove tool from "tools" collection in Firebase
     func deleteToolFromDB(id: String) {
         db.collection("tools").document(id).delete() { err in
             if let err = err {
@@ -142,6 +148,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Catch a tool with a filter function from Firebase
     func findToolsFromDB(nameTool: String, toolCP: String, callback: @escaping ([ToolData]) -> Void) {
         var tools = [ToolData]()
         db.collection("tools").whereField("town", isEqualTo: self.town).whereField("name", isEqualTo: nameTool)
@@ -167,6 +174,7 @@ final class DatabaseSession: APISession {
             }
     }
     
+    // Create a path in FirebaseStorage and download the URL image
     func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -183,19 +191,18 @@ final class DatabaseSession: APISession {
                 guard url != nil else {return}
                 let urlString: String = url?.absoluteString ?? "no url"
                 self.imageURL = urlString
-                print(self.imageURL ?? "")
                 completion()
             }
         }
     }
     
-    // Authentification
-    
+    // Retrieve tool's identification
     func getToolId(callback: @escaping (String) -> Void) {
         let toolId = db.collection("tools").document().documentID
         callback(toolId)
     }
     
+    // Retrieve username of the user
     func displayUsername(callback: @escaping (String) -> Void) {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
@@ -206,6 +213,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Disconnect the user out of the application
     func logOut() {
         let firebaseAuth = Auth.auth()
         do {
@@ -215,10 +223,12 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Catch a boolean if the user is connected
     func isUserConnected() -> Bool {
         Auth.auth().currentUser != nil
     }
     
+    // Retrieve the document ID
     func getDocumentID() {
         let ref = Firestore.firestore().collection("tools")
         ref.getDocuments { querySnapshot, error in
@@ -230,6 +240,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Retrieve the favorite document ID
     func getFavoriteDocumentID() -> String {
         var id = ""
         let ref = Firestore.firestore().collection("favorites")
@@ -243,6 +254,7 @@ final class DatabaseSession: APISession {
         return id
     }
     
+    // Retrieves the logged in user's email
     func getEmailFromRender(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -251,6 +263,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Retrieves email and username
     func getUsername(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -260,6 +273,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Retrieves username for display
     func fetchUsername() -> String {
         var user = ""
         getUsername { username in
@@ -268,8 +282,7 @@ final class DatabaseSession: APISession {
         return user
     }
     
-    // <------
-    
+    // Retrieves user ID
     func getUserId(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -278,6 +291,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Retrieves user ID for display
     func fetchUserID() -> String {
         var userID = ""
         getUserId { uid in
@@ -286,6 +300,7 @@ final class DatabaseSession: APISession {
         return userID
     }
     
+    // Retrieves user's email
     func getUserEmail(callback: @escaping (String) -> Void) {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -294,6 +309,7 @@ final class DatabaseSession: APISession {
         }
     }
     
+    // Retrieves user's email for display
     func fetchUserEmail() -> String {
         var userMail = ""
         getUserEmail { mail in

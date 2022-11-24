@@ -20,11 +20,7 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
     var codePostal: String = ""
     var town: String = ""
     
-    var passedDescription: String?
-    var serviceCP = CPService()
-    var uidRender: String?
     var uidLender: String?
-    var imageLink: String?
     var imageLocalUrl: URL? {
         didSet {
             print("did set imageLocalUrl")
@@ -55,10 +51,6 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
                 "Tronçonneuse",
                 ]
 
-    // MARK: - Initializer
-    
-    
-    
     // MARK: - IBOutlet & IBAction
     
     @IBOutlet weak var toolsPickerView: UIPickerView!
@@ -98,8 +90,9 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
     }
     
     
-    // MARK: - Methodes
+    // MARK: - Methods
     
+    // Function who save a tool in Firebase
     func addTool() {
         self.databaseSession.addToolInDatabase(name: self.nameTool,
                                                     localisation: self.cpLabel.text ?? "",
@@ -164,6 +157,7 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
     
     // MARK: - Alert Controller for "Photo Library", "Camera" or "Cancel" selection
     
+    // Function who open the user's image gallery
     private func showPopUp() {
         let actionSheet = UIAlertController(title: "FindMyTool", message: "Choisissez une photo", preferredStyle: .actionSheet)
         
@@ -187,7 +181,7 @@ class AddToolViewController: UIViewController, ResultTownViewControllerDelegate 
 
 extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // Pickerview
+    // Pickerview tool name
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return name.count
     }
@@ -204,6 +198,7 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         nameTool = name[row]
     }
     
+    // Customize the picker view
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let _ = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         let toolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
@@ -220,6 +215,7 @@ extension AddToolViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension AddToolViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // Get the local URL image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             self.imageLocalUrl = url

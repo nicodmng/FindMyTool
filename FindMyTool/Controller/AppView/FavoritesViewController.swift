@@ -94,7 +94,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favTool = favoritesTools[indexPath.row]
-        self.tool = Tool(name: favTool.name, price: favTool.price, town: favTool.town, imageLink: favTool.imageLink, postalCode: favTool.localisation, description: favTool.description, toolId: favTool.toolId ?? "", docId: favTool.docId ?? "", email: favTool.email ?? "")
+        self.tool = Tool(name: favTool.name, price: favTool.price, town: favTool.town, imageLink: favTool.imageLink, postalCode: favTool.localisation, description: favTool.description, toolId: favTool.toolId ?? "", docId: favTool.docId, email: favTool.email ?? "")
         
         performSegue(withIdentifier: "segueFavoritesToDetails", sender: nil)
 

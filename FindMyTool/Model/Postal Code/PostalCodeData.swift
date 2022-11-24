@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TownData's struct
 struct TownData: Decodable {
     let codePostal: String
     let codeCommune: String

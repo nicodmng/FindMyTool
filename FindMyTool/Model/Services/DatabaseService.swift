@@ -28,8 +28,8 @@ class DatabaseService {
     }
     
     // MARK: - Methodes
-    // Tool Manager
     
+    // Functions related with Tools
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)? ) {
         session.addToolInDatabase(name: name, localisation: localisation, description: description, price: price, town: town, imageLink: imageLink, imagePath: imagePath, render: render, lender: lender, isAvailable: isAvailable, email: email, completion: completion)
     }
@@ -62,14 +62,12 @@ class DatabaseService {
         session.deleteFavoriteTool(docID: docID, callback: callback)
     }
     
-    // Image Manager
-    
+    // Functions related with image
     func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void ) {
         session.uploadImageToStorage(imageLocalUrl: imageLocalUrl, completion: completion)
     }
     
-    // Authentification
-    
+    // Functions related with authentification
     func displayUsername(callback: @escaping (String) -> Void) {
         session.displayUsername(callback: callback)
     }
@@ -101,17 +99,5 @@ class DatabaseService {
     func fetchUserEmail() -> String {
         session.fetchUserEmail()
     }
+    
 }
-
-//    func deleteImageFromDB(toolImage: String) {
-//        let storeRef = Storage.storage()
-//        let imageRef = storeRef.reference().child(toolImage)
-//
-//        imageRef.delete { error in
-//            if let error = error {
-//                print("Oups \(error.localizedDescription)")
-//            } else {
-//                print("Image deleted !")
-//            }
-//        }
-//    }

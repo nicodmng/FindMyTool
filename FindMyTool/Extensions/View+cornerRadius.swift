@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension UIView {
+    
+    // Add corner radius parameter
   @IBInspectable var cornerRadius: CGFloat {
    get{
         return layer.cornerRadius

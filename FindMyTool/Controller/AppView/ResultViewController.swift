@@ -23,7 +23,7 @@ class ResultViewController: UIViewController {
         backAction()
     }
 
-    // MARK: - ViewDidLoad
+    // MARK: - ViewDidLoad & ViewWillAppear
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class ResultViewController: UIViewController {
         self.resultTableView.reloadData()
     }
     
-    // MARK: - Methodes
+    // MARK: - Methods
     
     func backAction() -> Void {
         self.dismiss(animated: true)
@@ -62,7 +62,7 @@ extension ResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tool = tools[indexPath.row]
         
-        self.tool = Tool(name: tool.name, price: tool.price, town: tool.town, imageLink: tool.imageLink, postalCode: tool.postalCode, description: tool.description, toolId: tool.toolId ?? "", docId: tool.docId ?? "", email: tool.email ?? "")
+        self.tool = Tool(name: tool.name, price: tool.price, town: tool.town, imageLink: tool.imageLink, postalCode: tool.postalCode, description: tool.description, toolId: tool.toolId ?? "", docId: tool.docId, email: tool.email ?? "")
         
         performSegue(withIdentifier: "segueToDetails", sender: nil)
     }

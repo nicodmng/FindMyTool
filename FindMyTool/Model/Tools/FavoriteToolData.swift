@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
+// FavoriteToolData's struct
 struct FavoriteToolData: Codable {
     var description: String?
     var docId: String

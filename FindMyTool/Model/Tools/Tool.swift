@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Tool's struct
 struct Tool {
     let name: String
     let price: String

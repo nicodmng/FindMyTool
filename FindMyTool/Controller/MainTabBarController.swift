@@ -12,6 +12,8 @@ class MainTabBarController: UITabBarController {
     
     private let auth: DatabaseService = DatabaseService()
     
+    // Display LogInViewController if the user is not connected (false)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if auth.isUserConnected() == false {

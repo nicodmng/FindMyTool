@@ -11,14 +11,11 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Properties
     
-
     private let authFirebase: DatabaseService = DatabaseService()
     
     // MARK: - IBOutlets & IBActions
-    
+
     // IBOutlets
-    
-    
     @IBOutlet weak var userMail: UILabel!
     
     @IBOutlet weak var usernameLabel: UILabel!
@@ -33,7 +30,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func contactSupportButton(_ sender: Any) {
-        
         openPresentModally()
     }
     
@@ -47,13 +43,9 @@ class SettingsViewController: UIViewController {
         self.userMail.text = authFirebase.fetchUserEmail()
     }
     
-    // MARK: - ViewDidLoad
+    // MARK: - Methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+    // Display a medium modally
     func openPresentModally() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ContactSupportViewController")

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import FirebaseCore
 import Firebase
 import FirebaseDatabase
@@ -17,8 +16,7 @@ import FirebaseStorage
 
 protocol APISession {
     
-    // Tools
-    
+    // Functions related with Tools
     func addToolInDatabase(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, imagePath: String, render: String, lender: String?, isAvailable: Bool, email: String, completion: ((Error?) -> Void)? )
     
     func addToolInFavorite(name: String, localisation: String, description: String, price: String, town: String, imageLink: String, render: String, toolId: String, email: String, callback: @escaping (Error?) -> Void)
@@ -37,12 +35,10 @@ protocol APISession {
     
     func isFavoriteTool(toolId: String, callback: @escaping (Bool) -> Void)
     
-    // Image
-    
+    // Functions related with image
     func uploadImageToStorage(imageLocalUrl: URL, completion: @escaping () -> Void )
     
-    // Auth
-    
+    // Functions related with authentification
     func logOut()
     
     func isUserConnected() -> Bool

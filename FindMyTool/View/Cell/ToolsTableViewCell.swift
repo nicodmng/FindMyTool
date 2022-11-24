@@ -26,6 +26,7 @@ class ToolsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    // Get the values from ToolData for display to cell
     var toolFromCell: ToolData? {
         didSet {
             titleToolLabel.text = toolFromCell?.name
@@ -38,6 +39,7 @@ class ToolsTableViewCell: UITableViewCell {
         }
     }
     
+    // Get the values from FavoriteToolData for display to cell
     var favToolFromCell: FavoriteToolData? {
         didSet {
             titleToolLabel.text = favToolFromCell?.name
@@ -49,6 +51,8 @@ class ToolsTableViewCell: UITableViewCell {
             toolImageView.load(url: urlTool)
         }
     }
+    
+    // MARK: Methods
     
     func cornerRadius() {
         self.toolImageView.layer.cornerRadius = 8

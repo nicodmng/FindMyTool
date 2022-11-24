@@ -185,13 +185,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44575D8E29152648009B2753 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
 		445D289628C236870028D5FF /* Postal Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,7 +324,6 @@
 				4466894828AE6FDB002A55E4 /* MainTabBarController.swift */,
 				44A7DA29289160EE00A81E44 /* HomeView */,
 				44A7DA2A289160F400A81E44 /* AppView */,
-				44575D8E29152648009B2753 /* Favorites */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

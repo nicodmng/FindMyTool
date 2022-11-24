@@ -11,9 +11,7 @@ import MessageUI
 class ContactViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var databaseService: DatabaseService = DatabaseService()
-    var databaseSession: DatabaseSession = DatabaseSession()
+
     var tool: Tool?
     
     // MARK: - IBOulets & IBActions
@@ -21,12 +19,13 @@ class ContactViewController: UIViewController {
     @IBAction func sendMessage(_ sender: UIButton) {
         sendEmail(userEmail: tool?.email ?? "")
     }
-    
     @IBAction func eraseButtonPressed(_ sender: Any) {
         messageTextView.text = ""
     }
     
     @IBOutlet weak var messageTextView: UITextView!
+    
+    // MARK: ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +41,8 @@ class ContactViewController: UIViewController {
 //MARK: - Extension
 
 extension ContactViewController: MFMailComposeViewControllerDelegate {
+    
+    // MARK: - Extension's methods
     
     func sendEmail(userEmail: String) {
         guard MFMailComposeViewController.canSendMail() else { return }

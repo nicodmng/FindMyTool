@@ -24,7 +24,6 @@ class DetailsViewController: UIViewController {
     var toolIsFavorite: Bool? {
         didSet {
             guard let toolIsFavorite else { return }
-
             if toolIsFavorite {
                 self.favoriteButton.setBackgroundImage(self.favoriteImage, for: .normal)
             } else {
@@ -48,19 +47,16 @@ class DetailsViewController: UIViewController {
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         guard let toolIsFavorite else { return }
 
-        let tappedButton = sender as? UIButton
-        //tappedButton?.isEnabled = false
+        _ = sender as? UIButton
         
         if toolIsFavorite {
             databaseSession.deleteFavoriteTool(docID: tool.docId ?? "") { status in
                 if status {
-                    //tappedButton?.isEnabled = true
                     self.toolIsFavorite?.toggle()
                 }
             }
         } else {
             databaseSession.addToolInFavorite(name: tool?.name ?? "", localisation: tool?.postalCode ?? "", description: tool?.description ?? "", price: tool?.price ?? "", town: tool?.town ?? "", imageLink: tool?.imageLink ?? "", render: databaseSession.fetchUserID(), toolId: tool.toolId!, email: tool?.email ?? "") { error in
-                //tappedButton?.isEnabled = true
                 if error == nil {
                     self.toolIsFavorite?.toggle()
                 }
@@ -71,7 +67,6 @@ class DetailsViewController: UIViewController {
     @IBAction func contactButton(_ sender: UIButton) {
         performSegue(withIdentifier: "segueDetailsToContact", sender: nil)
         openPresentModally()
-        
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -99,11 +94,6 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     // MARK: - Methods
     
     func displayDetails() {
@@ -116,6 +106,7 @@ class DetailsViewController: UIViewController {
         toolImage.load(url: urlTool)
     }
     
+    // Display a medium modally
     func openPresentModally() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ContactViewController")
